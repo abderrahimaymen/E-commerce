@@ -1,0 +1,93 @@
+/* ── Home Page ───────────────────────────── */
+.home { background: #f8f9fa; min-height: 100vh; }
+.section-inner { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* Hero */
+.hero-banner {
+  position: relative;
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  transition: background 0.5s;
+}
+.hero-content h1 { font-size: 2.8rem; margin: 0; }
+.hero-content p { font-size: 1.2rem; margin: 0.75rem 0 1.5rem; opacity: 0.9; }
+.hero-cta {
+  display: inline-block;
+  background: white;
+  color: #333;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.hero-cta:hover { transform: scale(1.05); }
+.hero-dots { margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; }
+.dot.active { background: white; }
+
+/* Categories */
+.categories-section { background: white; border-bottom: 1px solid #eee; }
+.categories-section h2 { margin-bottom: 1rem; }
+.categories-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+.category-card {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  padding: 1rem 1.5rem; border: 1px solid #eee; border-radius: 10px;
+  text-decoration: none; color: #333; transition: all 0.2s; font-size: 0.9rem;
+}
+.category-card:hover { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+.cat-icon { font-size: 1.8rem; }
+
+/* Trending */
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.section-header h2 { margin: 0; }
+.see-all { color: #e94560; text-decoration: none; font-weight: 600; }
+
+.products-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-card-home {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card-home:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,0.12); }
+
+.product-img-wrap { position: relative; height: 160px; background: #f0f0f0; overflow: hidden; }
+.product-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.no-img { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem; }
+.badge-low-stock { position: absolute; top: 8px; left: 8px; background: #ff9800; color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; }
+
+.product-card-body { padding: 0.75rem; }
+.product-name { display: block; font-weight: 600; color: #333; text-decoration: none; font-size: 0.9rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.price-row { margin: 0.4rem 0; }
+.price { font-size: 1.1rem; font-weight: 700; color: #e94560; }
+
+.card-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.btn-wishlist { padding: 0.4rem; background: #fff0f3; border: 1px solid #fcc; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+.btn-cart { flex: 1; padding: 0.4rem; background: #1a1a2e; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+.btn-cart:hover:not(:disabled) { background: #e94560; }
+.btn-cart:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Stars */
+.star-rating { display: flex; align-items: center; gap: 1px; font-size: 0.85rem; }
+.star { color: #ddd; }
+.star.filled { color: #ffc107; }
+.rating-count { font-size: 0.75rem; color: #888; margin-left: 4px; }
+
+/* Skeleton */
+.loading-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.product-skeleton { height: 280px; background: #eee; border-radius: 10px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* Promo banner */
+.promo-banner { background: #1a1a2e; color: white; }
+.promo-tiles { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.promo-tile { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; padding: 1.25rem 2rem; font-size: 1rem; min-width: 180px; }
+.promo-tile small { font-size: 0.8rem; opacity: 0.7; }
