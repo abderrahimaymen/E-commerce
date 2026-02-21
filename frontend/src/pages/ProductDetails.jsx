@@ -11,7 +11,8 @@ const STARS = (n, total = 5) => Array.from({ length: total }, (_, i) => (
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { user, setWishlistCount } = useStore();
+  const user = useStore((state) => state.user);
+  const setWishlistCount = useStore((state) => state.setWishlistCount);
 
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState(null);
@@ -93,33 +94,61 @@ export default function ProductDetails() {
   const avgRating = reviews?.averageRating ?? 0;
   const breakdown = reviews?.ratingBreakdown ?? {};
   const totalReviews = reviews?.totalReviews ?? 0;
+  const initials = str => (str ?? 'U').toString().trim().charAt(0).toUpperCase();
 
   return (
     <div className="pd-page">
-      {/* Product Info */}
+
+      {/* Breadcrumb */}
+      <nav className="pd-breadcrumb">
+        <Link to="/">Home</Link>
+        <span>›</span>
+        <Link to="/products">Products</Link>
+        {product.category && <><span>›</span><Link to={`/products?category=${product.category}`}>{product.category}</Link></>}
+        <span>›</span>
+        <span style={{ color: '#444' }}>{product.name}</span>
+      </nav>
+
+      {/* Product hero */}
       <div className="pd-hero">
-        <div className="pd-image-wrap">
-          {product.image
-            ? <img src={product.image} alt={product.name} className="pd-image" />
-            : <div className="pd-image-placeholder">🛍️</div>}
+
+        {/* Gallery */}
+        <div className="pd-gallery">
+          <div className="pd-main-img">
+            {product.image
+              ? <img src={product.image} alt={product.name} />
+              : <div className="pd-image-placeholder">🛍️</div>}
+          </div>
+          <div className="pd-thumbs">
+            {[product.image, product.image, product.image].map((src, i) =>
+              src
+                ? <div key={i} className={`pd-thumb ${i === 0 ? 'active' : ''}`}><img src={src} alt="" /></div>
+                : <div key={i} className={`pd-thumb ${i === 0 ? 'active' : ''}`} style={{ display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.5rem', background:'#f4f6f8' }}>🛍️</div>
+            )}
+          </div>
         </div>
+
+        {/* Info */}
         <div className="pd-info">
           {product.category && <span className="pd-category">{product.category}</span>}
           <h1 className="pd-name">{product.name}</h1>
           <div className="pd-rating-row">
-            {STARS(Math.round(avgRating))}
+            <div className="pd-stars">{STARS(Math.round(avgRating))}</div>
             <span className="pd-avg">{avgRating.toFixed(1)}</span>
-            <span className="pd-count">({totalReviews} reviews)</span>
+            <span className="pd-count">
+              <a href="#reviews">({totalReviews} reviews)</a>
+            </span>
           </div>
           <div className="pd-price">{(+product.price).toFixed(2)} €</div>
-          <p className="pd-desc">{product.description}</p>
           <div className="pd-stock">
             {product.stock > 10
-              ? <span className="in-stock">✓ In Stock ({product.stock})</span>
+              ? <><span className="in-stock">✓ In Stock ({product.stock})</span><span className="pd-ships">· Ships in 2–3 days</span></>
               : product.stock > 0
-                ? <span className="low-stock">⚠ Low Stock ({product.stock} left)</span>
+                ? <><span className="low-stock">⚠ Low Stock ({product.stock} left)</span><span className="pd-ships">· Order soon!</span></>
                 : <span className="out-stock">✗ Out of Stock</span>}
           </div>
+          <p className="pd-desc">{product.description}</p>
+          <hr className="pd-divider" />
           <div className="pd-actions">
             <div className="qty-row">
               <button onClick={() => setQty(q => Math.max(1, q - 1))}>−</button>
@@ -129,7 +158,7 @@ export default function ProductDetails() {
             <button className="btn-add-cart" onClick={addToCart} disabled={product.stock === 0}>
               🛒 Add to Cart
             </button>
-            <button className={`btn-wishlist ${inWishlist ? 'active' : ''}`} onClick={toggleWishlist}>
+            <button className={`btn-wishlist ${inWishlist ? 'active' : ''}`} onClick={toggleWishlist} title={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}>
               {inWishlist ? '❤️' : '🤍'}
             </button>
           </div>
@@ -137,14 +166,14 @@ export default function ProductDetails() {
       </div>
 
       {/* Reviews */}
-      <div className="reviews-section">
+      <div className="reviews-section" id="reviews">
         <h2>Customer Reviews</h2>
 
         {totalReviews > 0 && (
           <div className="reviews-summary">
             <div className="reviews-avg-big">
               <span className="avg-number">{avgRating.toFixed(1)}</span>
-              <div>{STARS(Math.round(avgRating))}</div>
+              <div className="avg-stars">{STARS(Math.round(avgRating))}</div>
               <span className="avg-total">{totalReviews} reviews</span>
             </div>
             <div className="rating-breakdown">
@@ -153,9 +182,9 @@ export default function ProductDetails() {
                 const pct = totalReviews ? Math.round((count / totalReviews) * 100) : 0;
                 return (
                   <div key={star} className="breakdown-row">
-                    <span>{star}★</span>
+                    <span className="breakdown-label">{star}★</span>
                     <div className="breakdown-bar"><div className="breakdown-fill" style={{ width: pct + '%' }} /></div>
-                    <span>{count}</span>
+                    <span className="breakdown-count">{count}</span>
                   </div>
                 );
               })}
@@ -163,13 +192,14 @@ export default function ProductDetails() {
           </div>
         )}
 
-        {user && (
-          <div className="review-cta">
+        <div className="review-cta">
+          <p>* Only verified buyers can leave a review.</p>
+          {user && (
             <button className="btn-write-review" onClick={() => setShowReviewForm(v => !v)}>
               ✏️ Write a Review
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {showReviewForm && (
           <div className="review-form-card">
@@ -177,10 +207,10 @@ export default function ProductDetails() {
             <div className="star-picker">
               {[1, 2, 3, 4, 5].map(s => (
                 <span key={s} onClick={() => setReviewForm(p => ({ ...p, rating: s }))}
-                  style={{ cursor: 'pointer', fontSize: '1.5rem', color: s <= reviewForm.rating ? '#ffc107' : '#ddd' }}>★</span>
+                  style={{ cursor: 'pointer', fontSize: '1.6rem', color: s <= reviewForm.rating ? '#ffc107' : '#ddd' }}>★</span>
               ))}
             </div>
-            <input placeholder="Title" value={reviewForm.title}
+            <input placeholder="Summary title…" value={reviewForm.title}
               onChange={e => setReviewForm(p => ({ ...p, title: e.target.value }))} className="review-input" />
             <textarea placeholder="Write your review (min 10 chars)…" rows={4}
               value={reviewForm.comment} onChange={e => setReviewForm(p => ({ ...p, comment: e.target.value }))}
@@ -197,15 +227,19 @@ export default function ProductDetails() {
             : reviews.reviews.map(r => (
                 <div key={r.id} className="review-item">
                   <div className="review-item-header">
-                    <div>{STARS(r.rating)}</div>
-                    <strong>{r.title}</strong>
+                    <div className="reviewer-avatar">{initials(r.user?.firstName || r.userId)}</div>
+                    <div>
+                      <div className="reviewer-name">{r.user?.firstName ?? `User #${r.userId}`}</div>
+                      <div className="review-stars-row">{STARS(r.rating)}</div>
+                    </div>
+                    {r.title && <span className="review-item-title">"{r.title}"</span>}
                     <span className="review-item-date">{new Date(r.createdAt).toLocaleDateString('fr-FR')}</span>
                   </div>
                   <p>{r.comment}</p>
                   <div className="review-helpful">
                     Helpful?
-                    <button onClick={() => voteHelpful(r.id, true)}>👍 {r.helpfulVotes}</button>
-                    <button onClick={() => voteHelpful(r.id, false)}>👎 {r.notHelpfulVotes}</button>
+                    <button onClick={() => voteHelpful(r.id, true)}>👍 {r.helpfulVotes ?? 0}</button>
+                    <button onClick={() => voteHelpful(r.id, false)}>👎 {r.notHelpfulVotes ?? 0}</button>
                   </div>
                 </div>
               ))}

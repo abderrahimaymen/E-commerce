@@ -19,7 +19,7 @@ export default function CustomerDashboard() {
   const [orders, setOrders] = useState([]);
   const [stats, setStats] = useState({ total: 0, delivered: 0, spent: 0 });
   const [loading, setLoading] = useState(true);
-  const { user } = useStore();
+  const user = useStore((state) => state.user);
 
   useEffect(() => {
     loadData();

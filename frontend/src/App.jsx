@@ -32,7 +32,8 @@ import AdminReviews from './pages/admin/AdminReviews';
  */
 
 function App() {
-  const { user, setUser } = useStore();
+  const user = useStore((state) => state.user);
+  const setUser = useStore((state) => state.setUser);
 
   const handleLogin = (userData, token) => {
     setUser(userData);

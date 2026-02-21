@@ -65,6 +65,7 @@ export default function Register({ onLogin }) {
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
               minLength={6}
+              autoComplete="new-password"
             />
           </div>
 

@@ -25,7 +25,10 @@ export default function ProductList() {
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { user, setCartCount, setWishlistCount, wishlistCount } = useStore();
+  const user = useStore((state) => state.user);
+  const setCartCount = useStore((state) => state.setCartCount);
+  const setWishlistCount = useStore((state) => state.setWishlistCount);
+  const wishlistCount = useStore((state) => state.wishlistCount);
 
   // Filters state
   const [filters, setFilters] = useState({

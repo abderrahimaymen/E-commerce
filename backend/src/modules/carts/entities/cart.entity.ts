@@ -55,7 +55,7 @@ export class Cart {
   updatedAt: Date;
 
   constructor() {
-    this.items = [];
+    // Note: items relation should not be initialized here per TypeORM requirements
   }
 
   // ==========================================

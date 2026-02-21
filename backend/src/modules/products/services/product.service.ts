@@ -50,6 +50,9 @@ export class ProductService {
   }
 
   async findAll(page: number = 1, limit: number = 10, filters: ProductFilters = {}) {
+    const pageNum = Math.max(1, parseInt(String(page), 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(String(limit), 10) || 10));
+
     const qb = this.productRepository
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.stock', 'stock')
@@ -79,19 +82,19 @@ export class ProductService {
         qb.orderBy('product.name', 'ASC');
         break;
       default:
-        qb.orderBy('product.created_at', 'DESC');
+        qb.orderBy('product.createdAt', 'DESC');
     }
 
     const [products, total] = await qb
-      .skip((page - 1) * limit)
-      .take(limit)
+      .skip((pageNum - 1) * limitNum)
+      .take(limitNum)
       .getManyAndCount();
 
     return {
       products: products.map(p => p.toPublicJSON()),
       total,
-      page: Number(page),
-      totalPages: Math.ceil(total / limit),
+      page: pageNum,
+      totalPages: Math.ceil(total / limitNum),
     };
   }
 

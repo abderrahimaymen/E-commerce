@@ -8,7 +8,8 @@ import './Dashboard.css';
 export default function Wishlist() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { setWishlistCount, setCartCount } = useStore();
+  const setWishlistCount = useStore((state) => state.setWishlistCount);
+  const setCartCount = useStore((state) => state.setCartCount);
   const navigate = useNavigate();
 
   useEffect(() => {

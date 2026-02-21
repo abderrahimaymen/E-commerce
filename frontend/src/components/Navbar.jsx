@@ -5,7 +5,12 @@ import apiClient from '../services/api';
 import './Navbar.css';
 
 export default function Navbar() {
-  const { user, cartCount, wishlistCount, setCartCount, setWishlistCount, logout } = useStore();
+  const user = useStore((state) => state.user);
+  const cartCount = useStore((state) => state.cartCount);
+  const wishlistCount = useStore((state) => state.wishlistCount);
+  const setCartCount = useStore((state) => state.setCartCount);
+  const setWishlistCount = useStore((state) => state.setWishlistCount);
+  const logout = useStore((state) => state.logout);
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
