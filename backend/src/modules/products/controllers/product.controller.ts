@@ -13,6 +13,7 @@ import {
   UploadedFile,
   UseInterceptors,
   Res,
+  BadRequestException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery, ApiConsumes } from '@nestjs/swagger';
@@ -88,7 +89,24 @@ export class ProductController {
   @ApiConsumes('multipart/form-data')
   @ApiOperation({ summary: '[Admin] Import en masse via CSV' })
   async importCsv(@UploadedFile() file: { buffer: Buffer; originalname: string; mimetype: string }) {
+    if (!file) {
+      throw new BadRequestException('File is required');
+    }
     return this.productService.importFromCsv(file.buffer.toString());
+  }
+
+  @Post('admin/import-json')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @ApiBearerAuth()
+  @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
+  @ApiOperation({ summary: '[Admin] Import en masse via JSON' })
+  async importJson(@UploadedFile() file: { buffer: Buffer; originalname: string; mimetype: string }) {
+    if (!file) {
+      throw new BadRequestException('File is required');
+    }
+    return this.productService.importFromJson(file.buffer.toString());
   }
 
   @Get(':id')

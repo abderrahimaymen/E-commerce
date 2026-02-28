@@ -165,6 +165,46 @@ export class ProductService {
     return { created, errors };
   }
 
+  async importFromJson(jsonContent: string): Promise<{ created: number; errors: string[] }> {
+    let data: any[];
+    try {     
+      data = JSON.parse(jsonContent);
+    } catch (e) {
+      return { created: 0, errors: ['Invalid JSON format'] };
+    }
+
+    if (!Array.isArray(data)) {
+      return { created: 0, errors: ['JSON root must be an array'] };
+    }
+
+    const errors: string[] = [];
+    let created = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+      try {
+        if (!item.name || !item.price) {
+          errors.push(`Item ${i}: name or price missing`);
+          continue;
+        }
+        const dto: CreateProductDto = {
+          name: item.name,
+          price: Number(item.price),
+          category: item.category || '',
+          description: item.description || '',
+          initialStock: Number(item.initialStock) || 0,
+          image: item.image || ''
+        };
+        // Avoiding duplicated products could be nice but strict requirement is "add import"
+        await this.create(dto);
+        created++;
+      } catch (err) {
+        errors.push(`Item ${i}: ${err.message}`);
+      }
+    }
+    return { created, errors };
+  }
+
   async findOne(id: string): Promise<Product> {
     const product = await this.productRepository.findOne({
       where: { id },

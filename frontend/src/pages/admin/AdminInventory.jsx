@@ -14,6 +14,7 @@ export default function AdminInventory() {
   const [editing, setEditing] = useState(null);
   const [stockEdits, setStockEdits] = useState({});
   const csvRef = useRef();
+  const jsonRef = useRef();
 
   useEffect(() => { fetchProducts(); }, []);
 
@@ -69,13 +70,39 @@ export default function AdminInventory() {
   };
 
   const importCsv = async (e) => {
-    const file = e.target.files[0]; if (!file) return;
-    const fd = new FormData(); fd.append('file', file);
+    const file = e.target.files[0]
+    if (!file) return;
+    const fd = new FormData();
+    fd.append('file', file);
     try {
-      const res = await api.post('/products/admin/import-csv', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
-      toast.success(`Imported: ${res.data.imported} products, ${res.data.errors} errors`);
+      const res = await api.post('/products/admin/import-csv', fd, { 
+        headers: { 'Content-Type': 'multipart/form-data' } 
+      });
+      toast.success(`Imported: ${res.data.created} products, ${res.data.errors.length} errors`);
       fetchProducts();
-    } catch { toast.error('Import failed'); }
+    } catch { 
+      toast.error('Import failed'); 
+    }
+    e.target.value = '';
+  };
+
+  const importJson = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const fd = new FormData();
+    fd.append('file', file);
+
+    try {
+      const res = await api.post('/products/admin/import-json', fd, { 
+        headers: { 'Content-Type': 'multipart/form-data' } 
+      });
+      toast.success(`Imported: ${res.data.created} products, ${res.data.errors.length} errors`);
+      fetchProducts();
+    } catch (error) {
+      console.error(error);
+      toast.error('Import failed');
+    }
     e.target.value = '';
   };
 
@@ -92,7 +119,9 @@ export default function AdminInventory() {
             <button className="btn-admin" onClick={() => { setEditing(null); setForm(EMPTY_FORM); setShowForm(true); }}>+ Add Product</button>
             <button className="btn-admin btn-outline" onClick={exportCsv}>⬇ Export CSV</button>
             <button className="btn-admin btn-outline" onClick={() => csvRef.current.click()}>⬆ Import CSV</button>
+            <button className="btn-admin btn-outline" onClick={() => jsonRef.current.click()}>⬆ Import JSON</button>
             <input type="file" accept=".csv" ref={csvRef} style={{ display: 'none' }} onChange={importCsv} />
+            <input type="file" accept=".json" ref={jsonRef} style={{ display: 'none' }} onChange={importJson} />
           </div>
         </div>
 

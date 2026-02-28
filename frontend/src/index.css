@@ -1,3 +1,47 @@
+:root {
+  /* Modern Deals Theme Variables */
+  --bg-color: #f7f8f9;
+  --bg-secondary: #ffffff;
+  --text-color: #1a1a2e;
+  --text-muted: #6c757d;
+  --text-light: #ffffff;
+  
+  --primary-color: #e94560; /* Red/Pinkish - Action */
+  --primary-hover: #c0392b;
+  --secondary-color: #1a1a2e; /* Dark Blue - Headers/Footer */
+  --accent-color: #fca311; /* Orange - Stars/Deals */
+  
+  --danger-color: #ff3b30;
+  --success-color: #34c759;
+  --warning-color: #ffcc00;
+
+  --card-bg: #ffffff;
+  --card-border: #eaeaea;
+  
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
+  
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,83 +49,215 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f5f5;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--secondary-color);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--spacing-md);
 }
 
+/* Button styles override */
 button {
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 12px 28px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: all 0.3s;
+  font-family: var(--font-heading);
+  border-radius: var(--border-radius-full);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
 }
 
 button:hover {
-  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 button.primary {
-  background-color: #007bff;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.4); /* Colored shadow for primary buttons */
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+button.outline {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+}
+
+button.outline:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-full);
+  background: var(--primary-color);
+  color: white;
+  text-transform: uppercase;
+}
+
+.badge-new { background: var(--success-color); }
+.badge-sale { background: var(--accent-color); color: #000; }
+
+/* Grid Utilities */
+.grid-container {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
   color: white;
 }
 
+button.primary:hover {
+  background-color: var(--primary-hover);
+}
+
 button.danger {
-  background-color: #dc3545;
+  background-color: var(--danger-color);
   color: white;
 }
 
 button.success {
-  background-color: #28a745;
+  background-color: var(--success-color);
   color: white;
 }
 
 input, select, textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
   width: 100%;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
 }
 
 .card {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-md);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .error {
-  color: #dc3545;
-  padding: 10px;
-  background-color: #f8d7da;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  color: var(--danger-color);
+  padding: var(--spacing-sm);
+  background-color: rgba(255, 59, 48, 0.1);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid rgba(255, 59, 48, 0.2);
 }
 
 .success {
-  color: #28a745;
-  padding: 10px;
-  background-color: #d4edda;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  color: var(--success-color);
+  padding: var(--spacing-sm);
+  background-color: rgba(52, 199, 89, 0.1);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid rgba(52, 199, 89, 0.2);
 }
 
 .loading {
   text-align: center;
-  padding: 40px;
-  font-size: 18px;
-  color: #666;
+  padding: var(--spacing-lg);
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--card-border);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

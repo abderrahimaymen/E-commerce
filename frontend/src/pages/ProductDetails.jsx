@@ -16,7 +16,10 @@ export default function ProductDetails() {
 
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [qty, setQty] = useState(1);
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
   const [inWishlist, setInWishlist] = useState(false);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [reviewForm, setReviewForm] = useState({ rating: 5, title: '', comment: '' });
@@ -29,7 +32,16 @@ export default function ProductDetails() {
   }, [id]);
 
   const fetchProduct = async () => {
-    try { const res = await api.get(`/products/${id}`); setProduct(res.data); }
+    try { 
+      const res = await api.get(`/products/${id}`); 
+      setProduct(res.data); 
+      // Fetch related products based on category
+      if (res.data.category) {
+        const relatedRes = await api.get(`/products?category=${res.data.category}&limit=4`);
+        const related = Array.isArray(relatedRes.data) ? relatedRes.data : (relatedRes.data.products || []);
+        setRelatedProducts(related.filter(p => p.id !== parseInt(id)).slice(0, 4));
+      }
+    }
     catch { toast.error('Product not found'); }
   };
 
@@ -148,6 +160,39 @@ export default function ProductDetails() {
                 : <span className="out-stock">✗ Out of Stock</span>}
           </div>
           <p className="pd-desc">{product.description}</p>
+          
+          {/* Variants */}
+          <div className="pd-variants">
+            <div className="variant-group">
+              <label>Taille:</label>
+              <div className="variant-options">
+                {['S', 'M', 'L', 'XL'].map(size => (
+                  <button 
+                    key={size} 
+                    className={`variant-btn ${selectedSize === size ? 'active' : ''}`}
+                    onClick={() => setSelectedSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="variant-group">
+              <label>Couleur:</label>
+              <div className="variant-options">
+                {['Noir', 'Blanc', 'Bleu', 'Rouge'].map(color => (
+                  <button 
+                    key={color} 
+                    className={`variant-btn color-btn ${selectedColor === color ? 'active' : ''}`}
+                    onClick={() => setSelectedColor(color)}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <hr className="pd-divider" />
           <div className="pd-actions">
             <div className="qty-row">
@@ -155,7 +200,7 @@ export default function ProductDetails() {
               <span>{qty}</span>
               <button onClick={() => setQty(q => Math.min(product.stock, q + 1))}>+</button>
             </div>
-            <button className="btn-add-cart" onClick={addToCart} disabled={product.stock === 0}>
+            <button className="btn-add-cart" onClick={addToCart} disabled={product.stock === 0 || !selectedSize || !selectedColor}>
               🛒 Add to Cart
             </button>
             <button className={`btn-wishlist ${inWishlist ? 'active' : ''}`} onClick={toggleWishlist} title={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}>
@@ -164,6 +209,26 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+
+      {/* Related Products */}
+      {relatedProducts.length > 0 && (
+        <div className="related-products-section">
+          <h2>Produits Similaires</h2>
+          <div className="related-products-grid">
+            {relatedProducts.map(rp => (
+              <Link to={`/products/${rp.id}`} key={rp.id} className="related-product-card">
+                <div className="rp-image">
+                  {rp.image ? <img src={rp.image} alt={rp.name} /> : <div className="rp-placeholder">🛍️</div>}
+                </div>
+                <div className="rp-info">
+                  <h4>{rp.name}</h4>
+                  <p>{Number(rp.price).toFixed(2)} €</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Reviews */}
       <div className="reviews-section" id="reviews">

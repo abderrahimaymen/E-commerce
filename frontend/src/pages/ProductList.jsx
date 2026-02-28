@@ -39,6 +39,8 @@ export default function ProductList() {
     sortBy: searchParams.get('sortBy') || 'newest',
   });
 
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+
   useEffect(() => {
     apiClient.get('/products/categories').then(r => setCategories(r.data || [])).catch(() => {});
   }, []);
@@ -155,11 +157,21 @@ export default function ProductList() {
           <h2>
             {filters.search ? `Résultats pour "${filters.search}"` : 'Tous les produits'}
           </h2>
-          <span className="result-count">{total} produit(s)</span>
+          <div className="header-actions">
+            <span className="result-count">{total} produit(s)</span>
+            <div className="view-toggle">
+              <button className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`} onClick={() => setViewMode('grid')} title="Vue Grille">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </button>
+              <button className={`view-btn ${viewMode === 'list' ? 'active' : ''}`} onClick={() => setViewMode('list')} title="Vue Liste">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         {loading ? (
-          <div className="products-grid">
+          <div className={`products-${viewMode}`}>
             {[...Array(8)].map((_, i) => <div key={i} className="product-skeleton" />)}
           </div>
         ) : products.length === 0 ? (
@@ -168,9 +180,9 @@ export default function ProductList() {
             <p>Vérifiez que le backend est démarré ou modifiez vos filtres.</p>
           </div>
         ) : (
-          <div className="products-grid">
+          <div className={`products-${viewMode}`}>
             {products.map((product) => (
-              <div key={product.id} className="product-card">
+              <div key={product.id} className={`product-card ${viewMode}-card`}>
                 <Link to={`/products/${product.id}`} className="product-img-link">
                   <div className="product-image">
                     {product.image ? (
