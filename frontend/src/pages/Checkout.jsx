@@ -37,7 +37,7 @@ export default function Checkout() {
 
   const fetchCart = async () => {
     try {
-      const res = await api.get('/carts');
+      const res = await api.get('/cart');
       if (!res.data || !res.data.items || res.data.items.length === 0) {
         toast.error('Votre panier est vide');
         navigate('/cart');
@@ -84,7 +84,7 @@ export default function Checkout() {
       });
       
       // 3. Clear cart
-      await api.delete('/carts/clear');
+      await api.post('/cart/clear');
       setCartCount(0);
       
       toast.success('Commande validée avec succès !');

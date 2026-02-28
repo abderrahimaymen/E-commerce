@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import useStore from '../store/useStore';
@@ -8,10 +8,8 @@ import './Cart.css';
 export default function Cart() {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [promoCode, setPromoCode] = useState('');
-  const [discount, setDiscount] = useState(0);
-  const user = useStore((state) => state.user);
-  const setCartCount = useStore((state) => state.setCartCount);
+  const user = useStore(state => state.user);
+  const setCartCount = useStore(state => state.setCartCount);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,157 +22,148 @@ export default function Cart() {
 
   const fetchCart = async () => {
     try {
-      const res = await api.get('/carts');
+      const res = await api.get('/cart');
       setCart(res.data);
-      updateCartCount(res.data);
+      const items = res.data?.items || [];
+      const count = items.reduce((acc, item) => acc + (item.quantity || 0), 0);
+      setCartCount(count);
     } catch (error) {
       console.error('Error fetching cart:', error);
-      setCart({ items: [], totalAmount: 0 });
+      setCart({ items: [], subtotal: 0 });
     } finally {
       setLoading(false);
     }
   };
 
-  const updateCartCount = (cartData) => {
-    const count = cartData?.items?.reduce((acc, item) => acc + item.quantity, 0) || 0;
-    setCartCount(count);
-  };
-
   const updateQuantity = async (productId, quantity) => {
     if (quantity < 1) return;
     try {
-      await api.put('/carts/update', { productId, quantity });
+      await api.put(`/cart/items/${productId}`, { quantity });
       fetchCart();
+      toast.success('Cart updated');
     } catch (error) {
-      toast.error('Erreur lors de la mise à jour de la quantité');
+      toast.error('Failed to update quantity');
     }
   };
 
   const removeItem = async (productId) => {
     try {
-      await api.delete(`/carts/remove/${productId}`);
-      toast.success('Produit retiré du panier');
+      await api.delete(`/cart/items/${productId}`);
       fetchCart();
+      toast.success('Item removed');
     } catch (error) {
-      toast.error('Erreur lors de la suppression du produit');
+      toast.error('Failed to remove item');
     }
   };
 
-  const applyPromoCode = () => {
-    if (promoCode.toUpperCase() === 'WELCOME10') {
-      setDiscount(10);
-      toast.success('Code promo appliqué !');
-    } else {
-      toast.error('Code promo invalide');
-      setDiscount(0);
-    }
-  };
+  if (loading) return <div className='loading-spinner'>Loading cart...</div>;
 
-  if (loading) return <div className="cart-loading">Chargement du panier...</div>;
+  const cartItems = cart?.items || [];
+  const totalAmount = cart?.subtotal || cart?.totalAmount || 0;
 
-  const items = cart?.items || [];
-  const subtotal = Number(cart?.totalAmount || 0);
-  const discountAmount = (subtotal * discount) / 100;
-  const total = subtotal - discountAmount;
-
-  if (items.length === 0) {
+  if (cartItems.length === 0) {
     return (
-      <div className="cart-empty">
-        <div className="empty-icon">🛒</div>
-        <h2>Votre panier est vide</h2>
-        <p>Découvrez nos produits et trouvez votre bonheur !</p>
-        <Link to="/products" className="btn-continue-shopping">Continuer vos achats</Link>
+      <div className='empty-cart-page container'>
+        <div className='empty-cart-content'>
+          <span className='empty-icon'>🛒</span>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added anything to your cart yet.</p>
+          <Link to='/products' className='btn btn-primary'>Start Shopping</Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="cart-page">
-      <h1 className="cart-title">Votre Panier</h1>
+    <div className='cart-page container'>
+      <h1 className='page-title'>Shopping Cart ({cartItems.length} items)</h1>
       
-      <div className="cart-container">
-        <div className="cart-items-section">
-          <div className="cart-items-list">
-            {items.map((item) => (
-              <div key={item.id} className="cart-item">
-                <div className="item-image">
-                  {item.product?.image ? (
-                    <img src={item.product.image} alt={item.product.name} />
-                  ) : (
-                    <div className="item-placeholder">🛍️</div>
-                  )}
+      <div className='cart-layout'>
+        <div className='cart-items-section'>
+          <div className='cart-header'>
+            <span>Product</span>
+            <span>Quantity</span>
+            <span>Total</span>
+            <span>Action</span>
+          </div>
+          
+          <div className='cart-list'>
+            {cartItems.map((item) => (
+              <div key={item.id || item.productId} className='cart-item'>
+                <div className='item-product'>
+                    <Link to={`/products/${item.productId}`}>
+                        <img 
+                            src={item.productImage || 'https://placehold.co/100x100?text=Product'} 
+                            alt={item.productName} 
+                            className='item-thumb'
+                        />
+                    </Link>
+                    <div className='item-details'>
+                        <Link to={`/products/${item.productId}`} className='item-name'>
+                            {item.productName}
+                        </Link>
+                        <span className='item-price'>${Number(item.unitPrice || 0).toFixed(2)}</span>
+                        {(item.stockQuantity || 0) > 0 && (item.stockQuantity || 0) < 5 && <span className='stock-warning'>Only {item.stockQuantity} left!</span>}
+                    </div>
                 </div>
                 
-                <div className="item-details">
-                  <Link to={`/products/${item.product?.id}`} className="item-name">
-                    {item.product?.name}
-                  </Link>
-                  <p className="item-price">{Number(item.price).toFixed(2)} €</p>
+                <div className='item-quantity'>
+                   <button 
+                     onClick={() => updateQuantity(item.productId, item.quantity - 1)}
+                     disabled={item.quantity <= 1}
+                   >-</button>
+                   <span>{item.quantity}</span>
+                   <button 
+                     onClick={() => updateQuantity(item.productId, item.quantity + 1)}
+                     disabled={item.quantity >= (item.stockQuantity || 99)}
+                   >+</button>
                 </div>
                 
-                <div className="item-quantity">
-                  <button onClick={() => updateQuantity(item.product?.id, item.quantity - 1)}>−</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item.product?.id, item.quantity + 1)}>+</button>
+                <div className='item-total'>
+                    ${Number(item.lineTotal || 0).toFixed(2)}
                 </div>
                 
-                <div className="item-total">
-                  {(Number(item.price) * item.quantity).toFixed(2)} €
+                <div className='item-action'>
+                    <button onClick={() => removeItem(item.productId)} className='btn-remove' title='Remove'>
+                        ×
+                    </button>
                 </div>
-                
-                <button className="btn-remove" onClick={() => removeItem(item.product?.id)} title="Retirer">
-                  ×
-                </button>
               </div>
             ))}
           </div>
         </div>
-        
-        <div className="cart-summary-section">
-          <div className="cart-summary-card">
-            <h3>Résumé de la commande</h3>
-            
-            <div className="summary-row">
-              <span>Sous-total</span>
-              <span>{subtotal.toFixed(2)} €</span>
+
+        <div className='cart-summary-section'>
+          <div className='summary-card'>
+            <h3>Order Summary</h3>
+            <div className='summary-row'>
+               <span>Subtotal</span>
+               <span>${totalAmount.toFixed(2)}</span>
+            </div>
+            <div className='summary-row'>
+               <span>Shipping</span>
+               <span>Free</span>
+            </div>
+            <div className='divider'></div>
+            <div className='summary-total'>
+               <span>Total</span>
+               <span>${totalAmount.toFixed(2)}</span>
             </div>
             
-            <div className="summary-row">
-              <span>Frais de livraison</span>
-              <span>Gratuit</span>
-            </div>
+            <button 
+               className='btn btn-primary btn-block btn-checkout'
+               onClick={() => navigate('/checkout')}
+            >
+               Proceed to Checkout
+            </button>
             
-            {discount > 0 && (
-              <div className="summary-row discount">
-                <span>Réduction ({discount}%)</span>
-                <span>-{discountAmount.toFixed(2)} €</span>
-              </div>
-            )}
-            
-            <div className="summary-divider"></div>
-            
-            <div className="summary-row total">
-              <span>Total</span>
-              <span>{total.toFixed(2)} €</span>
-            </div>
-            
-            <div className="promo-section">
-              <input 
-                type="text" 
-                placeholder="Code promo" 
-                value={promoCode}
-                onChange={(e) => setPromoCode(e.target.value)}
-              />
-              <button onClick={applyPromoCode}>Appliquer</button>
-            </div>
-            
-            <Link to="/checkout" className="btn-checkout">
-              Passer à la caisse
+            <Link to='/products' className='continue-shopping'>
+               Continue Shopping
             </Link>
-            
-            <div className="secure-checkout">
-              🔒 Paiement 100% sécurisé
-            </div>
+          </div>
+          
+          <div className='secure-msg'>
+             🔒 Secure Checkout
           </div>
         </div>
       </div>

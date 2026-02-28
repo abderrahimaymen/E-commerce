@@ -1,234 +1,214 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import apiClient from '../services/api';
-import useStore from '../store/useStore';
-import toast from 'react-hot-toast';
+import SidebarFilter from '../components/SidebarFilter';
+import ProductCard from '../components/ProductCard';
 import './ProductList.css';
-
-function StarRating({ rating }) {
-  return (
-    <div className="star-rating">
-      {[1,2,3,4,5].map(s => (
-        <span key={s} className={s <= Math.round(rating) ? 'star filled' : 'star'}>★</span>
-      ))}
-    </div>
-  );
-}
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [categories, setCategories] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const user = useStore((state) => state.user);
-  const setCartCount = useStore((state) => state.setCartCount);
-  const setWishlistCount = useStore((state) => state.setWishlistCount);
-  const wishlistCount = useStore((state) => state.wishlistCount);
-
-  // Filters state
+  const [searchParams, setSearchParams] = useSearchParams();
+  
   const [filters, setFilters] = useState({
     search: searchParams.get('search') || '',
     category: searchParams.get('category') || '',
-    minPrice: '',
-    maxPrice: '',
+    minPrice: searchParams.get('minPrice') || '',
+    maxPrice: searchParams.get('maxPrice') || '',
+    rating: searchParams.get('rating') || '',
     sortBy: searchParams.get('sortBy') || 'newest',
   });
 
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  useEffect(() => {
+    const params = {};
+    if (filters.search) params.search = filters.search;
+    if (filters.category) params.category = filters.category;
+    if (filters.minPrice) params.minPrice = filters.minPrice;
+    if (filters.maxPrice) params.maxPrice = filters.maxPrice;
+    if (filters.rating) params.rating = filters.rating;
+    if (filters.sortBy) params.sortBy = filters.sortBy;
+    if (page > 1) params.page = page;
+    setSearchParams(params);
+  }, [filters, page, setSearchParams]);
 
   useEffect(() => {
-    apiClient.get('/products/categories').then(r => setCategories(r.data || [])).catch(() => {});
+    apiClient.get('/products/categories')
+      .then(res => setCategories(res.data))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
-    setPage(1);
-    setFilters(f => ({
-      ...f,
-      search: searchParams.get('search') || '',
-      category: searchParams.get('category') || '',
-      sortBy: searchParams.get('sortBy') || f.sortBy,
-    }));
-  }, [searchParams.toString()]);
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({ page, limit: 12, sortBy: filters.sortBy });
+        if (filters.search) params.append('search', filters.search);
+        if (filters.category) params.append('category', filters.category);
+        if (filters.minPrice) params.append('minPrice', filters.minPrice);
+        if (filters.maxPrice) params.append('maxPrice', filters.maxPrice);
+        if (filters.rating) params.append('rating', filters.rating);
 
-  useEffect(() => {
+        const res = await apiClient.get(`/products?${params}`);
+        setProducts(res.data.products || res.data || []);
+        setTotalPages(res.data.totalPages || 1);
+        setTotalCount(res.data.total || products.length || 0);
+      } catch {
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchProducts();
-  }, [page, filters]);
+  }, [filters, page]);
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    try {
-      const params = new URLSearchParams({ page, limit: 12 });
-      if (filters.search) params.append('search', filters.search);
-      if (filters.category) params.append('category', filters.category);
-      if (filters.minPrice) params.append('minPrice', filters.minPrice);
-      if (filters.maxPrice) params.append('maxPrice', filters.maxPrice);
-      if (filters.sortBy) params.append('sortBy', filters.sortBy);
-
-      const res = await apiClient.get(`/products?${params}`);
-      const data = res.data;
-      setProducts(Array.isArray(data) ? data : (data.products || []));
-      setTotalPages(data.totalPages || 1);
-      setTotal(data.total || 0);
-    } catch {
-      setProducts([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const addToCart = async (productId, e) => {
-    e.preventDefault();
-    if (!user) { navigate('/login'); return; }
-    try {
-      await apiClient.post('/cart/add', { productId, quantity: 1 });
-      const countRes = await apiClient.get('/cart/count');
-      setCartCount(countRes.data.count || 0);
-      toast.success('Ajouté au panier !');
-    } catch { toast.error('Erreur lors de l\'ajout'); }
-  };
-
-  const addToWishlist = async (productId, e) => {
-    e.preventDefault();
-    if (!user) { navigate('/login'); return; }
-    try {
-      await apiClient.post(`/wishlist/${productId}`);
-      setWishlistCount(wishlistCount + 1);
-      toast.success('Ajouté à la wishlist !');
-    } catch { toast.error('Déjà dans la wishlist'); }
-  };
-
-  const applyFilter = (key, value) => {
-    setFilters(f => ({ ...f, [key]: value }));
+  const handleClearFilters = () => {
+    setFilters({ search: '', category: '', minPrice: '', maxPrice: '', rating: '', sortBy: 'newest' });
     setPage(1);
   };
+
+  const activeFilterCount = [filters.category, filters.minPrice, filters.maxPrice, filters.rating].filter(Boolean).length;
 
   return (
-    <div className="product-list-page">
-      {/* Sidebar Filters */}
-      <aside className="filters-sidebar">
-        <h3>🔍 Filtres</h3>
-
-        <div className="filter-group">
-          <label>Catégorie</label>
-          <select value={filters.category} onChange={e => applyFilter('category', e.target.value)}>
-            <option value="">Toutes</option>
-            {categories.map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label>Prix min (€)</label>
-          <input type="number" min="0" value={filters.minPrice}
-            onChange={e => applyFilter('minPrice', e.target.value)} placeholder="0" />
-        </div>
-
-        <div className="filter-group">
-          <label>Prix max (€)</label>
-          <input type="number" min="0" value={filters.maxPrice}
-            onChange={e => applyFilter('maxPrice', e.target.value)} placeholder="9999" />
-        </div>
-
-        <div className="filter-group">
-          <label>Trier par</label>
-          <select value={filters.sortBy} onChange={e => applyFilter('sortBy', e.target.value)}>
-            <option value="newest">Plus récents</option>
-            <option value="price_asc">Prix ↑</option>
-            <option value="price_desc">Prix ↓</option>
-            <option value="name">Nom A-Z</option>
-          </select>
-        </div>
-
-        <button className="btn-reset" onClick={() => {
-          setFilters({ search: '', category: '', minPrice: '', maxPrice: '', sortBy: 'newest' });
-          setPage(1);
-        }}>
-          Réinitialiser
-        </button>
-      </aside>
-
-      {/* Main content */}
-      <main className="products-main">
-        <div className="products-header">
-          <h2>
-            {filters.search ? `Résultats pour "${filters.search}"` : 'Tous les produits'}
-          </h2>
-          <div className="header-actions">
-            <span className="result-count">{total} produit(s)</span>
-            <div className="view-toggle">
-              <button className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`} onClick={() => setViewMode('grid')} title="Vue Grille">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+    <div className="pl">
+      {/* Header */}
+      <div className="pl__header">
+        <div className="container">
+          <div className="pl__header-inner">
+            <div>
+              <h1 className="pl__title">
+                {filters.search ? `Results for "${filters.search}"` : 'All Products'}
+              </h1>
+              <p className="pl__subtitle">
+                {loading ? 'Loading...' : `${totalCount || products.length} products found`}
+              </p>
+            </div>
+            <div className="pl__controls">
+              <button 
+                className={`pl__filter-toggle ${activeFilterCount > 0 ? 'pl__filter-toggle--active' : ''}`}
+                onClick={() => setFiltersOpen(!filtersOpen)}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                Filters
+                {activeFilterCount > 0 && <span className="pl__filter-count">{activeFilterCount}</span>}
               </button>
-              <button className={`view-btn ${viewMode === 'list' ? 'active' : ''}`} onClick={() => setViewMode('list')} title="Vue Liste">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-              </button>
+              <div className="pl__sort">
+                <select 
+                  value={filters.sortBy} 
+                  onChange={(e) => { setFilters({...filters, sortBy: e.target.value}); setPage(1); }}
+                >
+                  <option value="newest">Newest</option>
+                  <option value="price_asc">Price: Low → High</option>
+                  <option value="price_desc">Price: High → Low</option>
+                  <option value="rating">Top Rated</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {loading ? (
-          <div className={`products-${viewMode}`}>
-            {[...Array(8)].map((_, i) => <div key={i} className="product-skeleton" />)}
-          </div>
-        ) : products.length === 0 ? (
-          <div className="empty-state">
-            <p>😔 Aucun produit trouvé.</p>
-            <p>Vérifiez que le backend est démarré ou modifiez vos filtres.</p>
-          </div>
-        ) : (
-          <div className={`products-${viewMode}`}>
-            {products.map((product) => (
-              <div key={product.id} className={`product-card ${viewMode}-card`}>
-                <Link to={`/products/${product.id}`} className="product-img-link">
-                  <div className="product-image">
-                    {product.image ? (
-                      <img src={product.image} alt={product.name} />
-                    ) : (
-                      <div className="no-image">📦</div>
-                    )}
-                    {product.lowStock && <span className="badge-warning">Stock bas</span>}
-                    {!product.inStock && <span className="badge-danger">Rupture</span>}
+      {/* Body */}
+      <div className="container">
+        <div className="pl__layout">
+          {/* Sidebar */}
+          <aside className={`pl__sidebar ${filtersOpen ? 'pl__sidebar--open' : ''}`}>
+            <SidebarFilter 
+              filters={filters} 
+              setFilters={(f) => { setFilters(f); setPage(1); }} 
+              categories={categories}
+              onClear={handleClearFilters}
+            />
+          </aside>
+
+          {/* Mobile overlay */}
+          {filtersOpen && <div className="pl__overlay" onClick={() => setFiltersOpen(false)} />}
+
+          {/* Grid */}
+          <main className="pl__main">
+            {loading ? (
+              <div className="pl__skeleton-grid">
+                {[...Array(8)].map((_, i) => (
+                  <div key={i} className="pl__skeleton-card">
+                    <div className="skeleton" style={{ paddingTop: '100%' }} />
+                    <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <div className="skeleton" style={{ height: 12, width: '40%' }} />
+                      <div className="skeleton" style={{ height: 16, width: '80%' }} />
+                      <div className="skeleton" style={{ height: 12, width: '60%' }} />
+                      <div className="skeleton" style={{ height: 20, width: '30%', marginTop: 8 }} />
+                    </div>
                   </div>
-                </Link>
-
-                <div className="product-info">
-                  <Link to={`/products/${product.id}`} className="product-name">
-                    {product.name}
-                  </Link>
-                  {product.category && <span className="product-category">{product.category}</span>}
-                  <StarRating rating={product.avgRating || 0} />
-                  <p className="product-price">{Number(product.price).toFixed(2)}€</p>
-
-                  <div className="card-actions">
-                    <button className="btn-wishlist" onClick={e => addToWishlist(product.id, e)} title="Wishlist">
-                      ❤️
-                    </button>
-                    <button
-                      className="btn-add-cart"
-                      onClick={e => addToCart(product.id, e)}
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? '🛒 Ajouter' : 'Rupture'}
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            ) : products.length > 0 ? (
+              <>
+                <div className="pl__grid">
+                  {products.map((product, i) => (
+                    <div key={product.id} className="pl__grid-item fade-in" style={{ animationDelay: `${i * 50}ms` }}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))}
+                </div>
 
-        {totalPages > 1 && (
-          <div className="pagination">
-            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>← Précédent</button>
-            <span>Page {page} / {totalPages}</span>
-            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>Suivant →</button>
-          </div>
-        )}
-      </main>
+                {totalPages > 1 && (
+                  <div className="pl__pagination">
+                    <button 
+                      disabled={page === 1} 
+                      onClick={() => setPage(p => Math.max(1, p - 1))}
+                      className="pl__page-btn"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>
+                      Previous
+                    </button>
+
+                    <div className="pl__page-numbers">
+                      {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                        let pageNum;
+                        if (totalPages <= 5) pageNum = i + 1;
+                        else if (page <= 3) pageNum = i + 1;
+                        else if (page >= totalPages - 2) pageNum = totalPages - 4 + i;
+                        else pageNum = page - 2 + i;
+                        return (
+                          <button
+                            key={pageNum}
+                            className={`pl__page-num ${page === pageNum ? 'pl__page-num--active' : ''}`}
+                            onClick={() => setPage(pageNum)}
+                          >
+                            {pageNum}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    <button 
+                      disabled={page === totalPages} 
+                      onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                      className="pl__page-btn"
+                    >
+                      Next
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="pl__empty">
+                <div className="pl__empty-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters or search term</p>
+                <button className="btn-primary" onClick={handleClearFilters}>Clear All Filters</button>
+              </div>
+            )}
+          </main>
+        </div>
+      </div>
     </div>
   );
 }

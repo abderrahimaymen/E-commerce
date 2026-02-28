@@ -38,7 +38,7 @@ export class AuthController {
     const hashedPassword = await bcrypt.hash('admin123', 10);
     const admin = this.adminRepo.create({
       name: 'Super Admin',
-      email: 'admin@ecommerce.com',
+      email: 'admin1@ecommerce.com',
       passwordHash: hashedPassword,
       department: 'Direction',
       accessLevel: 10,

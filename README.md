@@ -580,3 +580,7 @@ Ce projet démontre de manière complète et fonctionnelle les **5 concepts POO*
 Tous les concepts sont **commentés dans le code** et **testés** avec Jest.
 
 **Bon apprentissage! 🚀**
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]      tabs  /    /     Search Box  [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤

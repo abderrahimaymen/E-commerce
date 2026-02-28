@@ -1,0 +1,32 @@
+/* ══════════════════════════════════════
+   FEATURED PRODUCTS
+══════════════════════════════════════ */
+.featured-section {
+  padding: 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-8, 2rem);
+}
+
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary, #6366f1);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .95rem;
+  transition: gap .2s;
+}
+
+.view-all-btn:hover { gap: 10px; }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-5, 1.25rem);
+}

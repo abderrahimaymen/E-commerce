@@ -56,8 +56,8 @@ export class Review {
   notHelpfulVotes: number;
 
   // Stores user IDs who voted helpful (simple JSON array)
-  @Column({ type: 'simple-json', name: 'helpful_voters', default: '[]' })
-  helpfulVoters: string[];
+  @Column({ type: 'simple-json', name: 'helpful_voters', nullable: true })
+  helpfulVoters: string[] = [];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

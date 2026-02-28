@@ -1,314 +1,123 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import api from '../services/api';
-import useStore from '../store/useStore';
+import apiClient from '../services/api';
+import ProductGallery from '../components/ProductGallery';
+import ProductInfo from '../components/ProductInfo';
+import ProductReviews from '../components/ProductReviews';
+import FeaturedProducts from '../components/FeaturedProducts';
 import './ProductDetails.css';
-
-const STARS = (n, total = 5) => Array.from({ length: total }, (_, i) => (
-  <span key={i} style={{ color: i < n ? '#ffc107' : '#ddd', fontSize: '1.1rem' }}>★</span>
-));
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const user = useStore((state) => state.user);
-  const setWishlistCount = useStore((state) => state.setWishlistCount);
-
   const [product, setProduct] = useState(null);
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [qty, setQty] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
-  const [inWishlist, setInWishlist] = useState(false);
-  const [showReviewForm, setShowReviewForm] = useState(false);
-  const [reviewForm, setReviewForm] = useState({ rating: 5, title: '', comment: '' });
-  const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('description');
 
   useEffect(() => {
-    fetchProduct();
-    fetchReviews();
-    if (user) checkWishlist();
+    window.scrollTo(0, 0);
+    fetchData();
   }, [id]);
 
-  const fetchProduct = async () => {
-    try { 
-      const res = await api.get(`/products/${id}`); 
-      setProduct(res.data); 
-      // Fetch related products based on category
-      if (res.data.category) {
-        const relatedRes = await api.get(`/products?category=${res.data.category}&limit=4`);
-        const related = Array.isArray(relatedRes.data) ? relatedRes.data : (relatedRes.data.products || []);
-        setRelatedProducts(related.filter(p => p.id !== parseInt(id)).slice(0, 4));
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      // Parallel fetch
+      const [productRes, reviewsRes] = await Promise.all([
+        apiClient.get(`/products/${id}`),
+        apiClient.get(`/reviews/product/${id}`).catch(() => ({ data: [] }))
+      ]);
+
+      const productData = productRes.data;
+      setProduct(productData);
+      setReviews(Array.isArray(reviewsRes.data) ? reviewsRes.data : []);
+
+      // Fetch related products
+      if (productData.category) {
+        try {
+          const relatedRes = await apiClient.get(`/products?category=${productData.category}&limit=4`);
+          const related = relatedRes.data.products || [];
+          setRelatedProducts(related.filter(p => p.id !== productData.id));
+        } catch (e) {
+          console.error('Related fetch error', e);
+        }
       }
+    } catch (err) {
+      console.error('Error fetching product details', err);
+    } finally {
+      setLoading(false);
     }
-    catch { toast.error('Product not found'); }
   };
 
-  const fetchReviews = async () => {
-    try { const res = await api.get(`/reviews/product/${id}`); setReviews(res.data); }
-    catch { setReviews({ reviews: [], averageRating: 0, totalReviews: 0, ratingBreakdown: {} }); }
-  };
-
-  const checkWishlist = async () => {
-    try { const res = await api.get(`/wishlist/check/${id}`); setInWishlist(res.data.inWishlist); }
-    catch { /* ignore */ }
-  };
-
-  const addToCart = async () => {
-    if (!user) { toast.error('Please login first'); return; }
-    try {
-      await api.post('/carts/add', { productId: +id, quantity: qty });
-      toast.success('Added to cart!');
-    } catch (e) { toast.error(e.response?.data?.message || 'Error'); }
-  };
-
-  const toggleWishlist = async () => {
-    if (!user) { toast.error('Please login first'); return; }
-    try {
-      if (inWishlist) {
-        await api.delete(`/wishlist/${id}`);
-        setInWishlist(false);
-        toast.success('Removed from wishlist');
-      } else {
-        await api.post(`/wishlist/${id}`);
-        setInWishlist(true);
-        toast.success('Added to wishlist!');
-      }
-      const countRes = await api.get('/wishlist/count');
-      setWishlistCount(countRes.data.count || 0);
-    } catch (e) { toast.error(e.response?.data?.message || 'Error'); }
-  };
-
-  const submitReview = async () => {
-    if (reviewForm.comment.length < 10) { toast.error('Comment must be at least 10 characters'); return; }
-    setSubmitting(true);
-    try {
-      await api.post(`/reviews/product/${id}`, reviewForm);
-      toast.success('Review submitted — pending moderation');
-      setShowReviewForm(false);
-      setReviewForm({ rating: 5, title: '', comment: '' });
-      fetchReviews();
-    } catch (e) { toast.error(e.response?.data?.message || 'Error submitting review'); }
-    finally { setSubmitting(false); }
-  };
-
-  const voteHelpful = async (reviewId, helpful) => {
-    if (!user) { toast.error('Please login first'); return; }
-    try {
-      await api.patch(`/reviews/${reviewId}/vote`, { helpful });
-      fetchReviews();
-    } catch (e) { toast.error(e.response?.data?.message || 'Already voted'); }
-  };
-
-  if (!product) return <div className="pd-loading">Loading…</div>;
-
-  const avgRating = reviews?.averageRating ?? 0;
-  const breakdown = reviews?.ratingBreakdown ?? {};
-  const totalReviews = reviews?.totalReviews ?? 0;
-  const initials = str => (str ?? 'U').toString().trim().charAt(0).toUpperCase();
+  if (loading) return <div className='loading-spinner'>Loading product...</div>;
+  if (!product) return <div className='not-found'>Product not found</div>;
 
   return (
-    <div className="pd-page">
+    <div className='product-details-page container'>
+      <div className='breadcrumb'>
+        <Link to='/'>Home</Link> / <Link to='/products'>Products</Link> / <span>{product.name}</span>
+      </div>
 
-      {/* Breadcrumb */}
-      <nav className="pd-breadcrumb">
-        <Link to="/">Home</Link>
-        <span>›</span>
-        <Link to="/products">Products</Link>
-        {product.category && <><span>›</span><Link to={`/products?category=${product.category}`}>{product.category}</Link></>}
-        <span>›</span>
-        <span style={{ color: '#444' }}>{product.name}</span>
-      </nav>
-
-      {/* Product hero */}
-      <div className="pd-hero">
-
-        {/* Gallery */}
-        <div className="pd-gallery">
-          <div className="pd-main-img">
-            {product.image
-              ? <img src={product.image} alt={product.name} />
-              : <div className="pd-image-placeholder">🛍️</div>}
-          </div>
-          <div className="pd-thumbs">
-            {[product.image, product.image, product.image].map((src, i) =>
-              src
-                ? <div key={i} className={`pd-thumb ${i === 0 ? 'active' : ''}`}><img src={src} alt="" /></div>
-                : <div key={i} className={`pd-thumb ${i === 0 ? 'active' : ''}`} style={{ display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.5rem', background:'#f4f6f8' }}>🛍️</div>
-            )}
-          </div>
+      <div className='product-layout-main'>
+        <div className='gallery-section'>
+          <ProductGallery images={[product.image]} />
         </div>
-
-        {/* Info */}
-        <div className="pd-info">
-          {product.category && <span className="pd-category">{product.category}</span>}
-          <h1 className="pd-name">{product.name}</h1>
-          <div className="pd-rating-row">
-            <div className="pd-stars">{STARS(Math.round(avgRating))}</div>
-            <span className="pd-avg">{avgRating.toFixed(1)}</span>
-            <span className="pd-count">
-              <a href="#reviews">({totalReviews} reviews)</a>
-            </span>
-          </div>
-          <div className="pd-price">{(+product.price).toFixed(2)} €</div>
-          <div className="pd-stock">
-            {product.stock > 10
-              ? <><span className="in-stock">✓ In Stock ({product.stock})</span><span className="pd-ships">· Ships in 2–3 days</span></>
-              : product.stock > 0
-                ? <><span className="low-stock">⚠ Low Stock ({product.stock} left)</span><span className="pd-ships">· Order soon!</span></>
-                : <span className="out-stock">✗ Out of Stock</span>}
-          </div>
-          <p className="pd-desc">{product.description}</p>
-          
-          {/* Variants */}
-          <div className="pd-variants">
-            <div className="variant-group">
-              <label>Taille:</label>
-              <div className="variant-options">
-                {['S', 'M', 'L', 'XL'].map(size => (
-                  <button 
-                    key={size} 
-                    className={`variant-btn ${selectedSize === size ? 'active' : ''}`}
-                    onClick={() => setSelectedSize(size)}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="variant-group">
-              <label>Couleur:</label>
-              <div className="variant-options">
-                {['Noir', 'Blanc', 'Bleu', 'Rouge'].map(color => (
-                  <button 
-                    key={color} 
-                    className={`variant-btn color-btn ${selectedColor === color ? 'active' : ''}`}
-                    onClick={() => setSelectedColor(color)}
-                  >
-                    {color}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <hr className="pd-divider" />
-          <div className="pd-actions">
-            <div className="qty-row">
-              <button onClick={() => setQty(q => Math.max(1, q - 1))}>−</button>
-              <span>{qty}</span>
-              <button onClick={() => setQty(q => Math.min(product.stock, q + 1))}>+</button>
-            </div>
-            <button className="btn-add-cart" onClick={addToCart} disabled={product.stock === 0 || !selectedSize || !selectedColor}>
-              🛒 Add to Cart
-            </button>
-            <button className={`btn-wishlist ${inWishlist ? 'active' : ''}`} onClick={toggleWishlist} title={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}>
-              {inWishlist ? '❤️' : '🤍'}
-            </button>
-          </div>
+        <div className='info-section'>
+          <ProductInfo product={product} />
         </div>
       </div>
 
-      {/* Related Products */}
-      {relatedProducts.length > 0 && (
-        <div className="related-products-section">
-          <h2>Produits Similaires</h2>
-          <div className="related-products-grid">
-            {relatedProducts.map(rp => (
-              <Link to={`/products/${rp.id}`} key={rp.id} className="related-product-card">
-                <div className="rp-image">
-                  {rp.image ? <img src={rp.image} alt={rp.name} /> : <div className="rp-placeholder">🛍️</div>}
-                </div>
-                <div className="rp-info">
-                  <h4>{rp.name}</h4>
-                  <p>{Number(rp.price).toFixed(2)} €</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+      <div className='product-tabs-section'>
+        <div className='tabs-header'>
+          <button 
+            className={`tab-btn ${activeTab === 'description' ? 'active' : ''}`}
+            onClick={() => setActiveTab('description')}
+          >
+            Description
+          </button>
+          <button 
+             className={`tab-btn ${activeTab === 'reviews' ? 'active' : ''}`}
+             onClick={() => setActiveTab('reviews')}
+          >
+            Reviews ({reviews.length})
+          </button>
+          <button 
+             className={`tab-btn ${activeTab === 'shipping' ? 'active' : ''}`}
+             onClick={() => setActiveTab('shipping')}
+          >
+            Shipping & Returns
+          </button>
         </div>
-      )}
 
-      {/* Reviews */}
-      <div className="reviews-section" id="reviews">
-        <h2>Customer Reviews</h2>
-
-        {totalReviews > 0 && (
-          <div className="reviews-summary">
-            <div className="reviews-avg-big">
-              <span className="avg-number">{avgRating.toFixed(1)}</span>
-              <div className="avg-stars">{STARS(Math.round(avgRating))}</div>
-              <span className="avg-total">{totalReviews} reviews</span>
+        <div className='tab-content'>
+          {activeTab === 'description' && (
+            <div className='description-content'>
+              <h3>Product Description</h3>
+              <p>{product.description}</p>
+              {/* Additional dummy content */}
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
-            <div className="rating-breakdown">
-              {[5, 4, 3, 2, 1].map(star => {
-                const count = breakdown[star] ?? 0;
-                const pct = totalReviews ? Math.round((count / totalReviews) * 100) : 0;
-                return (
-                  <div key={star} className="breakdown-row">
-                    <span className="breakdown-label">{star}★</span>
-                    <div className="breakdown-bar"><div className="breakdown-fill" style={{ width: pct + '%' }} /></div>
-                    <span className="breakdown-count">{count}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+          )}
+          
+          {activeTab === 'reviews' && (
+            <ProductReviews productId={product.id} reviews={reviews} onReviewAdded={fetchData} />
+          )}
 
-        <div className="review-cta">
-          <p>* Only verified buyers can leave a review.</p>
-          {user && (
-            <button className="btn-write-review" onClick={() => setShowReviewForm(v => !v)}>
-              ✏️ Write a Review
-            </button>
+          {activeTab === 'shipping' && (
+            <div className='shipping-content'>
+              <h3>Shipping Information</h3>
+              <p>We offer free standard shipping on all orders over . Standard shipping takes 3-5 business days. Express shipping options are available at checkout.</p>
+              <h3>Returns Policy</h3>
+              <p>You can return any item within 30 days of purchase if you are not satisfied. Please ensure the item is in its original condition.</p>
+            </div>
           )}
         </div>
+      </div>
 
-        {showReviewForm && (
-          <div className="review-form-card">
-            <h3>Your Review</h3>
-            <div className="star-picker">
-              {[1, 2, 3, 4, 5].map(s => (
-                <span key={s} onClick={() => setReviewForm(p => ({ ...p, rating: s }))}
-                  style={{ cursor: 'pointer', fontSize: '1.6rem', color: s <= reviewForm.rating ? '#ffc107' : '#ddd' }}>★</span>
-              ))}
-            </div>
-            <input placeholder="Summary title…" value={reviewForm.title}
-              onChange={e => setReviewForm(p => ({ ...p, title: e.target.value }))} className="review-input" />
-            <textarea placeholder="Write your review (min 10 chars)…" rows={4}
-              value={reviewForm.comment} onChange={e => setReviewForm(p => ({ ...p, comment: e.target.value }))}
-              className="review-textarea" />
-            <button className="btn-submit-review" onClick={submitReview} disabled={submitting}>
-              {submitting ? 'Submitting…' : 'Submit Review'}
-            </button>
-          </div>
-        )}
-
-        <div className="reviews-list">
-          {(reviews?.reviews?.length ?? 0) === 0
-            ? <p className="no-reviews">No reviews yet. Be the first!</p>
-            : reviews.reviews.map(r => (
-                <div key={r.id} className="review-item">
-                  <div className="review-item-header">
-                    <div className="reviewer-avatar">{initials(r.user?.firstName || r.userId)}</div>
-                    <div>
-                      <div className="reviewer-name">{r.user?.firstName ?? `User #${r.userId}`}</div>
-                      <div className="review-stars-row">{STARS(r.rating)}</div>
-                    </div>
-                    {r.title && <span className="review-item-title">"{r.title}"</span>}
-                    <span className="review-item-date">{new Date(r.createdAt).toLocaleDateString('fr-FR')}</span>
-                  </div>
-                  <p>{r.comment}</p>
-                  <div className="review-helpful">
-                    Helpful?
-                    <button onClick={() => voteHelpful(r.id, true)}>👍 {r.helpfulVotes ?? 0}</button>
-                    <button onClick={() => voteHelpful(r.id, false)}>👎 {r.notHelpfulVotes ?? 0}</button>
-                  </div>
-                </div>
-              ))}
-        </div>
+      <div className='related-products-section'>
+        <h2 className='section-title'>You May Also Like</h2>
+        <FeaturedProducts title='' products={relatedProducts} limit={4} />
       </div>
     </div>
   );

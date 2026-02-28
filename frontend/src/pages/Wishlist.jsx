@@ -38,11 +38,12 @@ export default function Wishlist() {
 
   const moveToCart = async (productId) => {
     try {
-      await apiClient.post('/cart/add', { productId, quantity: 1 });
+      await apiClient.post('/cart/items', { productId, quantity: 1 });
       await apiClient.delete(`/wishlist/${productId}`);
       setItems(prev => prev.filter(i => i.productId !== productId));
-      const countRes = await apiClient.get('/cart/count');
-      setCartCount(countRes.data.count || 0);
+      const cartRes = await apiClient.get('/cart');
+      const cartItems = cartRes.data?.items || [];
+      setCartCount(cartItems.reduce((sum, i) => sum + (i.quantity || 1), 0));
       setWishlistCount(prev => Math.max(0, prev - 1));
       toast.success('Déplacé dans le panier !');
     } catch { toast.error('Erreur'); }

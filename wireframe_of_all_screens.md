@@ -1,1802 +1,2067 @@
 # 📱 E-Commerce Platform - Complete Wireframes with Descriptions
 
-## 🎨 Table des Matières
-1. [Page d'Accueil (Homepage)](#1-page-daccueil-homepage)
-2. [Page Liste de Produits](#2-page-liste-de-produits)
-3. [Page Détails Produit](#3-page-détails-produit)
-4. [Page Panier](#4-page-panier)
-5. [Page Checkout](#5-page-checkout)
-6. [Page Wishlist](#6-page-wishlist)
-7. [Page Mon Compte](#7-page-mon-compte)
-8. [Page Commandes](#8-page-commandes)
-9. [Dashboard Admin](#9-dashboard-admin)
-10. [Page Gestion Produits (Admin)](#10-page-gestion-produits-admin)
-11. [Page Gestion Commandes (Admin)](#11-page-gestion-commandes-admin)
-12. [Page Analytics (Admin)](#12-page-analytics-admin)
+## 🎯 Table of Contents
+1. [Homepage](#1-homepage)
+2. [Product Listing Page](#2-product-listing-page)
+3. [Product Detail Page](#3-product-detail-page)
+4. [Shopping Cart](#4-shopping-cart)
+5. [Checkout Process](#5-checkout-process)
+6. [User Account/Profile](#6-user-accountprofile)
+7. [Wishlist](#7-wishlist)
+8. [Order History](#8-order-history)
+9. [Admin Dashboard](#9-admin-dashboard)
+10. [Product Management (Admin)](#10-product-management-admin)
+11. [Order Management (Admin)](#11-order-management-admin)
+12. [User Management (Admin)](#12-user-management-admin)
+13. [Mobile Responsive Views](#13-mobile-responsive-views)
 
 ---
 
-## 1. Page d'Accueil (Homepage)
+## 1. Homepage
+
+### Wireframe:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                                    [Search Products...]  🔍   │
-│  │LOGO │   Home  Products  Categories  Deals    [❤️ 3] [🛒 5] [👤]   │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌──────────────────────────────────────────────────────────────────┐ │
-│  │                                                                   │ │
-│  │              🎉 HERO BANNER / CAROUSEL                           │ │
-│  │                                                                   │ │
-│  │         "Summer Sale - Up to 70% Off"                            │ │
-│  │                                                                   │ │
-│  │         [Shop Now]  [View Deals]                                 │ │
-│  │                                                                   │ │
-│  │  ← ● ● ○ →                                                       │ │
-│  └──────────────────────────────────────────────────────────────────┘ │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  CATEGORIES                                                      │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  │  │
-│  │  │ 📱   │  │ 💻   │  │ 👕   │  │ 📚   │  │ 🏠   │  │ ⚽   │  │  │
-│  │  │Phone │  │Laptop│  │Fashion│ │Books │  │ Home │  │Sports│  │  │
-│  │  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘  │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  FEATURED PRODUCTS                              [View All →]    │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │  │
-│  │  │  [IMG]   │  │  [IMG]   │  │  [IMG]   │  │  [IMG]   │       │  │
-│  │  │          │  │          │  │          │  │          │       │  │
-│  │  │ Product 1│  │ Product 2│  │ Product 3│  │ Product 4│       │  │
-│  │  │ $299.99  │  │ $149.99  │  │ $599.99  │  │ $89.99   │       │  │
-│  │  │ ⭐⭐⭐⭐⭐  │  │ ⭐⭐⭐⭐☆  │  │ ⭐⭐⭐⭐⭐  │  │ ⭐⭐⭐☆☆  │       │  │
-│  │  │ (245)    │  │ (89)     │  │ (512)    │  │ (34)     │       │  │
-│  │  │ [❤️][🛒] │  │ [❤️][🛒] │  │ [❤️][🛒] │  │ [❤️][🛒] │       │  │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  DEALS OF THE DAY                          ⏰ Ends in: 23:45:12 │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │  │
-│  │  │  [IMG]   │  │  [IMG]   │  │  [IMG]   │  │  [IMG]   │       │  │
-│  │  │ 🔥70% OFF│  │ 🔥50% OFF│  │ 🔥60% OFF│  │ 🔥40% OFF│       │  │
-│  │  │ Laptop   │  │ Phone    │  │ Watch    │  │ Headset  │       │  │
-│  │  │ $899.99  │  │ $499.99  │  │ $199.99  │  │ $79.99   │       │  │
-│  │  │ Was:$2999│  │ Was:$999 │  │ Was:$499 │  │ Was:$129 │       │  │
-│  │  │ [Add to Cart]│[Add to Cart]│[Add to Cart]│[Add to Cart]    │  │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  WHY SHOP WITH US?                                               │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐           │  │
-│  │  │  🚚         │  │  💳         │  │  🔒         │           │  │
-│  │  │ Free Shipping│ │ Secure      │  │ Money Back  │           │  │
-│  │  │ On orders   │  │ Payment     │  │ Guarantee   │           │  │
-│  │  │ over $50    │  │             │  │ 30 days     │           │  │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘           │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  CUSTOMER REVIEWS                                                │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  "Amazing products and fast delivery!" - John D. ⭐⭐⭐⭐⭐        │  │
-│  │  "Best shopping experience ever." - Sarah M. ⭐⭐⭐⭐⭐            │  │
-│  │  "Great customer service!" - Mike P. ⭐⭐⭐⭐⭐                    │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-├────────────────────────────────────────────────────────────────────────┤
-│  FOOTER                                                                │
-│  About Us | Contact | Privacy Policy | Terms | FAQ                    │
-│  Newsletter: [Enter email...] [Subscribe]                             │
-│  © 2026 E-Commerce. All rights reserved.                              │
-└────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │ ← Header
+├─────────────────────────────────────────────────────────────────────┤
+│  Electronics | Clothing | Home | Sports | More ▼                    │ ← Navigation
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌───────────────────────────────────────────────────────────────┐ │
+│  │                                                                 │ │
+│  │              ← →  HERO BANNER / CAROUSEL                       │ │
+│  │                                                                 │ │
+│  │         [Shop Summer Sale - Up to 50% Off]                     │ │
+│  │                                                                 │ │
+│  │                    [Shop Now Button]                           │ │
+│  │                                                                 │ │
+│  │                    ● ○ ○ ○  (indicators)                       │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🔥 Flash Deals - Limited Time!                    [View All →]     │
+│                                                                       │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐ │
+│  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │ │
+│  │         │  │         │  │         │  │         │  │         │ │
+│  │Product 1│  │Product 2│  │Product 3│  │Product 4│  │Product 5│ │
+│  │$99.99   │  │$149.99  │  │$79.99   │  │$199.99  │  │$59.99   │ │
+│  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐☆ │  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐☆ │ │
+│  │♡ 🛒     │  │♡ 🛒     │  │♡ 🛒     │  │♡ 🛒     │  │♡ 🛒     │ │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘  └─────────┘ │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🎯 Shop by Category                                                 │
+│                                                                       │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐           │
+│  │  📱      │  │  👕      │  │  🏠      │  │  ⚽      │           │
+│  │Electronics│  │ Clothing │  │   Home   │  │  Sports  │           │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────┘           │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  ⭐ Top Rated Products                            [View All →]      │
+│                                                                       │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐               │
+│  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │               │
+│  │         │  │         │  │         │  │         │               │
+│  │Laptop   │  │Headphone│  │Watch    │  │Camera   │               │
+│  │$1,299   │  │$299     │  │$499     │  │$899     │               │
+│  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐⭐ │               │
+│  │(523)    │  │(891)    │  │(654)    │  │(432)    │               │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘               │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  💬 Customer Reviews                                                 │
+│                                                                       │
+│  ┌────────────────────┐  ┌────────────────────┐                    │
+│  │ ⭐⭐⭐⭐⭐          │  │ ⭐⭐⭐⭐⭐          │                    │
+│  │ "Amazing quality!" │  │ "Fast shipping!"   │                    │
+│  │ - John D.          │  │ - Sarah M.         │                    │
+│  └────────────────────┘  └────────────────────┘                    │
+│                                                                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                          FOOTER                                      │
+│                                                                       │
+│  About Us  |  Contact  |  FAQ  |  Shipping  |  Returns              │
+│  📧 Newsletter: [Email Input]  [Subscribe]                          │
+│  © 2026 E-Commerce. All rights reserved.                            │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-### 📝 Description des Éléments
+### Description:
 
-#### **Header (En-tête)**
-- **Logo**: Cliquable, ramène à l'accueil
-- **Navigation**: Home, Products, Categories, Deals
-- **Search Bar**: Recherche en temps réel avec autocomplétion
-- **Icons**: 
-  - ❤️ Wishlist avec badge (3 items)
-  - 🛒 Cart avec badge (5 items)
-  - 👤 User account/login
+**Header Section:**
+- **Logo:** Brand identity, clickable to return home
+- **Search Bar:** Central, prominent search with autocomplete suggestions
+- **Cart Icon:** Shows item count badge, quick access to shopping cart
+- **Wishlist Icon:** Shows saved items count
+- **Login/Profile:** User authentication and account access
 
-#### **Hero Banner**
-- **Carrousel automatique**: Change toutes les 5 secondes
-- **CTA Buttons**: "Shop Now" (orange), "View Deals" (outline)
-- **Indicateurs**: Points pour navigation manuelle
-- **Responsive**: Image adaptée mobile/desktop
+**Navigation Bar:**
+- **Category Menu:** Horizontal list of main product categories
+- **Dropdown Menus:** Hover/click to reveal subcategories
+- **Sticky Behavior:** Fixed to top when scrolling
 
-#### **Categories Section**
-- **6 icônes** principales de catégories
-- **Hover effect**: Zoom léger + ombre
-- **Click**: Redirige vers page catégorie filtrée
+**Hero Section:**
+- **Carousel/Slider:** Auto-rotating banners (3-5 slides)
+- **CTA Buttons:** Direct links to promotions/collections
+- **High-Quality Images:** 1920x600px minimum
+- **Slide Indicators:** Dots showing current position
+- **Purpose:** Showcase main promotions, new arrivals, seasonal sales
 
-#### **Featured Products**
-- **Grid 4 colonnes** (responsive: 2 colonnes mobile)
-- **Product Card**:
-  - Image produit (ratio 1:1)
-  - Nom du produit (2 lignes max)
-  - Prix (bold, couleur primaire)
-  - Rating (étoiles) + nombre d'avis
-  - Boutons: Wishlist + Add to Cart
-- **View All**: Lien vers tous les produits
+**Flash Deals Section:**
+- **Limited Time Offers:** Products with countdown timers
+- **Horizontal Scroll:** Swipeable on mobile, arrows on desktop
+- **Product Cards:** Image, name, price, rating, quick actions
+- **Heart Icon:** Add to wishlist
+- **Cart Icon:** Quick add to cart
+- **View All Link:** Navigate to complete deals page
 
-#### **Deals of the Day**
-- **Timer**: Compte à rebours en temps réel
-- **Badge discount**: Pourcentage en évidence
-- **Prix barré**: Ancien prix pour comparaison
-- **Urgence visuelle**: Couleurs vives, badge "🔥"
+**Shop by Category:**
+- **Large Icon Cards:** Visual representation of each category
+- **Click-through:** Direct navigation to category pages
+- **Responsive Grid:** 4 columns desktop, 2 columns tablet, 1 column mobile
 
-#### **Why Shop With Us**
-- **Trust signals**: 3 avantages clés
-- **Icons + Text**: Visual + description courte
-- **Reassurance**: Shipping, Payment, Guarantee
+**Top Rated Products:**
+- **Social Proof:** Display highly-rated items
+- **Review Count:** Number of reviews in parentheses
+- **Star Rating:** Visual 5-star system
+- **Price Display:** Clear, bold pricing
 
-#### **Customer Reviews**
-- **Social proof**: 3 témoignages courts
-- **Étoiles**: Notation visible
-- **Noms**: Prénoms + initiale du nom
+**Customer Reviews:**
+- **Testimonials:** Build trust with real customer feedback
+- **Star Ratings:** Quick visual satisfaction indicator
+- **Customer Names:** Add authenticity
 
-#### **Footer**
-- **Links**: Pages importantes
-- **Newsletter**: Email signup avec validation
-- **Copyright**: Année dynamique
+**Footer:**
+- **Quick Links:** Important pages (About, Contact, FAQ)
+- **Newsletter Signup:** Email collection for marketing
+- **Legal:** Copyright, terms, privacy policy links
+- **Social Media:** Links to social profiles (not shown but should be added)
+
+**Purpose of Homepage:**
+- First impression and brand identity
+- Quick access to popular products
+- Drive conversions with promotions
+- Guide users to relevant categories
+- Build trust through reviews and ratings
 
 ---
 
-## 2. Page Liste de Produits
+## 2. Product Listing Page
+
+### Wireframe:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                                    [Search Products...]  🔍   │
-│  │LOGO │   Home > Products > Electronics                               │
-│  └─────┘                                    [❤️ 3] [🛒 5] [👤]         │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌──────────────────────┐  ┌───────────────────────────────────────┐  │
-│  │ FILTERS              │  │ PRODUCTS (Showing 1-12 of 156)       │  │
-│  ├──────────────────────┤  ├───────────────────────────────────────┤  │
-│  │                      │  │                                        │  │
-│  │ 📂 Categories        │  │ Sort by: [Relevance ▼]   [Grid][List]│  │
-│  │   □ Laptops (45)     │  │                                        │  │
-│  │   □ Phones (32)      │  │ ┌─────────┐ ┌─────────┐ ┌─────────┐  │  │
-│  │   □ Tablets (18)     │  │ │ [IMAGE] │ │ [IMAGE] │ │ [IMAGE] │  │  │
-│  │   □ Cameras (23)     │  │ │         │ │         │ │         │  │  │
-│  │                      │  │ │ Product │ │ Product │ │ Product │  │  │
-│  │ 💰 Price Range       │  │ │ Name 1  │ │ Name 2  │ │ Name 3  │  │  │
-│  │   Min [    ] Max [  ]│  │ │         │ │         │ │         │  │  │
-│  │   ├────────┬─────┤   │  │ │ $299.99 │ │ $449.99 │ │ $199.99 │  │  │
-│  │   $0      $50  $1000 │  │ │ ⭐⭐⭐⭐⭐│ │ ⭐⭐⭐⭐☆│ │ ⭐⭐⭐⭐⭐│  │  │
-│  │                      │  │ │ (128)   │ │ (89)    │ │ (256)   │  │  │
-│  │ ⭐ Rating            │  │ │         │ │ 🔥SALE  │ │         │  │  │
-│  │   ☑ 5 Stars (23)     │  │ │ In Stock│ │ In Stock│ │ In Stock│  │  │
-│  │   □ 4 Stars+ (45)    │  │ │         │ │         │ │         │  │  │
-│  │   □ 3 Stars+ (89)    │  │ │ [❤️][🛒]│ │ [❤️][🛒]│ │ [❤️][🛒]│  │  │
-│  │                      │  │ └─────────┘ └─────────┘ └─────────┘  │  │
-│  │ 🏷️ Brands            │  │                                        │  │
-│  │   □ Apple (12)       │  │ ┌─────────┐ ┌─────────┐ ┌─────────┐  │  │
-│  │   □ Samsung (18)     │  │ │ [IMAGE] │ │ [IMAGE] │ │ [IMAGE] │  │  │
-│  │   □ Dell (8)         │  │ │ Product │ │ Product │ │ Product │  │  │
-│  │   □ HP (15)          │  │ │ Name 4  │ │ Name 5  │ │ Name 6  │  │  │
-│  │                      │  │ │ $599.99 │ │ $799.99 │ │ $999.99 │  │  │
-│  │ 🎨 Color             │  │ │ ⭐⭐⭐⭐☆│ │ ⭐⭐⭐⭐⭐│ │ ⭐⭐⭐⭐☆│  │  │
-│  │   □ ⚫ Black (34)    │  │ │ [❤️][🛒]│ │ [❤️][🛒]│ │ [❤️][🛒]│  │  │
-│  │   □ ⚪ White (23)    │  │ └─────────┘ └─────────┘ └─────────┘  │  │
-│  │   □ 🔴 Red (12)      │  │                                        │  │
-│  │   □ 🔵 Blue (18)     │  │ ┌─────────┐ ┌─────────┐ ┌─────────┐  │  │
-│  │                      │  │ │ [IMAGE] │ │ [IMAGE] │ │ [IMAGE] │  │  │
-│  │ 📦 Availability      │  │ │ Product │ │ Product │ │ Product │  │  │
-│  │   ☑ In Stock (112)   │  │ │ Name 7  │ │ Name 8  │ │ Name 9  │  │  │
-│  │   □ Out of Stock (44)│  │ │ $349.99 │ │ $899.99 │ │ $1299.99│  │  │
-│  │                      │  │ │ ⭐⭐⭐⭐⭐│ │ ⭐⭐⭐⭐☆│ │ ⭐⭐⭐⭐⭐│  │  │
-│  │ 🚚 Shipping          │  │ │ [❤️][🛒]│ │ [❤️][🛒]│ │ [❤️][🛒]│  │  │
-│  │   □ Free Shipping    │  │ └─────────┘ └─────────┘ └─────────┘  │  │
-│  │                      │  │                                        │  │
-│  │ [Clear All Filters]  │  │ ┌─────────┐ ┌─────────┐ ┌─────────┐  │  │
-│  │                      │  │ │ [IMAGE] │ │ [IMAGE] │ │ [IMAGE] │  │  │
-│  └──────────────────────┘  │ │ Product │ │ Product │ │ Product │  │  │
-│                             │ │ Name 10 │ │ Name 11 │ │ Name 12 │  │  │
-│                             │ │ $499.99 │ │ $649.99 │ │ $729.99 │  │  │
-│                             │ │ ⭐⭐⭐⭐☆│ │ ⭐⭐⭐⭐⭐│ │ ⭐⭐⭐⭐☆│  │  │
-│                             │ │ [❤️][🛒]│ │ [❤️][🛒]│ │ [❤️][🛒]│  │  │
-│                             │ └─────────┘ └─────────┘ └─────────┘  │  │
-│                             │                                        │  │
-│                             │ ┌──────────────────────────────────┐  │  │
-│                             │ │ PAGINATION                       │  │  │
-│                             │ │ [←] 1 [2] 3 4 5 ... 13 [→]       │  │  │
-│                             │ └──────────────────────────────────┘  │  │
-│                             └───────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > Electronics > Laptops                                        │ ← Breadcrumb
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌──────────────┐  ┌─────────────────────────────────────────────┐ │
+│  │              │  │                                               │ │
+│  │  FILTERS     │  │  Laptops (248 products)                      │ │
+│  │              │  │                                               │ │
+│  │ Categories   │  │  Sort by: [Most Popular ▼]  [Grid] [List]   │ │
+│  │ □ Gaming     │  │                                               │ │
+│  │ □ Business   │  │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│ │
+│  │ □ Student    │  │  │[IMAGE] │ │[IMAGE] │ │[IMAGE] │ │[IMAGE] ││ │
+│  │              │  │  │        │ │        │ │        │ │        ││ │
+│  │ Price Range  │  │  │Laptop 1│ │Laptop 2│ │Laptop 3│ │Laptop 4││ │
+│  │ $0 ━━━━ $5k │  │  │$1,299  │ │$999    │ │$1,599  │ │$799    ││ │
+│  │              │  │  │⭐⭐⭐⭐⭐│ │⭐⭐⭐⭐☆│ │⭐⭐⭐⭐⭐│ │⭐⭐⭐⭐☆││ │
+│  │ Brand        │  │  │(156)   │ │(89)    │ │(234)   │ │(45)    ││ │
+│  │ □ Dell       │  │  │♡  🛒  │ │♡  🛒  │ │♡  🛒  │ │♡  🛒  ││ │
+│  │ □ HP         │  │  └────────┘ └────────┘ └────────┘ └────────┘│ │
+│  │ □ Lenovo     │  │                                               │ │
+│  │ □ Apple      │  │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│ │
+│  │              │  │  │[IMAGE] │ │[IMAGE] │ │[IMAGE] │ │[IMAGE] ││ │
+│  │ RAM          │  │  │        │ │        │ │        │ │        ││ │
+│  │ □ 8GB        │  │  │Laptop 5│ │Laptop 6│ │Laptop 7│ │Laptop 8││ │
+│  │ □ 16GB       │  │  │$1,099  │ │$1,399  │ │$899    │ │$1,799  ││ │
+│  │ □ 32GB       │  │  │⭐⭐⭐⭐☆│ │⭐⭐⭐⭐⭐│ │⭐⭐⭐⭐☆│ │⭐⭐⭐⭐⭐││ │
+│  │              │  │  │(67)    │ │(178)   │ │(123)   │ │(298)   ││ │
+│  │ Storage      │  │  │♡  🛒  │ │♡  🛒  │ │♡  🛒  │ │♡  🛒  ││ │
+│  │ □ 256GB SSD  │  │  └────────┘ └────────┘ └────────┘ └────────┘│ │
+│  │ □ 512GB SSD  │  │                                               │ │
+│  │ □ 1TB SSD    │  │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│ │
+│  │              │  │  │        │ │        │ │        │ │        ││ │
+│  │ Rating       │  │  │More products...                           ││ │
+│  │ ⭐⭐⭐⭐⭐ & up│  │  │                                           ││ │
+│  │ ⭐⭐⭐⭐ & up │  │  └────────────────────────────────────────────┘│ │
+│  │ ⭐⭐⭐ & up   │  │                                               │ │
+│  │              │  │  ┌─────────────────────────────────────────┐ │ │
+│  │ Availability │  │  │  ← 1 2 3 4 5 ... 25 →                   │ │ │
+│  │ □ In Stock   │  │  └─────────────────────────────────────────┘ │ │
+│  │ □ On Sale    │  │                                               │ │
+│  │              │  │                                               │ │
+│  │ [Clear All]  │  │                                               │ │
+│  │              │  │                                               │ │
+│  └──────────────┘  └─────────────────────────────────────────────┘ │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-### 📝 Description des Éléments
-
-#### **Breadcrumb Navigation**
-- **Path**: Home > Products > Electronics
-- **Cliquable**: Chaque niveau est un lien
-- **Current page**: Dernier élément non cliquable
-
-#### **Filters Sidebar (Gauche)**
-- **Collapsible sections**: Chaque filtre peut se replier
-- **Categories**: Checkbox avec nombre de produits
-- **Price Range**: Slider double pour min/max
-- **Rating**: Filtrage par note minimum
-- **Brands**: Marques populaires avec count
-- **Color**: Sélection visuelle de couleurs
-- **Availability**: Stock disponible/épuisé
-- **Shipping**: Options de livraison
-- **Clear All**: Bouton pour réinitialiser tous les filtres
-
-#### **Products Grid (Droite)**
-- **Header**:
-  - Total de résultats
-  - Sort dropdown: Relevance, Price (low/high), Rating, Newest
-  - View toggle: Grid/List view
-- **Product Cards**: 
-  - Grid 3 colonnes (responsive)
-  - Hover: Zoom image + quick view button
-  - Badge: "🔥SALE", "NEW", "LOW STOCK"
-  - Stock status: In Stock / Out of Stock
-- **Pagination**:
-  - Previous/Next buttons
-  - Page numbers (current highlighted)
-  - Jump to specific page
-
----
-
-## 3. Page Détails Produit
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                    Home > Products > Laptops > Dell XPS 15    │
-│  │LOGO │                                    [❤️ 3] [🛒  5] [👤]         │
-└────────────────────────────────────────────────────────────────────────┘
-│                                                                         │
-│  ┌──────────────────────────┐  ┌────────────────────────────────────┐ │
-│  │                          │  │ Dell XPS 15 Laptop                 │ │
-│  │    [MAIN PRODUCT IMAGE]  │  │                                    │ │
-│  │                          │  │ ⭐⭐⭐⭐⭐ 4.8 (245 reviews)         │ │
-│  │                          │  │                                    │ │
-│  │      1920 x 1080px       │  │ $1,299.99  [Was: $1,599.99]       │ │
-│  │                          │  │ 🔥 19% OFF - Limited Time!         │ │
-│  │                          │  │                                    │ │
-│  │                          │  │ SKU: DELL-XPS15-2024              │ │
-│  ├──────────────────────────┤  │                                    │ │
-│  │ [IMG] [IMG] [IMG] [IMG]  │  │ ✅ In Stock - Only 12 left!       │ │
-│  │ [IMG] [IMG] [IMG] [IMG]  │  │ 🚚 Free Shipping on orders $50+   │ │
-│  └──────────────────────────┘  │ 📦 Estimated Delivery: 3-5 days   │ │
-│                                 │                                    │ │
-│                                 │ ┌────────────────────────────────┐ │ │
-│                                 │ │ COLOR: Space Gray             │ │ │
-│                                 │ │ ○ Space Gray  ○ Silver        │ │ │
-│                                 │ └────────────────────────────────┘ │ │
-│                                 │                                    │ │
-│                                 │ ┌────────────────────────────────┐ │ │
-│                                 │ │ STORAGE:                      │ │ │
-│                                 │ │ ○ 256GB   ● 512GB   ○ 1TB    │ │ │
-│                                 │ │ +$0       +$200      +$400    │ │ │
-│                                 │ └────────────────────────────────┘ │ │
-│                                 │                                    │ │
-│                                 │ ┌────────────────────────────────┐ │ │
-│                                 │ │ QUANTITY:  [-] [2] [+]        │ │ │
-│                                 │ └────────────────────────────────┘ │ │
-│                                 │                                    │ │
-│                                 │ [🛒 Add to Cart]  [❤️ Add to Wishlist]│
-│                                 │ [⚡ Buy Now]                       │ │
-│                                 │                                    │ │
-│                                 │ ┌────────────────────────────────┐ │ │
-│                                 │ │ 💳 Payment Methods:           │ │ │
-│                                 │ │ [VISA] [MC] [PayPal] [Crypto]│ │ │
-│                                 │ └────────────────────────────────┘ │ │
-│                                 │                                    │ │
-│                                 │ ┌────────────────────────────────┐ │ │
-│                                 │ │ 🔒 Secure Checkout            │ │ │
-│                                 │ │ 🔄 30-Day Return Policy       │ │ │
-│                                 │ │ ⚡ 2-Year Warranty             │ │ │
-│                                 │ └────────────────────────────────┘ │ │
-│                                 └────────────────────────────────────┘ │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ [Description] [Specifications] [Reviews] [Shipping]             │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │ DESCRIPTION                                                      │  │
-│  │                                                                  │  │
-│  │ The Dell XPS 15 is a powerful and portable laptop perfect for  │  │
-│  │ professionals and content creators. With its stunning 15.6"    │  │
-│  │ 4K OLED display, Intel Core i7 processor, and NVIDIA RTX      │  │
-│  │ graphics, it handles demanding tasks with ease.                │  │
-│  │                                                                  │  │
-│  │ KEY FEATURES:                                                    │  │
-│  │ • 15.6" 4K OLED Touch Display (3840 x 2160)                    │  │
-│  │ • Intel Core i7-13700H Processor (14 cores, up to 5.0 GHz)    │  │
-│  │ • NVIDIA GeForce RTX 4050 Graphics (6GB GDDR6)                │  │
-│  │ • 16GB DDR5 RAM (expandable to 64GB)                          │  │
-│  │ • 512GB PCIe NVMe SSD                                          │  │
-│  │ • Thunderbolt 4 ports                                          │  │
-│  │ • Backlit keyboard with precision touchpad                     │  │
-│  │ • Windows 11 Pro                                                │  │
-│  │ • Up to 10 hours battery life                                  │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ CUSTOMER REVIEWS (245)                        [Write a Review]  │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │ Overall Rating: 4.8 / 5.0                                       │  │
-│  │                                                                  │  │
-│  │ ⭐⭐⭐⭐⭐ (189) ████████████████████████████░░░░░ 77%            │  │
-│  │ ⭐⭐⭐⭐☆ (42)  ███████░░░░░░░░░░░░░░░░░░░░░░░ 17%            │  │
-│  │ ⭐⭐⭐☆☆ (10)  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4%            │  │
-│  │ ⭐⭐☆☆☆ (3)   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1%            │  │
-│  │ ⭐☆☆☆☆ (1)   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1%            │  │
-│  │                                                                  │  │
-│  │ ┌──────────────────────────────────────────────────────────┐   │  │
-│  │ │ Sort by: [Most Recent ▼]                                │   │  │
-│  │ └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │ ┌──────────────────────────────────────────────────────────┐   │  │
-│  │ │ ⭐⭐⭐⭐⭐  John D.  [Verified Purchase]  2 days ago       │   │  │
-│  │ │                                                          │   │  │
-│  │ │ "Amazing laptop for work and gaming"                    │   │  │
-│  │ │                                                          │   │  │
-│  │ │ This laptop exceeded my expectations. The display is    │   │  │
-│  │ │ stunning, performance is incredible, and build quality  │   │  │
-│  │ │ is top-notch. Highly recommend!                         │   │  │
-│  │ │                                                          │   │  │
-│  │ │ [👍 Helpful (42)]  [👎 Not Helpful (2)]                │   │  │
-│  │ └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │ ┌──────────────────────────────────────────────────────────┐   │  │
-│  │ │ ⭐⭐⭐⭐⭐  Sarah M. [Verified Purchase]  1 week ago       │   │  │
-│  │ │                                                          │   │  │
-│  │ │ "Perfect for video editing"                             │   │  │
-│  │ │                                                          │   │  │
-│  │ │ As a video editor, I needed something powerful yet      │   │  │
-│  │ │ portable. This XPS 15 handles 4K editing smoothly.      │   │  │
-│  │ │ Battery life is impressive too!                         │   │  │
-│  │ │                                                          │   │  │
-│  │ │ [👍 Helpful (38)]  [👎 Not Helpful (1)]                │   │  │
-│  │ └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │ [Load More Reviews]                                             │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ YOU MAY ALSO LIKE                                               │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │  │
-│  │  │ [IMAGE]  │  │ [IMAGE]  │  │ [IMAGE]  │  │ [IMAGE]  │       │  │
-│  │  │ Dell     │  │ HP       │  │ Lenovo   │  │ MacBook  │       │  │
-│  │  │ Laptop   │  │ Laptop   │  │ ThinkPad │  │ Pro      │       │  │
-│  │  │ $899     │  │ $749     │  │ $1,099   │  │ $1,799   │       │  │
-│  │  │ [View]   │  │ [View]   │  │ [View]   │  │ [View]   │       │  │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Product Images Section**
-- **Main Image**: Grande image principale (1920x1080)
-- **Zoom**: Click pour zoomer, hover pour preview
-- **Thumbnail Gallery**: 8 miniatures pour changer l'image
-- **360° View**: Option pour vue à 360 degrés (si disponible)
-
-#### **Product Information**
-- **Product Name**: H1, SEO-optimized
-- **Rating**: Étoiles + score numérique + nombre d'avis
-- **Price**: 
-  - Prix actuel (grand, bold, couleur primaire)
-  - Prix barré si en promotion
-  - Badge pourcentage de réduction
-- **SKU**: Numéro de référence produit
-- **Stock Status**: 
-  - ✅ In Stock (vert) + quantité restante si < 20
-  - ❌ Out of Stock (rouge)
-  - ⏳ Pre-order (si applicable)
-- **Shipping Info**: Livraison gratuite + délai estimé
-
-#### **Product Options**
-- **Color Selector**: Radio buttons avec aperçu visuel
-- **Storage/Memory**: Options avec prix supplémentaires
-- **Quantity Selector**: - / + buttons avec input
-- **Validation**: Max quantity based on stock
-
-#### **Action Buttons**
-- **Add to Cart**: Bouton primaire (orange)
-- **Add to Wishlist**: Bouton secondaire avec icône cœur
-- **Buy Now**: Direct checkout (rouge/urgent)
-
-#### **Trust Signals**
-- **Payment Methods**: Logos des moyens de paiement acceptés
-- **Security**: SSL, secure checkout
-- **Returns**: 30-day money-back guarantee
-- **Warranty**: Garantie constructeur
-
-#### **Tabs Section**
-- **Description**: Texte descriptif + features clés
-- **Specifications**: Tableau technique détaillé
-- **Reviews**: Avis clients avec filtres
-- **Shipping**: Infos de livraison et politique de retour
-
-#### **Reviews Section**
-- **Overall Rating**: Score + distribution visuelle
-- **Sort Options**: Most recent, Most helpful, Highest/Lowest rating
-- **Review Cards**:
-  - Stars + Reviewer name + Verified badge
-  - Review title
-  - Review text
-  - Helpful votes (thumbs up/down)
-  - Date posted
-- **Write Review**: CTA pour laisser un avis
-
-#### **Related Products**
-- **Recommendation algorithm**: Based on category + price range
-- **4 products** similaires ou complémentaires
-- **Quick view**: Hover pour voir détails sans quitter la page
-
----
-
-## 4. Page Panier
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                         SHOPPING CART                         │
-│  │LOGO │                                    [❤️ 3] [🛒 5] [👤]         │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌───────────────────────────────────────┐  ┌─────────────────────┐   │
-│  │ CART ITEMS (5)                        │  │ ORDER SUMMARY       │   │
-│  ├───────────────────────────────────────┤  ├─────────────────────┤   │
-│  │                                       │  │                     │   │
-│  │ ┌──────────────────────────────────┐ │  │ Subtotal: $2,548.95│   │
-│  │ │ [IMG]  Dell XPS 15 Laptop        │ │  │ Shipping: Free     │   │
-│  │ │        Space Gray, 512GB         │ │  │ Tax (8%): $203.92  │   │
-│  │ │                                  │ │  │ ─────────────────  │   │
-│  │ │        $1,299.99 each            │ │  │ Total:   $2,752.87│   │
-│  │ │        Quantity: [-] [1] [+]     │ │  │                     │   │
-│  │ │        Subtotal: $1,299.99       │ │  │ ┌─────────────────┐│   │
-│  │ │                                  │ │  │ │ Have a coupon?  ││   │
-│  │ │        [❤️ Move to Wishlist]     │ │  │ │ [Enter code...] ││   │
-│  │ │        [🗑️ Remove]               │ │  │ │ [Apply]         ││   │
-│  │ └──────────────────────────────────┘ │  │ └─────────────────┘│   │
-│  │                                       │  │                     │   │
-│  │ ┌──────────────────────────────────┐ │  │ [Proceed to      ]│   │
-│  │ │ [IMG]  iPhone 15 Pro             │ │  │ [Checkout        ]│   │
-│  │ │        256GB, Blue Titanium      │ │  │                     │   │
-│  │ │                                  │ │  │ [Continue        ]│   │
-│  │ │        $999.99 each              │ │  │ [Shopping        ]│   │
-│  │ │        Quantity: [-] [1] [+]     │ │  │                     │   │
-│  │ │        Subtotal: $999.99         │ │  │ ━━━━━━━━━━━━━━━━━│   │
-│  │ │                                  │ │  │ WE ACCEPT:        │   │
-│  │ │        [❤️ Move to Wishlist]     │ │  │ [VISA][MC]        │   │
-│  │ │        [🗑️ Remove]               │ │  │ [PayPal][Crypto]  │   │
-│  │ └──────────────────────────────────┘ │  │                     │   │
-│  │                                       │  │ 🔒 Secure Checkout│   │
-│  │ ┌──────────────────────────────────┐ │  │ 🚚 Free Shipping  │   │
-│  │ │ [IMG]  Sony WH-1000XM5           │ │  │    on orders $50+ │   │
-│  │ │        Wireless Headphones       │ │  │                     │   │
-│  │ │                                  │ │  └─────────────────────┘   │
-│  │ │        $348.99 each              │                              │
-│  │ │        Quantity: [-] [2] [+]     │                              │
-│  │ │        Subtotal: $697.98         │                              │
-│  │ │                                  │                              │
-│  │ │        [❤️ Move to Wishlist]     │                              │
-│  │ │        [🗑️ Remove]               │                              │
-│  │ └──────────────────────────────────┘                              │
-│  │                                                                    │
-│  │ ┌──────────────────────────────────────────────────────────────┐ │
-│  │ │ ⚠️ ITEMS SAVED FOR LATER (2)                                │ │
-│  │ ├──────────────────────────────────────────────────────────────┤ │
-│  │ │                                                              │ │
-│  │ │ [IMG] Apple Watch Series 9  $399.99  [Move to Cart] [Remove]│ │
-│  │ │ [IMG] iPad Air M2           $599.99  [Move to Cart] [Remove]│ │
-│  │ │                                                              │ │
-│  │ └──────────────────────────────────────────────────────────────┘ │
-│  │                                                                    │
-│  └───────────────────────────────────────────────────────────────────┘
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ RECOMMENDED FOR YOU                                             │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │  │
-│  │  │ [IMAGE]  │  │ [IMAGE]  │  │ [IMAGE]  │  │ [IMAGE]  │       │  │
-│  │  │ Laptop   │  │ Mouse    │  │ Keyboard │  │ Webcam   │       │  │
-│  │  │ Bag      │  │          │  │          │  │          │       │  │
-│  │  │ $49.99   │  │ $29.99   │  │ $79.99   │  │ $89.99   │       │  │
-│  │  │ [+ Add]  │  │ [+ Add]  │  │ [+ Add]  │  │ [+ Add]  │       │  │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Cart Items Section**
-- **Item Count**: Nombre total d'articles dans le panier
-- **Product Card**:
-  - **Image**: Thumbnail cliquable (vers page produit)
-  - **Product Name**: Nom + variante sélectionnée
-  - **Price**: Prix unitaire
-  - **Quantity Selector**: 
-    - Boutons -/+ pour ajuster
-    - Input pour saisie directe
-    - Validation: Min 1, Max = stock disponible
-    - Update automatique du subtotal
-  - **Subtotal**: Prix unitaire × quantité
-  - **Actions**:
-    - Move to Wishlist (save for later)
-    - Remove (supprimer de panier)
-- **Stock Warning**: Si quantité > stock, afficher message d'erreur
-
-#### **Order Summary (Sidebar)**
-- **Subtotal**: Somme de tous les subtotals
-- **Shipping**: 
-  - Free si > $50
-  - Sinon calculé selon adresse (ajouté au checkout)
-- **Tax**: Calculé selon location (8% exemple)
-- **Total**: Grand total en bold
-- **Coupon Section**:
-  - Input pour code promo
-  - Bouton "Apply"
-  - Validation en temps réel
-  - Message succès/erreur
-  - Affichage du discount appliqué
-- **CTA Buttons**:
-  - **Proceed to Checkout** (primaire, orange)
-  - **Continue Shopping** (secondaire, outline)
-- **Trust Badges**:
-  - Payment methods accepted
-  - Secure checkout icon
-  - Free shipping threshold
-
-#### **Saved for Later**
-- **Collapsible section**: Peut se replier
-- **Mini product cards**: Image + nom + prix
-- **Actions**:
-  - Move to Cart
-  - Remove permanently
-
-#### **Recommended Products**
-- **Cross-sell**: Produits complémentaires
-- **Algorithm**: Based on cart content
-- **Quick Add**: Bouton pour ajouter au panier sans quitter la page
-
-#### **Empty Cart State**
-Si panier vide:
-```
-┌────────────────────────────────┐
-│  🛒                            │
-│  Your cart is empty            │
-│                                │
-│  [Start Shopping]              │
-└────────────────────────────────┘
-```
-
----
-
-## 5. Page Checkout
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                         CHECKOUT                              │
-│  │LOGO │   [1. Cart] → [2. Shipping] → [3. Payment] → [4. Review]     │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌───────────────────────────────────────┐  ┌─────────────────────┐   │
-│  │ STEP 2: SHIPPING INFORMATION          │  │ ORDER SUMMARY       │   │
-│  ├───────────────────────────────────────┤  ├─────────────────────┤   │
-│  │                                       │  │                     │   │
-│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │ Items (5): $2,548.95│   │
-│  │                                       │  │ Shipping: $15.00   │   │
-│  │ 📧 Contact Information                │  │ Tax (8%): $203.92  │   │
-│  │ ┌───────────────────────────────────┐ │  │ Discount: -$50.00  │   │
-│  │ │ Email: [john.doe@email.com      ] │ │  │ ─────────────────  │   │
-│  │ └───────────────────────────────────┘ │  │ Total:   $2,717.87│   │
-│  │ ☑ Email me with news and offers      │  │                     │   │
-│  │                                       │  │ ━━━━━━━━━━━━━━━━━│   │
-│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │                     │   │
-│  │                                       │  │ 📦 ITEMS (5)       │   │
-│  │ 🏠 Shipping Address                   │  │ ┌─────────────────┐│   │
-│  │                                       │  │ │ [IMG] Dell XPS  ││   │
-│  │ ┌───────────────────────────────────┐ │  │ │ 1x $1,299.99    ││   │
-│  │ │ First Name: [John              ] │ │  │ └─────────────────┘│   │
-│  │ └───────────────────────────────────┘ │  │ ┌─────────────────┐│   │
-│  │ ┌───────────────────────────────────┐ │  │ │ [IMG] iPhone 15 ││   │
-│  │ │ Last Name:  [Doe               ] │ │  │ │ 1x $999.99      ││   │
-│  │ └───────────────────────────────────┘ │  │ └─────────────────┘│   │
-│  │ ┌───────────────────────────────────┐ │  │ ┌─────────────────┐│   │
-│  │ │ Address:    [123 Main Street   ] │ │  │ │ [IMG] Sony      ││   │
-│  │ └───────────────────────────────────┘ │  │ │ Headphones      ││   │
-│  │ ┌───────────────────────────────────┐ │  │ │ 2x $348.99      ││   │
-│  │ │ Apartment:  [Apt 4B (optional) ] │ │  │ └─────────────────┘│   │
-│  │ └───────────────────────────────────┘ │  │                     │   │
-│  │ ┌────────────────┐ ┌────────────────┐ │  │ [Edit Cart]        │   │
-│  │ │ City: [SF    ] │ │State: [CA ▼] │ │  │                     │   │
-│  │ └────────────────┘ └────────────────┘ │  └─────────────────────┘   │
-│  │ ┌────────────────┐ ┌────────────────┐                              │
-│  │ │ ZIP: [94102  ] │ │Country: [US▼]│                              │
-│  │ └────────────────┘ └────────────────┘                              │
-│  │ ┌───────────────────────────────────┐                              │
-│  │ │ Phone:      [(415) 555-0123    ] │                              │
-│  │ └───────────────────────────────────┘                              │
-│  │                                                                     │
-│  │ ☑ Save this address for next time                                  │
-│  │                                                                     │
-│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
-│  │                                                                     │
-│  │ 🚚 Shipping Method                                                  │
-│  │                                                                     │
-│  │ ● Standard Shipping (5-7 business days)        $15.00             │
-│  │ ○ Express Shipping (2-3 business days)         $29.99             │
-│  │ ○ Overnight Shipping (1 business day)          $49.99             │
-│  │                                                                     │
-│  │ Estimated Delivery: Dec 15-17, 2026                                │
-│  │                                                                     │
-│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
-│  │                                                                     │
-│  │ [← Return to Cart]              [Continue to Payment →]           │
-│  │                                                                     │
-│  └───────────────────────────────────────────────────────────────────┘
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ 🔒 SECURE CHECKOUT                                               │  │
-│  │ Your information is encrypted and secure                         │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Progress Indicator**
-- **Step 1**: Cart (complété, ✓)
-- **Step 2**: Shipping (actif, en cours)
-- **Step 3**: Payment (à venir)
-- **Step 4**: Review (à venir)
-- **Visual**: Timeline avec numéros et barres de progression
-
-#### **Contact Information**
-- **Email Field**: 
-  - Pré-rempli si utilisateur connecté
-  - Validation en temps réel (format email)
-  - Message d'erreur si invalide
-- **Newsletter Checkbox**: Opt-in pour recevoir des offres
-
-#### **Shipping Address Form**
-- **Fields**:
-  - First Name (required)
-  - Last Name (required)
-  - Address Line 1 (required)
-  - Address Line 2 (optional)
-  - City (required)
-  - State/Province (dropdown, required)
-  - ZIP/Postal Code (required, format validation)
-  - Country (dropdown, required)
-  - Phone (required, format validation)
-- **Validation**:
-  - Real-time validation sur blur
-  - Messages d'erreur en rouge sous champs
-  - Form submit désactivé si erreurs
-- **Save Address**: Checkbox pour sauvegarder pour futurs achats
-- **Address Book**: Si connecté, dropdown pour choisir adresse enregistrée
-
-#### **Shipping Method**
-- **Radio buttons**: Sélection unique
-- **Options**:
-  - Standard (économique, 5-7 jours)
-  - Express (rapide, 2-3 jours)
-  - Overnight (urgent, 1 jour)
-- **Prix**: Clairement affiché à droite
-- **Delivery Date**: Estimation mise à jour selon méthode choisie
-- **Free Shipping**: Si commande > threshold, afficher "FREE" au lieu du prix
-
-#### **Order Summary (Sidebar)**
-- **Sticky**: Reste visible en scrollant
-- **Items Breakdown**:
-  - Subtotal
-  - Shipping (mis à jour selon méthode choisie)
-  - Tax (calculé selon adresse)
-  - Discount (si coupon appliqué)
-  - **Total** (grand, bold)
-- **Items Preview**:
-  - Thumbnails des produits
-  - Quantité × prix
-  - Link "Edit Cart" pour retourner au panier
-- **Collapsed on Mobile**: Affichable via toggle
-
-#### **Navigation Buttons**
-- **Return to Cart**: Secondaire, à gauche
-- **Continue to Payment**: Primaire (orange), à droite
-- **Validation**: Bouton "Continue" disabled si formulaire incomplet
-
-#### **Security Badge**
-- **SSL Icon**: Cadenas pour rassurer
-- **Text**: "Your information is encrypted and secure"
-
----
-
-## 6. Page Wishlist
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                       MY WISHLIST                             │
-│  │LOGO │   Home > Account > Wishlist              [❤️ 12] [🛒 5] [👤] │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │  MY WISHLIST (12 items)                     [Share Wishlist 🔗] │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐   │  │
-│  │  │ [IMG]  Dell XPS 15 Laptop                               │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Space Gray, 512GB                                │   │  │
-│  │  │        ⭐⭐⭐⭐⭐ 4.8 (245 reviews)                        │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Current Price: $1,299.99                         │   │  │
-│  │  │        🔽 Price dropped by $200! (was $1,499.99)        │   │  │
-│  │  │                                                          │   │  │
-│  │  │        ✅ In Stock                                      │   │  │
-│  │  │        Added: 2 weeks ago                               │   │  │
-│  │  │                                                          │   │  │
-│  │  │        [🛒 Add to Cart]  [❌ Remove from Wishlist]     │   │  │
-│  │  │        [🔔 ON] Price drop alerts                        │   │  │
-│  │  └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐   │  │
-│  │  │ [IMG]  iPhone 15 Pro                                    │   │  │
-│  │  │                                                          │   │  │
-│  │  │        256GB, Blue Titanium                             │   │  │
-│  │  │        ⭐⭐⭐⭐⭐ 4.9 (512 reviews)                        │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Current Price: $999.99                           │   │  │
-│  │  │        💰 Price stable since you added it               │   │  │
-│  │  │                                                          │   │  │
-│  │  │        ✅ In Stock                                      │   │  │
-│  │  │        Added: 5 days ago                                │   │  │
-│  │  │                                                          │   │  │
-│  │  │        [🛒 Add to Cart]  [❌ Remove from Wishlist]     │   │  │
-│  │  │        [🔔 OFF] Price drop alerts                       │   │  │
-│  │  └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐   │  │
-│  │  │ [IMG]  Sony WH-1000XM5 Headphones                       │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Black, Wireless Noise Cancelling                 │   │  │
-│  │  │        ⭐⭐⭐⭐⭐ 4.7 (89 reviews)                         │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Current Price: $348.99                           │   │  │
-│  │  │                                                          │   │  │
-│  │  │        ❌ Out of Stock                                  │   │  │
-│  │  │        [🔔 Notify when available]                       │   │  │
-│  │  │        Added: 1 month ago                               │   │  │
-│  │  │                                                          │   │  │
-│  │  │        [❌ Remove from Wishlist]                        │   │  │
-│  │  │        [🔔 ON] Back in stock alerts                     │   │  │
-│  │  └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐   │  │
-│  │  │ [IMG]  MacBook Pro 16" M3 Max                           │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Space Black, 1TB SSD, 32GB RAM                   │   │  │
-│  │  │        ⭐⭐⭐⭐⭐ 5.0 (156 reviews)                        │   │  │
-│  │  │                                                          │   │  │
-│  │  │        Current Price: $3,499.99                         │   │  │
-│  │  │        🔼 Price increased by $200 (was $3,299.99)       │   │  │
-│  │  │                                                          │   │  │
-│  │  │        ✅ In Stock (Limited)                            │   │  │
-│  │  │        Added: 3 days ago                                │   │  │
-│  │  │                                                          │   │  │
-│  │  │        [🛒 Add to Cart]  [❌ Remove from Wishlist]     │   │  │
-│  │  │        [🔔 ON] Price drop alerts                        │   │  │
-│  │  └──────────────────────────────────────────────────────────┘   │  │
-│  │                                                                  │  │
-│  │  [Load More Items...]                                           │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ ACTIONS                                                          │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  [🛒 Add All to Cart]  [📧 Email Wishlist]  [🗑️ Clear All]    │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ SHARE YOUR WISHLIST                                              │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Link: https://ecommerce.com/wishlist/john-doe-12345            │  │
-│  │  [📋 Copy Link]                                                  │  │
-│  │                                                                  │  │
-│  │  Share via: [Facebook] [Twitter] [WhatsApp] [Email]             │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Wishlist Header**
-- **Item Count**: Nombre total d'items dans la wishlist
-- **Share Button**: Génère un lien public partageable
-- **Sort Options**: Par date ajoutée, prix, nom (dropdown)
-
-#### **Wishlist Item Card**
-- **Product Image**: Cliquable vers page produit
-- **Product Info**:
-  - Nom du produit
-  - Variante sélectionnée (couleur, taille, etc.)
-  - Rating + nombre d'avis
-- **Price Tracking**:
-  - **Current Price**: Prix actuel (bold)
-  - **Price History**:
-    - 🔽 Price Drop (vert): "Dropped by $X"
-    - 🔼 Price Increase (rouge): "Increased by $X"
-    - 💰 Stable: "Price stable since you added it"
-  - **Original Price**: Prix au moment de l'ajout
-- **Stock Status**:
-  - ✅ In Stock (vert)
-  - ❌ Out of Stock (rouge)
-  - ⏳ Limited Stock (orange)
-  - 📅 Pre-order available
-- **Date Added**: "Added X days/weeks ago"
-- **Actions**:
-  - **Add to Cart**: Si en stock
-  - **Notify when available**: Si rupture
-  - **Remove**: Supprimer de la wishlist
-  - **Price Alert Toggle**: ON/OFF pour notifications
-
-#### **Price Drop Alert System**
-- **Toggle Button**: 🔔 ON/OFF
-- **Email Notification**: Envoyé quand prix baisse
-- **Settings**: Seuil minimum de baisse (ex: 10%)
-- **Frequency**: Maximum 1 email par jour par produit
-
-#### **Bulk Actions**
-- **Add All to Cart**: Ajoute tous les items disponibles
-- **Email Wishlist**: Envoie liste par email
-- **Clear All**: Vide la wishlist (avec confirmation)
-
-#### **Share Wishlist**
-- **Public Link**: URL unique pour partager
-- **Privacy**: Option pour rendre publique ou privée
-- **Social Sharing**: Boutons pour Facebook, Twitter, WhatsApp
-- **Use Cases**: 
-  - Registry (mariage, baby shower)
-  - Gift ideas pour amis/famille
-
-#### **Empty Wishlist State**
-```
-┌────────────────────────────────┐
-│  ❤️                            │
-│  Your wishlist is empty        │
-│  Save items you love!          │
-│                                │
-│  [Browse Products]             │
-└────────────────────────────────┘
-```
-
----
-
-## 7. Page Mon Compte
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                      MY ACCOUNT                               │
-│  │LOGO │   Home > Account                      [❤️ 3] [🛒 5] [👤]     │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌──────────────────┐  ┌───────────────────────────────────────────┐  │
-│  │ NAVIGATION       │  │ DASHBOARD                                 │  │
-│  ├──────────────────┤  ├───────────────────────────────────────────┤  │
-│  │                  │  │                                           │  │
-│  │ ● Dashboard      │  │ Welcome back, John! 👋                   │  │
-│  │ ○ Orders         │  │                                           │  │
-│  │ ○ Wishlist       │  │ ┌─────────────────────────────────────┐ │  │
-│  │ ○ Addresses      │  │ │ 📊 QUICK STATS                      │ │  │
-│  │ ○ Payment Methods│  │ ├─────────────────────────────────────┤ │  │
-│  │ ○ Profile        │  │ │                                     │ │  │
-│  │ ○ Security       │  │ │  ┌─────────┐  ┌─────────┐  ┌──────┐│ │  │
-│  │ ○ Notifications  │  │ │  │ 15      │  │ 12      │  │ $2.5K││ │  │
-│  │ ○ Rewards        │  │ │  │ Orders  │  │ Wishlist│  │ Spent││ │  │
-│  │ ○ Support        │  │ │  └─────────┘  └─────────┘  └──────┘│ │  │
-│  │                  │  │ │                                     │ │  │
-│  │ [Logout]         │  │ └─────────────────────────────────────┘ │  │
-│  │                  │  │                                           │  │
-│  └──────────────────┘  │ ┌─────────────────────────────────────┐ │  │
-│                        │ │ 📦 RECENT ORDERS                    │ │  │
-│                        │ ├─────────────────────────────────────┤ │  │
-│                        │ │                                     │ │  │
-│                        │ │ Order #1234  |  Dec 10, 2026       │ │  │
-│                        │ │ Dell XPS 15 + 2 more items         │ │  │
-│                        │ │ Status: ✅ Delivered                │ │  │
-│                        │ │ [View Details] [Track] [Review]    │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ ──────────────────────────────────  │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ Order #1233  |  Dec 8, 2026        │ │  │
-│                        │ │ iPhone 15 Pro                      │ │  │
-│                        │ │ Status: 🚚 In Transit              │ │  │
-│                        │ │ [View Details] [Track]             │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ ──────────────────────────────────  │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ Order #1232  |  Dec 5, 2026        │ │  │
-│                        │ │ Sony Headphones                    │ │  │
-│                        │ │ Status: 📦 Processing              │ │  │
-│                        │ │ [View Details]                     │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ [View All Orders →]                │ │  │
-│                        │ │                                     │ │  │
-│                        │ └─────────────────────────────────────┘ │  │
-│                        │                                           │  │
-│                        │ ┌─────────────────────────────────────┐ │  │
-│                        │ │ ❤️ WISHLIST UPDATES                 │ │  │
-│                        │ ├─────────────────────────────────────┤ │  │
-│                        │ │                                     │ │  │
-│                        │ │ 🔽 Dell XPS 15 - Price drop $200!  │ │  │
-│                        │ │    Now: $1,299.99  [View]          │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ ✅ Sony Headphones back in stock!  │ │  │
-│                        │ │    [Add to Cart]                   │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ [View Full Wishlist →]             │ │  │
-│                        │ │                                     │ │  │
-│                        │ └─────────────────────────────────────┘ │  │
-│                        │                                           │  │
-│                        │ ┌─────────────────────────────────────┐ │  │
-│                        │ │ 🎁 REWARDS & LOYALTY                │ │  │
-│                        │ ├─────────────────────────────────────┤ │  │
-│                        │ │                                     │ │  │
-│                        │ │ You have 1,250 points!             │ │  │
-│                        │ │ ████████████░░░░░░░░ 62%           │ │  │
-│                        │ │ 750 points to next reward          │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ [View Rewards →]                   │ │  │
-│                        │ │                                     │ │  │
-│                        │ └─────────────────────────────────────┘ │  │
-│                        │                                           │  │
-│                        │ ┌─────────────────────────────────────┐ │  │
-│                        │ │ 📍 SAVED ADDRESSES (2)              │ │  │
-│                        │ ├─────────────────────────────────────┤ │  │
-│                        │ │                                     │ │  │
-│                        │ │ 🏠 Home                            │ │  │
-│                        │ │ 123 Main St, San Francisco, CA     │ │  │
-│                        │ │ [Edit] [Delete]                    │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ 🏢 Work                            │ │  │
-│                        │ │ 456 Business Ave, SF, CA           │ │  │
-│                        │ │ [Edit] [Delete]                    │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ [+ Add New Address]                │ │  │
-│                        │ │                                     │ │  │
-│                        │ └─────────────────────────────────────┘ │  │
-│                        │                                           │  │
-│                        │ ┌─────────────────────────────────────┐ │  │
-│                        │ │ 💳 PAYMENT METHODS (1)              │ │  │
-│                        │ ├─────────────────────────────────────┤ │  │
-│                        │ │                                     │ │  │
-│                        │ │ 💳 Visa ending in 4242             │ │  │
-│                        │ │ Expires: 12/2027                   │ │  │
-│                        │ │ [Edit] [Delete]                    │ │  │
-│                        │ │                                     │ │  │
-│                        │ │ [+ Add New Card]                   │ │  │
-│                        │ │                                     │ │  │
-│                        │ └─────────────────────────────────────┘ │  │
-│                        │                                           │  │
-│                        └───────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Sidebar Navigation**
-- **Active State**: Indicateur visuel sur page actuelle
-- **Sections**:
-  - **Dashboard**: Vue d'ensemble
-  - **Orders**: Historique complet des commandes
-  - **Wishlist**: Liste de souhaits
-  - **Addresses**: Adresses de livraison enregistrées
-  - **Payment Methods**: Cartes enregistrées
-  - **Profile**: Informations personnelles
-  - **Security**: Mot de passe, 2FA
-  - **Notifications**: Préférences emails/SMS
-  - **Rewards**: Programme de fidélité
-  - **Support**: Centre d'aide
-- **Logout**: En bas de sidebar
-
-#### **Quick Stats**
-- **Cards with metrics**:
-  - Total Orders (lifetime)
-  - Wishlist Items count
-  - Total Spent (lifetime)
-- **Visual**: Icons + large numbers
-
-#### **Recent Orders**
-- **3 dernières commandes**
-- **Order Info**:
-  - Order number (cliquable)
-  - Date
-  - Items (aperçu)
-  - Status badge avec icon
-- **Actions**:
-  - View Details
-  - Track (si expédié)
-  - Review Products (si livré)
-- **View All**: Lien vers page Orders complète
-
-#### **Wishlist Updates**
-- **Notifications**:
-  - Price drops (avec ancien/nouveau prix)
-  - Back in stock alerts
-- **Quick Actions**: View, Add to Cart
-- **Link**: View Full Wishlist
-
-#### **Rewards & Loyalty**
-- **Points Balance**: Grand nombre
-- **Progress Bar**: Vers prochain palier
-- **Next Reward**: Points manquants
-- **CTA**: View Rewards program
-
-#### **Saved Addresses**
-- **Address Cards**:
-  - Label (Home, Work, etc.)
-  - Full address
-  - Edit/Delete buttons
-- **Add New**: CTA pour ajouter adresse
-- **Default**: Star icon sur adresse par défaut
-
-#### **Payment Methods**
-- **Card Display**:
-  - Card type icon (Visa, Mastercard, etc.)
-  - Last 4 digits
-  - Expiry date
-  - Edit/Delete actions
-- **Add New**: CTA pour ajouter carte
-- **Security**: "Your cards are encrypted" badge
-
----
-
-## 8. Page Commandes
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐                      ORDER HISTORY                            │
-│  │LOGO │   Home > Account > Orders              [❤️ 3] [🛒 5] [👤]    │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ FILTERS & SEARCH                                                 │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Search orders: [Order #, Product name...]  [🔍]               │  │
-│  │                                                                  │  │
-│  │  Status: [All Orders ▼]  Date: [Last 6 months ▼]  [Export CSV]│  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ YOUR ORDERS (Showing 1-10 of 15)                                 │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │ ┌────────────────────────────────────────────────────────────┐ │  │
-│  │ │ Order #1234                          Dec 10, 2026          │ │  │
-│  │ │ ✅ Delivered on Dec 12, 2026                              │ │  │
-│  │ ├────────────────────────────────────────────────────────────┤ │  │
-│  │ │                                                            │ │  │
-│  │ │  [IMG]  Dell XPS 15 Laptop                                │ │  │
-│  │ │         Space Gray, 512GB                                 │ │  │
-│  │ │         Qty: 1  |  $1,299.99                              │ │  │
-│  │ │         [Write Review] [Buy Again]                        │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [IMG]  iPhone 15 Pro                                     │ │  │
-│  │ │         Blue Titanium, 256GB                              │ │  │
-│  │ │         Qty: 1  |  $999.99                                │ │  │
-│  │ │         [Write Review] [Buy Again]                        │ │  │
-│  │ │                                                            │ │  │
-│  │ │  + 1 more item                                            │ │  │
-│  │ │                                                            │ │  │
-│  │ │  Total: $2,752.87                                         │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [View Order Details] [Download Invoice] [Get Support]   │ │  │
-│  │ │                                                            │ │  │
-│  │ └────────────────────────────────────────────────────────────┘ │  │
-│  │                                                                  │  │
-│  │ ┌────────────────────────────────────────────────────────────┐ │  │
-│  │ │ Order #1233                          Dec 8, 2026           │ │  │
-│  │ │ 🚚 In Transit - Arriving Dec 15, 2026                     │ │  │
-│  │ │ Tracking: TRK-987654321                                   │ │  │
-│  │ ├────────────────────────────────────────────────────────────┤ │  │
-│  │ │                                                            │ │  │
-│  │ │  📦 Package is with delivery partner                      │ │  │
-│  │ │  ━━━━━━━━━●━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35%             │ │  │
-│  │ │                                                            │ │  │
-│  │ │  ✅ Order Placed       Dec 8, 10:30 AM                    │ │  │
-│  │ │  ✅ Processing         Dec 8, 2:15 PM                     │ │  │
-│  │ │  ✅ Shipped            Dec 9, 11:00 AM                    │ │  │
-│  │ │  ● In Transit          Now                                │ │  │
-│  │ │  ○ Delivered           Expected Dec 15                    │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [IMG]  Sony WH-1000XM5 Headphones                        │ │  │
-│  │ │         Black, Wireless                                   │ │  │
-│  │ │         Qty: 2  |  $697.98                                │ │  │
-│  │ │                                                            │ │  │
-│  │ │  Total: $712.98 (includes shipping)                       │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [Track Package] [View Details] [Cancel Order]            │ │  │
-│  │ │                                                            │ │  │
-│  │ └────────────────────────────────────────────────────────────┘ │  │
-│  │                                                                  │  │
-│  │ ┌────────────────────────────────────────────────────────────┐ │  │
-│  │ │ Order #1232                          Dec 5, 2026           │ │  │
-│  │ │ 📦 Processing - Preparing for shipment                    │ │  │
-│  │ ├────────────────────────────────────────────────────────────┤ │  │
-│  │ │                                                            │ │  │
-│  │ │  [IMG]  MacBook Pro 16" M3 Max                            │ │  │
-│  │ │         Space Black, 1TB SSD                              │ │  │
-│  │ │         Qty: 1  |  $3,499.99                              │ │  │
-│  │ │                                                            │ │  │
-│  │ │  Total: $3,499.99                                         │ │  │
-│  │ │                                                            │ │  │
-│  │ │  Estimated shipping: Dec 14, 2026                         │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [View Details] [Cancel Order]                            │ │  │
-│  │ │                                                            │ │  │
-│  │ └────────────────────────────────────────────────────────────┘ │  │
-│  │                                                                  │  │
-│  │ ┌────────────────────────────────────────────────────────────┐ │  │
-│  │ │ Order #1231                          Dec 1, 2026           │ │  │
-│  │ │ ❌ Cancelled by customer                                  │ │  │
-│  │ ├────────────────────────────────────────────────────────────┤ │  │
-│  │ │                                                            │ │  │
-│  │ │  [IMG]  iPad Air M2                                       │ │  │
-│  │ │         256GB, Space Gray                                 │ │  │
-│  │ │         Qty: 1  |  $599.99                                │ │  │
-│  │ │                                                            │ │  │
-│  │ │  Refund: $599.99 processed to Visa ****4242              │ │  │
-│  │ │  Refund date: Dec 3, 2026                                 │ │  │
-│  │ │                                                            │ │  │
-│  │ │  [View Details] [Buy Again]                               │ │  │
-│  │ │                                                            │ │  │
-│  │ └────────────────────────────────────────────────────────────┘ │  │
-│  │                                                                  │  │
-│  │  [Load More Orders...]                                          │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Filters & Search**
-- **Search Bar**: Recherche par numéro de commande ou nom de produit
-- **Status Filter**: 
-  - All Orders
-  - Delivered
-  - In Transit
-  - Processing
-  - Cancelled
-  - Returned
-- **Date Filter**:
-  - Last 30 days
-  - Last 3 months
-  - Last 6 months
-  - Last year
-  - Custom date range
-- **Export**: CSV download de toutes les commandes
-
-#### **Order Card**
-- **Header**:
-  - Order number (cliquable)
-  - Order date
-  - Status badge avec icon:
-    - ✅ Delivered (vert)
-    - 🚚 In Transit (bleu)
-    - 📦 Processing (jaune)
-    - ❌ Cancelled (rouge)
-    - 🔄 Returned (orange)
-- **Status Timeline** (si en transit):
-  - Progress bar
-  - Timeline avec checkpoints:
-    - Order Placed (timestamp)
-    - Processing (timestamp)
-    - Shipped (timestamp)
-    - In Transit (current)
-    - Delivered (estimated)
-  - Tracking number (cliquable vers courier site)
-
-#### **Order Items**
-- **Product Row**:
-  - Thumbnail image (cliquable)
-  - Product name + variant
-  - Quantity × Price
-  - **Actions** (selon status):
-    - **Delivered**: Write Review, Buy Again
-    - **In Transit**: Track Package
-    - **Processing**: Cancel Order
-    - **Cancelled**: Buy Again
-
-#### **Order Total**
-- **Breakdown**:
-  - Subtotal
-  - Shipping
-  - Tax
-  - Discount (si applicable)
-  - **Total** (bold)
-
-#### **Order Actions**
-- **View Order Details**: Modal ou nouvelle page avec:
-  - Full order information
-  - Shipping address
-  - Billing address
-  - Payment method
-  - Detailed timeline
-- **Download Invoice**: PDF download
-- **Track Package**: Lien vers tracking externe
-- **Cancel Order**: 
-  - Disponible si status = Processing
-  - Modal de confirmation
-  - Raison de l'annulation
-  - Refund processing info
-- **Get Support**: Contact customer service
-
-#### **Empty State**
-```
-┌────────────────────────────────┐
-│  📦                            │
-│  No orders yet                 │
-│  Start shopping to see your    │
-│  order history here            │
-│                                │
-│  [Start Shopping]              │
-└────────────────────────────────┘
-```
-
----
-
-## 9. Dashboard Admin
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐  ADMIN PANEL                              🔔 (3)  [👤 Admin] │
-│  │LOGO │                                                                │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌──────────────┐  ┌─────────────────────────────────────────────┐   │
-│  │ SIDEBAR      │  │ DASHBOARD OVERVIEW                          │   │
-│  ├──────────────┤  ├─────────────────────────────────────────────┤   │
-│  │              │  │                                             │   │
-│  │ ● Dashboard  │  │ ┌──────────────────────────────────────┐   │   │
-│  │ ○ Products   │  │ │ KEY METRICS                          │   │   │
-│  │ ○ Orders     │  │ ├──────────────────────────────────────┤   │   │
-│  │ ○ Customers  │  │ │                                      │   │   │
-│  │ ○ Inventory  │  │ │ ┌──────────┐ ┌──────────┐ ┌────────┐│   │   │
-│  │ ○ Analytics  │  │ │ │ 💰       │ │ 📦       │ │ 👥     ││   │   │
-│  │ ○ Reviews    │  │ │ │ $45,287  │ │ 156      │ │ 1,234  ││   │   │
-│  │ ○ Coupons    │  │ │ │ Revenue  │ │ Orders   │ │ Customers││  │
-│  │ ○ Reports    │  │ │ │ ↑ 12.5%  │ │ ↑ 8.3%   │ │ ↑ 15.2%││   │   │
-│  │ ○ Settings   │  │ │ └──────────┘ └──────────┘ └────────┘│   │   │
-│  │              │  │ │                                      │   │   │
-│  │ [Logout]     │  │ │ ┌──────────┐ ┌──────────┐ ┌────────┐│   │   │
-│  │              │  │ │ │ ⭐       │ │ 🔄       │ │ ⚠️     ││   │   │
-│  │              │  │ │ │ 4.7      │ │ 23       │ │ 12     ││   │   │
-│  │              │  │ │ │ Avg Rating│ │ Returns  │ │ Low Stock││  │
-│  │              │  │ │ │ ↑ 0.2    │ │ ↓ 3.1%   │ │        ││   │   │
-│  │              │  │ │ └──────────┘ └──────────┘ └────────┘│   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ └──────────────────────────────────────┘   │   │
-│  │              │  │                                             │   │
-│  │              │  │ ┌──────────────────────────────────────┐   │   │
-│  │              │  │ │ SALES CHART                          │   │   │
-│  │              │  │ ├──────────────────────────────────────┤   │   │
-│  │              │  │ │ Period: [This Month ▼]              │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ │     ┌───────────────────────┐       │   │   │
-│  │              │  │ │  5K │        ╱╲    ╱╲       │       │   │   │
-│  │              │  │ │     │       ╱  ╲  ╱  ╲      │       │   │   │
-│  │              │  │ │  4K │      ╱    ╲╱    ╲     │       │   │   │
-│  │              │  │ │     │     ╱            ╲    │       │   │   │
-│  │              │  │ │  3K │    ╱              ╲   │       │   │   │
-│  │              │  │ │     │   ╱                ╲  │       │   │   │
-│  │              │  │ │  2K │  ╱                  ╲ │       │   │   │
-│  │              │  │ │     └────────────────────────       │   │   │
-│  │              │  │ │      Mon Tue Wed Thu Fri Sat Sun    │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ └──────────────────────────────────────┘   │   │
-│  │              │  │                                             │   │
-│  │              │  │ ┌──────────────────────────────────────┐   │   │
-│  │              │  │ │ TOP SELLING PRODUCTS                 │   │   │
-│  │              │  │ ├──────────────────────────────────────┤   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ │ 1. Dell XPS 15 Laptop                │   │   │
-│  │              │  │ │    45 units  |  $58,499.55          │   │   │
-│  │              │  │ │    ████████████████████░░░░░ 82%    │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ │ 2. iPhone 15 Pro                     │   │   │
-│  │              │  │ │    38 units  |  $37,999.62          │   │   │
-│  │              │  │ │    ██████████████████░░░░░░░ 69%    │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ │ 3. Sony Headphones                   │   │   │
-│  │              │  │ │    72 units  |  $25,127.28          │   │   │
-│  │              │  │ │    ████████████████░░░░░░░░░ 58%    │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ │ [View Full Report →]                │   │   │
-│  │              │  │ │                                      │   │   │
-│  │              │  │ └──────────────────────────────────────┘   │   │
-│  │              │  │                                             │   │
-│  └──────────────┘  │ ┌──────────────────────────────────────┐   │   │
-│                    │ │ RECENT ORDERS                        │   │   │
-│                    │ ├──────────────────────────────────────┤   │   │
-│                    │ │                                      │   │   │
-│                    │ │ #1234 | John D.    | $2,752 | ✅    │   │   │
-│                    │ │ #1233 | Sarah M.   | $712   | 🚚    │   │   │
-│                    │ │ #1232 | Mike P.    | $3,499 | 📦    │   │   │
-│                    │ │ #1231 | Emma W.    | $599   | ❌    │   │   │
-│                    │ │ #1230 | Alex B.    | $1,299 | ✅    │   │   │
-│                    │ │                                      │   │   │
-│                    │ │ [View All Orders →]                 │   │   │
-│                    │ │                                      │   │   │
-│                    │ └──────────────────────────────────────┘   │   │
-│                    │                                             │   │
-│                    │ ┌──────────────────────────────────────┐   │   │
-│                    │ │ LOW STOCK ALERTS (12)                │   │   │
-│                    │ ├──────────────────────────────────────┤   │   │
-│                    │ │                                      │   │   │
-│                    │ │ ⚠️ Dell XPS 15 - Only 5 left         │   │   │
-│                    │ │ ⚠️ iPhone 15 Pro - Only 3 left       │   │   │
-│                    │ │ 🔴 Sony Headphones - Out of stock    │   │   │
-│                    │ │                                      │   │   │
-│                    │ │ [Manage Inventory →]                │   │   │
-│                    │ │                                      │   │   │
-│                    │ └──────────────────────────────────────┘   │   │
-│                    │                                             │   │
-│                    │ ┌──────────────────────────────────────┐   │   │
-│                    │ │ PENDING REVIEWS (8)                  │   │   │
-│                    │ ├──────────────────────────────────────┤   │   │
-│                    │ │                                      │   │   │
-│                    │ │ ⭐⭐⭐⭐⭐ Dell XPS 15 - John D.      │   │   │
-│                    │ │ "Amazing laptop!" - 2 days ago       │   │   │
-│                    │ │ [Approve] [Reject]                   │   │   │
-│                    │ │                                      │   │   │
-│                    │ │ [Moderate All Reviews →]            │   │   │
-│                    │ │                                      │   │   │
-│                    │ └──────────────────────────────────────┘   │   │
-│                    │                                             │   │
-│                    └─────────────────────────────────────────────┘   │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Admin Header**
-- **Logo**: Retour au dashboard
-- **Notifications**: Bell icon avec badge count
-- **Admin Profile**: Dropdown menu:
-  - View Site (frontend)
-  - Settings
-  - Logout
-
-#### **Sidebar Navigation**
-- **Active Section**: Highlighted
-- **Sections**:
-  - Dashboard (overview)
-  - Products (manage catalog)
-  - Orders (order management)
-  - Customers (user management)
-  - Inventory (stock management)
-  - Analytics (reports & charts)
-  - Reviews (moderation)
-  - Coupons (promo codes)
-  - Reports (export data)
-  - Settings (system config)
-
-#### **Key Metrics Cards**
-- **6 main KPIs**:
-  - **Revenue**: Total sales + % change
-  - **Orders**: Count + % change
-  - **Customers**: Total users + % change
-  - **Avg Rating**: Product ratings
-  - **Returns**: Return rate + % change
-  - **Low Stock**: Number of products
-- **Color coding**:
-  - Green arrow ↑ = increase (positive)
-  - Red arrow ↓ = decrease (negative for revenue, positive for returns)
-- **Time period**: Today, This week, This month, This year
-
-#### **Sales Chart**
-- **Interactive line chart**: Revenue over time
-- **Period selector**: Today, Week, Month, Year, Custom
-- **Metrics**: 
-  - Daily/weekly/monthly sales
-  - Tooltips on hover
-  - Zoom functionality
-- **Export**: Download as PNG/PDF
-
-#### **Top Selling Products**
-- **Ranked list**: Top 5 products
-- **Metrics per product**:
-  - Units sold
-  - Revenue generated
-  - Progress bar (relative to #1)
-- **Link**: View full report
-
-#### **Recent Orders**
-- **Table format**: Last 5 orders
-- **Columns**:
-  - Order ID (cliquable)
-  - Customer name
-  - Total amount
-  - Status icon
-- **Quick actions**: View, Process, Cancel
-- **Link**: View all orders
-
-#### **Low Stock Alerts**
-- **Warning list**: Products below threshold
-- **Icons**:
-  - ⚠️ Low stock (< 10)
-  - 🔴 Out of stock (= 0)
-- **Action**: Manage Inventory
-- **Count badge**: Number of alerts
-
-#### **Pending Reviews**
-- **Moderation queue**: Reviews awaiting approval
-- **Preview**:
-  - Rating stars
-  - Product name
-  - Reviewer name
-  - Comment excerpt
-  - Time ago
-- **Actions**: Approve/Reject buttons
-- **Link**: Moderate all reviews
-
----
-
-## 10. Page Gestion Produits (Admin)
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐  ADMIN PANEL > PRODUCTS                  🔔 (3)  [👤 Admin]  │
-│  │LOGO │                                                                │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ PRODUCTS MANAGEMENT                      [+ Add New Product]    │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Search: [Search products...] 🔍  Category: [All ▼]  [Export]  │  │
-│  │                                                                  │  │
-│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐  │  │
-│  │  │ IMAGE   │ PRODUCT         │ STOCK │ PRICE   │ STATUS │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  │ [IMG]   │ Dell XPS 15     │ 12    │ $1,299  │ ✅ On  │ │  │  │
-│  │  │         │ SKU: DELL-XPS15 │ ⚠️    │         │        │✏️│  │  │
-│  │  │         │ Electronics     │       │         │        │🗑️│  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  │ [IMG]   │ iPhone 15 Pro   │ 45    │ $999    │ ✅ On  │ │  │  │
-│  │  │         │ SKU: APPL-IP15P │ ✅    │         │        │✏️│  │  │
-│  │  │         │ Electronics     │       │         │        │🗑️│  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  │ [IMG]   │ Sony WH-1000XM5 │ 0     │ $348    │ ❌ Off │ │  │  │
-│  │  │         │ SKU: SONY-WH1K5 │ 🔴    │         │        │✏️│  │  │
-│  │  │         │ Electronics     │       │         │        │🗑️│  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  │ [IMG]   │ MacBook Pro 16" │ 23    │ $3,499  │ ✅ On  │ │  │  │
-│  │  │         │ SKU: APPL-MBP16 │ ✅    │         │        │✏️│  │  │
-│  │  │         │ Electronics     │       │         │        │🗑️│  │  │
-│  │  │         │                 │       │         │        │ │  │  │
-│  │  └──────────────────────────────────────────────────────────┘  │  │
-│  │                                                                  │  │
-│  │  Showing 1-10 of 156 products                                   │  │
-│  │  [←] 1 [2] 3 4 5 ... 16 [→]                                     │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ BULK ACTIONS                                                     │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  ☑ Select All (10)    [Delete Selected]  [Export Selected]     │  │
-│  │                       [Update Stock]  [Change Status]           │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-MODAL: ADD/EDIT PRODUCT
-
-┌────────────────────────────────────────────────────────────────────────┐
-│  ADD NEW PRODUCT                                              [✕]      │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌──────────────────────┐  ┌────────────────────────────────────────┐ │
-│  │ PRODUCT IMAGES       │  │ PRODUCT INFORMATION                    │ │
-│  ├──────────────────────┤  ├────────────────────────────────────────┤ │
-│  │                      │  │                                        │ │
-│  │  ┌────────────────┐  │  │  Product Name: *                       │ │
-│  │  │                │  │  │  [Dell XPS 15 Laptop              ]   │ │
-│  │  │  [MAIN IMAGE]  │  │  │                                        │ │
-│  │  │  1920x1080px   │  │  │  SKU: *                                │ │
-│  │  │                │  │  │  [DELL-XPS15                      ]   │ │
-│  │  └────────────────┘  │  │                                        │ │
-│  │                      │  │  Category: *                           │ │
-│  │  [Upload Main Image] │  │  [Electronics                     ▼]  │ │
-│  │                      │  │                                        │ │
-│  │  Additional Images:  │  │  Brand:                                │ │
-│  │  ┌───┐ ┌───┐ ┌───┐  │  │  [Dell                            ]   │ │
-│  │  │[+]│ │[+]│ │[+]│  │  │                                        │ │
-│  │  └───┘ └───┘ └───┘  │  │  Description: *                        │ │
-│  │                      │  │  ┌──────────────────────────────────┐ │ │
-│  │  Max 8 images        │  │  │ [Rich text editor]               │ │ │
-│  │  JPG, PNG, WebP      │  │  │ Powerful laptop for work and     │ │ │
-│  │  Max 5MB each        │  │  │ gaming...                        │ │ │
-│  │                      │  │  │                                  │ │ │
-│  │                      │  │  └──────────────────────────────────┘ │ │
-│  └──────────────────────┘  │                                        │ │
-│                            │  Specifications:                       │ │
-│                            │  [+ Add Specification]                 │ │
-│                            │  • Processor: Intel Core i7-13700H    │ │
-│                            │  • RAM: 16GB DDR5                     │ │
-│                            │  • Storage: 512GB SSD                 │ │
-│                            │                                        │ │
-│                            └────────────────────────────────────────┘ │
-│                                                                         │
-│  ┌──────────────────────┐  ┌────────────────────────────────────────┐ │
-│  │ PRICING & INVENTORY  │  │ VARIANTS (Optional)                    │ │
-│  ├──────────────────────┤  ├────────────────────────────────────────┤ │
-│  │                      │  │                                        │ │
-│  │  Price: *            │  │  [+ Add Variant]                       │ │
-│  │  $[1299.99       ]   │  │                                        │ │
-│  │                      │  │  Color: Space Gray                     │ │
-│  │  Compare at Price:   │  │  [✕] [Edit]                            │ │
-│  │  $[1499.99       ]   │  │                                        │ │
-│  │                      │  │  Storage: 512GB     +$0                │ │
-│  │  Cost per item:      │  │  [✕] [Edit]                            │ │
-│  │  $[899.00        ]   │  │                                        │ │
-│  │  Margin: 44.5%       │  │  Storage: 1TB       +$200              │ │
-│  │                      │  │  [✕] [Edit]                            │ │
-│  │  ━━━━━━━━━━━━━━━━━━ │  │                                        │ │
-│  │                      │  └────────────────────────────────────────┘ │
-│  │  Stock Quantity: *   │                                             │
-│  │  [12             ]   │                                             │
-│  │                      │                                             │
-│  │  Low stock alert at: │                                             │
-│  │  [10             ]   │                                             │
-│  │                      │                                             │
-│  │  ☑ Track inventory   │                                             │
-│  │  ☑ Allow backorders  │                                             │
-│  │                      │                                             │
-│  └──────────────────────┘                                             │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ SEO & METADATA                                                   │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Page Title:                                                     │  │
-│  │  [Dell XPS 15 Laptop - High Performance Computing            ]  │  │
-│  │                                                                  │  │
-│  │  Meta Description:                                               │  │
-│  │  [Shop the Dell XPS 15 laptop with Intel i7, 16GB RAM...    ]  │  │
-│  │  42/160 characters                                               │  │
-│  │                                                                  │  │
-│  │  URL Handle:                                                     │  │
-│  │  /products/[dell-xps-15-laptop                               ]  │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ ORGANIZATION                                                     │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Product Status:  ● Active  ○ Draft  ○ Archived                 │  │
-│  │                                                                  │  │
-│  │  Tags: [laptop, dell, xps, high-performance               ]     │  │
-│  │                                                                  │  │
-│  │  Collections:                                                    │  │
-│  │  [✓] Featured Products                                           │  │
-│  │  [✓] New Arrivals                                                │  │
-│  │  [ ] Best Sellers                                                │  │
-│  │                                                                  │  │
-│  └─────────────────────────────────────────────────────────────────┘  │
-│                                                                         │
-│  [Cancel]                                      [Save as Draft] [Publish]│
-│                                                                         │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-### 📝 Description des Éléments
-
-#### **Products List Table**
-- **Search**: Real-time filtering par nom, SKU, catégorie
-- **Filters**: Category dropdown, Status filter
-- **Table Columns**:
-  - **Image**: Thumbnail (100x100px)
-  - **Product**: Name, SKU, Category
-  - **Stock**: 
-    - Quantity number
-    - Icon: ✅ In stock, ⚠️ Low stock, 🔴 Out of stock
-  - **Price**: Formatted currency
-  - **Status**: Toggle Active/Inactive
-  - **Actions**: Edit (✏️), Delete (🗑️)
-- **Sorting**: Click headers to sort
-- **Pagination**: Page numbers + prev/next
-
-#### **Bulk Actions**
-- **Select All**: Checkbox to select all visible
-- **Actions**:
-  - Delete Selected (with confirmation)
-  - Export Selected (CSV)
-  - Update Stock (bulk quantity update)
-  - Change Status (bulk activate/deactivate)
-
-#### **Add/Edit Product Modal**
-
-**Section 1: Product Images**
-- **Main Image**:
-  - Required
-  - Preview display
-  - Drag & drop upload
-  - Connects to Cloudinary
-  - Auto-optimization
-- **Additional Images**: 
-  - Up to 8 images
-  - Thumbnails in gallery
-  - Reorder by drag & drop
-- **Validation**:
-  - Format: JPG, PNG, WebP
-  - Size: Max 5MB per image
-  - Resolution: Min 800x800px recommended
-
-**Section 2: Product Information**
-- **Product Name**: Required, max 255 chars
-- **SKU**: Required, unique, auto-suggest
-- **Category**: Dropdown with hierarchical categories
-- **Brand**: Text input with autocomplete
-- **Description**: 
-  - Rich text editor (bold, italic, lists, links)
-  - Character counter
-  - Preview mode
-- **Specifications**:
-  - Key-value pairs
-  - Add/remove rows
-  - Example: "Processor: Intel Core i7"
-
-**Section 3: Pricing & Inventory**
-- **Price**: Required, decimal input
-- **Compare at Price**: Original price (for sales)
-- **Cost per Item**: Your cost (for margin calculation)
-- **Margin**: Auto-calculated percentage
-- **Stock Quantity**: Integer input
-- **Low Stock Alert**: Threshold for notifications
-- **Checkboxes**:
-  - Track inventory (enable/disable stock management)
-  - Allow backorders (sell when out of stock)
-
-**Section 4: Variants**
-- **Add Variant**: Button to create options
-- **Variant Types**:
-  - Color (with color picker)
-  - Size (text input)
-  - Storage/Memory (with price modifier)
-- **Variant Management**:
-  - Each variant can have:
-    - Own price
-    - Own SKU
-    - Own stock
-    - Own image
-- **Example**: 
-  - Space Gray, 512GB → +$0
-  - Space Gray, 1TB → +$200
-
-**Section 5: SEO & Metadata**
-- **Page Title**: For search engines, 60 chars max
-- **Meta Description**: 160 chars max, with counter
-- **URL Handle**: Auto-generated slug, editable
-- **Preview**: How it appears in search results
-
-**Section 6: Organization**
-- **Product Status**:
-  - Active (visible to customers)
-  - Draft (hidden, work in progress)
-  - Archived (hidden, keep for records)
-- **Tags**: Comma-separated, for search/filtering
-- **Collections**: Assign to featured groups
-  - Featured Products
+### Description:
+
+**Breadcrumb Navigation:**
+- **Path Display:** Home > Category > Subcategory
+- **Clickable Links:** Each level is clickable for easy navigation
+- **Current Page:** Last item is not clickable (current location)
+- **Purpose:** Help users understand their location and navigate back
+
+**Filter Sidebar (Left):**
+- **Category Filters:**
+  - Checkboxes for subcategories
+  - Multi-select capability
+  - Show product count for each category
+  
+- **Price Range Slider:**
+  - Dual-handle slider for min/max price
+  - Real-time update of product list
+  - Display current selected range ($0 - $5,000)
+  
+- **Brand Filter:**
+  - Checkbox list of available brands
+  - Alphabetically sorted
+  - Show product count per brand
+  
+- **Specifications Filters:**
+  - Technical specs (RAM, Storage, etc.)
+  - Dynamically generated based on product type
+  - Multi-select checkboxes
+  
+- **Rating Filter:**
+  - Filter by minimum rating (4+ stars, 3+ stars, etc.)
+  - Show distribution graph (optional enhancement)
+  
+- **Availability:**
+  - In Stock vs Out of Stock
+  - On Sale items
   - New Arrivals
-  - Best Sellers
-  - etc.
+  
+- **Clear All Button:**
+  - Reset all filters to default
+  - Prominent position at bottom of filters
 
-**Action Buttons**
-- **Cancel**: Close without saving
-- **Save as Draft**: Save but keep hidden
-- **Publish**: Save and make active
+**Product Grid Area (Right):**
+- **Results Header:**
+  - Total product count
+  - Active filters displayed as removable chips/tags
+  
+- **Sort Dropdown:**
+  - Most Popular
+  - Price: Low to High
+  - Price: High to Low
+  - Newest First
+  - Best Rating
+  - Best Selling
+  
+- **View Toggle:**
+  - Grid view (default): 4 columns
+  - List view: Detailed horizontal cards
+  
+- **Product Cards:**
+  - **Product Image:** High-quality thumbnail, hover for alternate view
+  - **Product Name:** Truncated to 2 lines with ellipsis
+  - **Price:** Bold, prominent, show original price if on sale
+  - **Rating:** Star display with review count
+  - **Quick Actions:**
+    - Heart icon: Add to wishlist (filled if already wishlisted)
+    - Cart icon: Quick add to cart
+  - **Badges:** "Sale", "New", "Low Stock" overlays
+  
+- **Pagination:**
+  - Current page highlighted
+  - Previous/Next arrows
+  - Jump to specific page
+  - Show range (e.g., "Showing 1-20 of 248")
+
+**Responsive Behavior:**
+- **Desktop (>1200px):** Full sidebar + 4-column grid
+- **Tablet (768-1200px):** Collapsible sidebar + 3-column grid
+- **Mobile (<768px):** Filters in modal/drawer + 1-column grid
+
+**Purpose of Product Listing:**
+- Allow users to browse and filter products efficiently
+- Provide quick comparison of products
+- Enable fast decision-making with key information
+- Facilitate product discovery
 
 ---
 
-## 11. Page Gestion Commandes (Admin)
+## 3. Product Detail Page
+
+### Wireframe:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ┌─────┐  ADMIN PANEL > ORDERS                    🔔 (3)  [👤 Admin]  │
-│  │LOGO │                                                                │
-│  └─────┘                                                                │
-├────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────┐  │
-│  │ ORDERS MANAGEMENT                                                │  │
-│  ├─────────────────────────────────────────────────────────────────┤  │
-│  │                                                                  │  │
-│  │  Search: [Order #, Customer name...] 🔍                          │  │
-│  │                                                                  │  │
-│  │  Status: [All ▼]  Date: [Last 30 days ▼]  [Export to CSV]      │  │
-│  │                                                                  │  │
-│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │
-│  │                                                                  │  │
-│  │  ┌──────────────────────────────────────────────────────────┐  │  │
-│  │  │ ORDER # │ CUSTOMER  │ DATE    │ TOTAL   │ STATUS   │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │           │         │         │          │ │  │  │
-│  │  │ #1234   │ John D.   │ Dec 10  │ $2,752  │ ✅       │📄│  │  │
-│  │  │         │ john@...  │ 10:30am │         │ Delivered│✏️│  │  │
-│  │  │         │           │         │         │          │ │  │  │
-│  │  ├──────────────────────────────────────────────────────────┤  │  │
-│  │  │         │           │         │         │          │ │  │  │
-│  │  │ #1233   │ Sarah M.  │ Dec 8   │ $712    │ 🚚       │📄│  │  │
-│  │  │         │ sarah@... │ 2:15pm  │         │ In Transit│
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > Electronics > Laptops > Dell XPS 15                          │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌──────────────────────┐  ┌──────────────────────────────────────┐│
+│  │                      │  │  Dell XPS 15 Laptop                  ││
+│  │                      │  │                                        ││
+│  │    MAIN PRODUCT      │  │  ⭐⭐⭐⭐⭐ 4.8 (523 reviews)         ││
+│  │       IMAGE          │  │                                        ││
+│  │                      │  │  $1,299.99   $1,499.99 (13% OFF)      ││
+│  │    [1920x1080]       │  │                                        ││
+│  │                      │  │  📦 In Stock - Ships within 24 hours  ││
+│  │                      │  │  🚚 Free Shipping on orders over $50  ││
+│  │                      │  │                                        ││
+│  │  [🔍 Zoom]           │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  └──────────────────────┘  │                                        ││
+│                             │  Color: [Black ●] [Silver ○] [Blue ○]││
+│  ┌───┐┌───┐┌───┐┌───┐┌───┐│                                        ││
+│  │[1]││[2]││[3]││[4]││[5]││  Storage: [256GB] [512GB] [1TB]       ││
+│  └───┘└───┘└───┘└───┘└───┘│                                        ││
+│    Thumbnail Gallery       │  RAM: [8GB] [16GB] [32GB]             ││
+│                             │                                        ││
+│                             │  Quantity: [➖] 1 [➕]                ││
+│                             │                                        ││
+│                             │  ┌────────────────┐  ┌─────────────┐ ││
+│                             │  │  🛒 Add to Cart│  │  ♡ Wishlist │ ││
+│                             │  └────────────────┘  └─────────────┘ ││
+│                             │                                        ││
+│                             │  🔒 Secure Checkout                   ││
+│                             │  💳 Accepted: Visa, MC, PayPal, Crypto││
+│                             └──────────────────────────────────────┘│
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  [Description] [Specifications] [Reviews] [Q&A]                      │
+│  ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔ │
+│                                                                       │
+│  📝 Product Description                                              │
+│                                                                       │
+│  The Dell XPS 15 is a premium laptop designed for professionals     │
+│  and creators. With its stunning 15.6" 4K OLED display, powerful    │
+│  Intel Core i7 processor, and long battery life, it's perfect for   │
+│  demanding tasks like video editing, 3D rendering, and gaming.       │
+│                                                                       │
+│  Key Features:                                                       │
+│  • 15.6" 4K OLED InfinityEdge Display                               │
+│  • Intel Core i7-12700H Processor                                   │
+│  • NVIDIA GeForce RTX 3050 Ti Graphics                              │
+│  • Up to 18 hours battery life                                      │
+│  • Thunderbolt 4 ports for fast connectivity                        │
+│  • Backlit keyboard with precision touchpad                         │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  ⭐ Customer Reviews (523)                      [Write a Review]    │
+│                                                                       │
+│  Rating Breakdown:                                                   │
+│  5 ⭐ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 78%  (408)                              │
+│  4 ⭐ ▓▓▓▓▓ 15%  (78)                                                │
+│  3 ⭐ ▓▓ 5%  (26)                                                    │
+│  2 ⭐ ▓ 1%  (6)                                                      │
+│  1 ⭐ ▓ 1%  (5)                                                      │
+│                                                                       │
+│  ┌───────────────────────────────────────────────────────────────┐ │
+│  │  ⭐⭐⭐⭐⭐  "Amazing laptop!"                                    │ │
+│  │  by John D. - Verified Purchase                                 │ │
+│  │  January 15, 2026                                                │ │
+│  │                                                                   │ │
+│  │  This laptop exceeded my expectations. The display is stunning,  │ │
+│  │  the performance is excellent, and the build quality is top-     │ │
+│  │  notch. Highly recommended!                                      │ │
+│  │                                                                   │ │
+│  │  👍 Helpful (45)  👎 Not Helpful (2)                            │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+│  ┌───────────────────────────────────────────────────────────────┐ │
+│  │  ⭐⭐⭐⭐☆  "Great, but pricey"                                   │ │
+│  │  by Sarah M. - Verified Purchase                                │ │
+│  │  January 10, 2026                                                │ │
+│  │                                                                   │ │
+│  │  Excellent laptop with premium features. Only downside is the    │ │
+│  │  price. Worth it if you need the power.                          │ │
+│  │                                                                   │ │
+│  │  👍 Helpful (23)  👎 Not Helpful (5)                            │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+│  [Load More Reviews]                                                 │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🔥 You May Also Like                                                │
+│                                                                       │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐               │
+│  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │  │ [IMG]   │               │
+│  │         │  │         │  │         │  │         │               │
+│  │Similar  │  │Similar  │  │Similar  │  │Similar  │               │
+│  │Product 1│  │Product 2│  │Product 3│  │Product 4│               │
+│  │$1,199   │  │$1,399   │  │$999     │  │$1,499   │               │
+│  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐☆ │  │⭐⭐⭐⭐⭐ │  │⭐⭐⭐⭐⭐ │               │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘               │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Product Image Gallery (Left):**
+- **Main Image:**
+  - Large, high-resolution product photo (1920x1080px minimum)
+  - Zoom functionality on hover/click
+  - Lightbox for full-screen view
+  - Shows selected variant (color, size)
+  
+- **Thumbnail Gallery:**
+  - 5-7 product images showing different angles
+  - Video thumbnail if available
+  - Click to change main image
+  - Horizontal scroll on mobile
+
+**Product Information (Right):**
+- **Product Title:**
+  - H1 heading for SEO
+  - Full product name and model number
+  
+- **Rating & Reviews:**
+  - Average star rating (out of 5)
+  - Total review count (clickable to scroll to reviews)
+  - Verified purchase badge
+  
+- **Price Display:**
+  - Current price (large, bold)
+  - Original price with strikethrough if on sale
+  - Discount percentage badge
+  - "Starting at" if multiple variants
+  
+- **Stock & Shipping:**
+  - Availability status (In Stock, Low Stock, Out of Stock)
+  - Estimated shipping time
+  - Free shipping threshold
+  - Delivery location selector
+  
+- **Product Variants:**
+  - **Color Selector:** Visual swatches with labels
+  - **Storage Options:** Button group selection
+  - **RAM Options:** Button group selection
+  - Each selection updates price and image
+  - Show availability per variant
+  
+- **Quantity Selector:**
+  - Plus/minus buttons
+  - Direct input field
+  - Min: 1, Max: Available stock
+  - Disable if out of stock
+  
+- **Action Buttons:**
+  - **Add to Cart (Primary):**
+    - Large, prominent button
+    - Shows loading state
+    - Success feedback
+  - **Add to Wishlist (Secondary):**
+    - Heart icon, fills when added
+    - Requires login
+  - **Buy Now (Optional):**
+    - Skip cart, direct to checkout
+  
+- **Trust Signals:**
+  - Secure checkout badge
+  - Payment method icons
+  - Return policy link
+  - Warranty information
+
+**Tabbed Content Section:**
+- **Description Tab:**
+  - Detailed product description
+  - Key features as bullet points
+  - Use cases and benefits
+  - Rich text formatting
+  - Embedded images/videos
+  
+- **Specifications Tab:**
+  - Technical specifications table
+  - Organized by category
+  - Dimensions, weight
+  - What's in the box
+  
+- **Reviews Tab:**
+  - **Rating Breakdown:**
+    - Visual bar chart of ratings distribution
+    - Percentage and count for each star level
+  - **Review Filters:**
+    - Sort by: Most Helpful, Most Recent, Highest/Lowest Rating
+    - Filter by: Verified Purchase, Star Rating
+  - **Individual Reviews:**
+    - Reviewer name and verification badge
+    - Star rating
+    - Review date
+    - Review title and body
+    - Helpful/Not Helpful voting
+    - Admin can respond to reviews
+  - **Write Review Button:**
+    - Opens review form modal
+    - Requires purchase verification
+    - Fields: Rating, title, comment, photo upload
+  
+- **Q&A Tab:**
+  - Product questions and answers
+  - Community-driven
+  - Ask a question button
+  - Helpful voting on answers
+
+**Recommendations Section:**
+- **"You May Also Like":**
+  - Related products based on category
+  - Similar price range
+  - Frequently bought together
+  - Product cards with key info
+
+**Purpose of Product Detail Page:**
+- Provide comprehensive product information
+- Enable confident purchase decisions
+- Showcase product value and features
+- Build trust through reviews
+- Encourage add to cart conversions
+- Cross-sell related products
+
+---
+
+## 4. Shopping Cart
+
+### Wireframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > Shopping Cart                                                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  🛒 Shopping Cart (3 items)                                          │
+│                                                                       │
+│  ┌────────────────────────────────────────┐  ┌──────────────────┐  │
+│  │                                        │  │  Order Summary   │  │
+│  │  ┌────────────────────────────────────┐│  ├──────────────────┤  │
+│  │  │ [IMG]  Dell XPS 15 Laptop          ││  │                  │  │
+│  │  │         • Color: Black              ││  │ Subtotal:        │  │
+│  │  │         • Storage: 512GB            ││  │ $2,498.98        │  │
+│  │  │         • RAM: 16GB                 ││  │                  │  │
+│  │  │                                     ││  │ Shipping:        │  │
+│  │  │         $1,299.99                   ││  │ $15.00           │  │
+│  │  │                                     ││  │                  │  │
+│  │  │         Qty: [➖] 1 [➕]            ││  │ Tax (10%):       │  │
+│  │  │                                     ││  │ $251.40          │  │
+│  │  │         ♡ Move to Wishlist  | 🗑️ Remove│                  │  │
+│  │  └────────────────────────────────────┘│  ├──────────────────┤  │
+│  │                                        │  │ Total:           │  │
+│  │  ┌────────────────────────────────────┐│  │ $2,765.38        │  │
+│  │  │ [IMG]  Wireless Headphones         ││  │                  │  │
+│  │  │         • Color: Silver             ││  ├──────────────────┤  │
+│  │  │         • Noise Cancelling: Yes     ││  │                  │  │
+│  │  │                                     ││  │ 💳 Promo Code:  │  │
+│  │  │         $299.99                     ││  │ [___________]    │  │
+│  │  │                                     ││  │ [Apply]          │  │
+│  │  │         Qty: [➖] 1 [➕]            ││  │                  │  │
+│  │  │                                     ││  │ ━━━━━━━━━━━━━━━ │  │
+│  │  │         ♡ Move to Wishlist  | 🗑️ Remove│                  │  │
+│  │  └────────────────────────────────────┘│  │ ┌──────────────┐ │  │
+│  │                                        │  │ │ 🔒 Proceed to│ │  │
+│  │  ┌────────────────────────────────────┐│  │ │   Checkout   │ │  │
+│  │  │ [IMG]  Smart Watch                 ││  │ └──────────────┘ │  │
+│  │  │         • Color: Black              ││  │                  │  │
+│  │  │         • Size: 42mm                ││  │ [Continue       │  │
+│  │  │                                     ││  │  Shopping]       │  │
+│  │  │         $899.00                     ││  │                  │  │
+│  │  │                                     ││  │ ━━━━━━━━━━━━━━━ │  │
+│  │  │         Qty: [➖] 1 [➕]            ││  │                  │  │
+│  │  │                                     ││  │ 🔒 Secure       │  │
+│  │  │         ♡ Move to Wishlist  | 🗑️ Remove│  Checkout      │  │
+│  │  └────────────────────────────────────┘│  │                  │  │
+│  │                                        │  │ 📦 Free shipping │  │
+│  │  ┌────────────────────────────────────┐│  │  on orders $50+ │  │
+│  │  │  💡 Complete your purchase with:   ││  │                  │  │
+│  │  │                                     ││  │ 🔄 30-day       │  │
+│  │  │  [IMG] Laptop Case - $49.99 [Add] ││  │  returns         │  │
+│  │  │  [IMG] USB-C Hub - $29.99 [Add]   ││  │                  │  │
+│  │  └────────────────────────────────────┘│  │ 💳 Payment:     │  │
+│  │                                        │  │  💳 🅿️ 💰       │  │
+│  │  [← Continue Shopping] [Clear Cart]   │  │                  │  │
+│  │                                        │  └──────────────────┘  │
+│  └────────────────────────────────────────┘                        │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🛡️ Secure Shopping                                                  │
+│  All transactions are encrypted and secure. We never store your      │
+│  credit card information.                                            │
+│                                                                       │
+│  📞 Need Help? Call us at 1-800-SHOP-NOW or Chat with us           │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Cart Header:**
+- **Title:** "Shopping Cart" with item count
+- **Breadcrumb:** Shows navigation path
+- **Empty Cart State:** Show when no items (with CTA to browse)
+
+**Cart Items List (Left Column):**
+- **Item Card for each product:**
+  - **Product Image:**
+    - Thumbnail (150x150px)
+    - Clickable to product detail page
+  
+  - **Product Information:**
+    - Product name (linked to detail page)
+    - Selected variants (color, size, storage, etc.)
+    - SKU or model number
+    - Availability status
+  
+  - **Price Display:**
+    - Unit price
+    - Original price if discounted
+    - Line total (price × quantity)
+  
+  - **Quantity Selector:**
+    - Plus/minus buttons
+    - Direct input
+    - Update triggers recalculation
+    - Stock limit validation
+    - Shows loading during update
+  
+  - **Action Links:**
+    - **Move to Wishlist:**
+      - Save for later
+      - Removes from cart
+      - Heart icon
+    - **Remove:**
+      - Delete from cart
+      - Confirmation prompt (optional)
+      - Trash icon
+  
+- **Upsell/Cross-sell Section:**
+  - "Complete your purchase with"
+  - Related accessories
+  - Frequently bought together
+  - Quick add buttons
+
+- **Cart Actions:**
+  - **Continue Shopping:** Return to browsing
+  - **Clear Cart:** Remove all items (with confirmation)
+  - **Save Cart:** For logged-in users
+  - **Share Cart:** Generate shareable link
+
+**Order Summary (Right Sidebar):**
+- **Price Breakdown:**
+  - **Subtotal:** Sum of all items
+  - **Shipping:**
+    - Calculated based on location
+    - Free shipping threshold indicator
+    - "Calculate shipping" link if not entered
+  - **Tax:**
+    - Percentage and amount
+    - Based on delivery location
+  - **Discounts:** Applied coupon savings
+  - **Grand Total:** Large, bold, prominent
+  
+- **Promo Code Section:**
+  - Input field for coupon code
+  - Apply button
+  - Validation feedback
+  - Show applied coupons with remove option
+  - Error messages for invalid codes
+  
+- **Checkout Button:**
+  - Large, primary action
+  - Fixed on scroll (mobile)
+  - Lock icon for security
+  - Loading state during processing
+  
+- **Continue Shopping Link:**
+  - Secondary action
+  - Returns to product listing
+  
+- **Trust Badges:**
+  - Secure checkout icon
+  - Free shipping indicator
+  - Return policy
+  - Accepted payment methods
+
+**Progress Indicator (Optional):**
+```
+[1. Cart] → [2. Shipping] → [3. Payment] → [4. Confirmation]
+   ●            ○               ○              ○
+```
+
+**Features & Functionality:**
+1. **Auto-save:** Persist cart for logged-in users
+2. **Guest Cart:** Session-based for non-logged-in users
+3. **Stock Validation:** Real-time availability check
+4. **Price Updates:** Reflect current prices
+5. **Responsive:** Mobile-optimized layout
+6. **Analytics:** Track cart abandonment
+
+**Empty Cart State:**
+```
+┌───────────────────────────────┐
+│                               │
+│        🛒                     │
+│    Your cart is empty         │
+│                               │
+│  [Start Shopping]             │
+│                               │
+│  Or check your wishlist       │
+│                               │
+└───────────────────────────────┘
+```
+
+**Purpose of Cart Page:**
+- Review items before purchase
+- Modify quantities or remove items
+- Apply discount codes
+- See total cost breakdown
+- Provide clear path to checkout
+- Upsell related products
+- Reduce cart abandonment
+
+---
+
+## 5. Checkout Process
+
+### Wireframe - Step 1: Shipping Information
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        🔒 Secure Checkout                     [Need Help?]   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  Progress: [●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━●]                  │
+│           Shipping → Payment → Review → Confirmation                 │
+│                                                                       │
+│  ┌────────────────────────────────────────┐  ┌──────────────────┐  │
+│  │  📦 Shipping Information               │  │  Order Summary   │  │
+│  ├────────────────────────────────────────┤  ├──────────────────┤  │
+│  │                                        │  │                  │  │
+│  │  ☑️ Use saved address                 │  │  3 items         │  │
+│  │  [Select Address ▼]                   │  │                  │  │
+│  │                                        │  │  ┌────────────┐ │  │
+│  │  OR                                    │  │  │ [IMG]      │ │  │
+│  │                                        │  │  │ Dell XPS   │ │  │
+│  │  📧 Email Address *                   │  │  │ $1,299.99  │ │  │
+│  │  [_____________________________]       │  │  │ Qty: 1     │ │  │
+│  │  (For order confirmation)              │  │  └────────────┘ │  │
+│  │                                        │  │                  │  │
+│  │  👤 Full Name *                       │  │  ┌────────────┐ │  │
+│  │  [_____________________________]       │  │  │ [IMG]      │ │  │
+│  │                                        │  │  │ Headphones │ │  │
+│  │  📍 Address Line 1 *                  │  │  │ $299.99    │ │  │
+│  │  [_____________________________]       │  │  │ Qty: 1     │ │  │
+│  │                                        │  │  └────────────┘ │  │
+│  │  📍 Address Line 2                    │  │                  │  │
+│  │  [_____________________________]       │  │  ┌────────────┐ │  │
+│  │  (Apt, suite, unit, etc.)              │  │  │ [IMG]      │ │  │
+│  │                                        │  │  │ Watch      │ │  │
+│  │  🏙️ City *                            │  │  │ $899.00    │ │  │
+│  │  [_____________________________]       │  │  │ Qty: 1     │ │  │
+│  │                                        │  │  └────────────┘ │  │
+│  │  🗺️ State/Province *     📮 ZIP *    │  │                  │  │
+│  │  [______________]  [_________]         │  │  [Edit Cart]    │  │
+│  │                                        │  │                  │  │
+│  │  🌍 Country *                         │  │  ━━━━━━━━━━━━━━ │  │
+│  │  [Select Country ▼]                   │  │                  │  │
+│  │                                        │  │  Subtotal:      │  │
+│  │  📞 Phone Number *                    │  │  $2,498.98      │  │
+│  │  [_____________________________]       │  │                  │  │
+│  │  (For delivery updates)                │  │  Shipping:      │  │
+│  │                                        │  │  $15.00         │  │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │                  │  │
+│  │                                        │  │  Tax:           │  │
+│  │  🚚 Shipping Method *                 │  │  $251.40        │  │
+│  │                                        │  │                  │  │
+│  │  ○ Standard Shipping (5-7 days)       │  │  ━━━━━━━━━━━━━━ │  │
+│  │     FREE                               │  │                  │  │
+│  │                                        │  │  Total:         │  │
+│  │  ○ Express Shipping (2-3 days)        │  │  $2,765.38      │  │
+│  │     $15.00                             │  │                  │  │
+│  │                                        │  └──────────────────┘  │
+│  │  ○ Next Day Shipping                  │                        │
+│  │     $29.99                             │                        │
+│  │                                        │                        │
+│  │  ☑️ Save this address for future      │                        │
+│  │     purchases                          │                        │
+│  │                                        │                        │
+│  │  ☑️ Billing address same as shipping  │                        │
+│  │                                        │                        │
+│  │  [← Back to Cart] [Continue to Payment→]│                     │
+│  │                                        │                        │
+│  └────────────────────────────────────────┘                        │
+│                                                                       │
+│  🔒 Your information is secure and encrypted                         │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Wireframe - Step 2: Payment Information
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        🔒 Secure Checkout                     [Need Help?]   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  Progress: [●━━━━━━━━━━━━━━●━━━━━━━━━━━━━━━━━━━━●]                │
+│           Shipping → Payment → Review → Confirmation                 │
+│                                                                       │
+│  ┌────────────────────────────────────────┐  ┌──────────────────┐  │
+│  │  💳 Payment Method                     │  │  Order Summary   │  │
+│  ├────────────────────────────────────────┤  ├──────────────────┤  │
+│  │                                        │  │                  │  │
+│  │  Select Payment Method:                │  │  📦 Ship to:    │  │
+│  │                                        │  │  John Doe       │  │
+│  │  ● Credit/Debit Card                   │  │  123 Main St    │  │
+│  │  ○ PayPal                              │  │  New York, NY   │  │
+│  │  ○ Cryptocurrency                      │  │  10001          │  │
+│  │  ○ Cash on Delivery                    │  │  [Change]       │  │
+│  │                                        │  │                  │  │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │  ━━━━━━━━━━━━━━ │  │
+│  │                                        │  │                  │  │
+│  │  💳 Card Information                   │  │  🚚 Shipping:   │  │
+│  │                                        │  │  Express        │  │
+│  │  Card Number *                         │  │  (2-3 days)     │  │
+│  │  [____-____-____-____]  💳 🅿️         │  │  $15.00         │  │
+│  │                                        │  │  [Change]       │  │
+│  │  Cardholder Name *                     │  │                  │  │
+│  │  [_____________________________]       │  │  ━━━━━━━━━━━━━━ │  │
+│  │                                        │  │                  │  │
+│  │  Expiry Date *        CVV *           │  │  Subtotal:      │  │
+│  │  [MM / YY]            [___]    🛡️     │  │  $2,498.98      │  │
+│  │                                        │  │                  │  │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │  Shipping:      │  │
+│  │                                        │  │  $15.00         │  │
+│  │  📍 Billing Address                   │  │                  │  │
+│  │  ☑️ Same as shipping address          │  │  Tax (10%):     │  │
+│  │                                        │  │  $251.40        │  │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │                  │  │
+│  │                                        │  │  Discount:      │  │
+│  │  💰 Promo Code                        │  │  -$50.00        │  │
+│  │  [____________] [Apply]                │  │  (SAVE10)       │  │
+│  │  ✅ Code "SAVE10" applied: -$50.00   │  │                  │  │
+│  │                                        │  │  ━━━━━━━━━━━━━━ │  │
+│  │  ☑️ Save this card for future purchases│  │  Total:        │  │
+│  │  ☑️ Subscribe to newsletter (10% off) │  │  $2,715.38      │  │
+│  │                                        │  │                  │  │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │  │  💳 You Pay:    │  │
+│  │                                        │  │  $2,715.38      │  │
+│  │  By placing this order, you agree to   │  │                  │  │
+│  │  our [Terms of Service] and            │  │  🔒 Secure      │  │
+│  │  [Privacy Policy]                      │  │     Payment     │  │
+│  │                                        │  │                  │  │
+│  │  [← Back]  [Place Order 🔒]          │  │  💳 💰 🅿️      │  │
+│  │                                        │  │                  │  │
+│  └────────────────────────────────────────┘  └──────────────────┘  │
+│                                                                       │
+│  🔒 128-bit SSL Encryption | Your payment info is never stored      │
+│  💳 Accepted: Visa, Mastercard, Amex, PayPal, Bitcoin               │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Wireframe - Step 3: Order Confirmation
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]                                                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│                  ✅ Order Confirmed!                                 │
+│                                                                       │
+│              Thank you for your purchase, John!                      │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📧 A confirmation email has been sent to: john@example.com          │
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  Order Number: #ORD-2026-0001234                             │   │
+│  │  Order Date: February 28, 2026                               │   │
+│  │  Estimated Delivery: March 2-3, 2026                         │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📦 Order Details                                                    │
+│                                                                       │
+│  ┌───────────────────────────────────────────────────────────────┐ │
+│  │  Shipping Address:              Billing Address:               │ │
+│  │  John Doe                       John Doe                       │ │
+│  │  123 Main Street                123 Main Street                │ │
+│  │  Apt 4B                         Apt 4B                         │ │
+│  │  New York, NY 10001             New York, NY 10001             │ │
+│  │  Phone: (555) 123-4567          Payment: Visa •••• 1234        │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  Items Ordered:                                                      │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │  [IMG]  Dell XPS 15 Laptop                        $1,299.99 │    │
+│  │         • Color: Black                                       │    │
+│  │         • Storage: 512GB • RAM: 16GB                        │    │
+│  │         Qty: 1                                               │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │  [IMG]  Wireless Headphones                         $299.99 │    │
+│  │         • Color: Silver                                      │    │
+│  │         Qty: 1                                               │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │  [IMG]  Smart Watch                                 $899.00 │    │
+│  │         • Color: Black • Size: 42mm                         │    │
+│  │         Qty: 1                                               │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  Order Summary:                                                      │
+│                                                                       │
+│  Subtotal:                                          $2,498.98        │
+│  Shipping (Express 2-3 days):                         $15.00        │
+│  Tax (10%):                                          $251.40        │
+│  Discount (SAVE10):                                  -$50.00        │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  Total Paid:                                       $2,715.38        │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📱 Track Your Order                                                 │
+│  You can track your order status anytime from your account.          │
+│                                                                       │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐       │
+│  │ [Track Order] │  │[View Receipt]  │  │[Continue       │       │
+│  │               │  │                │  │ Shopping]      │       │
+│  └────────────────┘  └────────────────┘  └────────────────┘       │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🎁 Share this with friends and get $10 off your next order!        │
+│  [📧 Email] [📱 SMS] [🔗 Copy Link]                                │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  💬 Questions about your order? [Contact Support] or call            │
+│     1-800-SHOP-NOW                                                   │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description of Checkout Process:
+
+**Step 1: Shipping Information**
+- **Email for Guest Checkout:** Capture early
+- **Saved Addresses:** For returning customers
+- **Address Form:** Standard fields with validation
+- **Real-time Validation:** Check address as user types
+- **Shipping Method Selection:**
+  - Radio buttons for different speeds
+  - Price clearly displayed
+  - Estimated delivery date
+- **Save Preferences:** Checkbox to save address
+- **Billing Option:** Checkbox if same as shipping
+
+**Step 2: Payment**
+- **Multiple Payment Options:**
+  - Credit/Debit Card (primary)
+  - PayPal
+  - Cryptocurrency
+  - Cash on Delivery (region-specific)
+- **Card Form:**
+  - Real-time validation
+  - Card type detection
+  - CVV info tooltip
+  - Secure input fields
+- **Promo Code:** Apply discounts
+- **Save Card:** Option for future purchases
+- **Terms Agreement:** Clear checkbox
+- **Security Badges:** Build trust
+
+**Step 3: Order Confirmation**
+- **Success Message:** Clear confirmation
+- **Order Details:** Complete summary
+- **Next Steps:** Track order, download receipt
+- **Marketing:** Newsletter signup, referral program
+- **Support:** Easy access to help
+
+**Key Features:**
+1. **Progress Indicator:** Always visible
+2. **Persistent Summary:** Order total always visible
+3. **Edit Options:** Change cart/shipping/payment
+4. **Auto-save:** Save progress for logged-in users
+5. **Mobile Optimized:** Stack layout on small screens
+6. **Fast Checkout:** Apple Pay, Google Pay integration
+7. **Security:** SSL, PCI compliance badges
+8. **Error Handling:** Clear, inline validation messages
+
+**Purpose:**
+- Minimize friction in purchase process
+- Build trust with security indicators
+- Provide transparency on costs
+- Enable easy modification of order
+- Reduce cart abandonment
+- Collect necessary information efficiently
+
+---
+
+## 6. User Account/Profile
+
+### Wireframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > My Account                                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌──────────────────┐  ┌──────────────────────────────────────────┐│
+│  │                  │  │                                            ││
+│  │  SIDEBAR MENU    │  │  Welcome back, John! 👋                  ││
+│  │                  │  │                                            ││
+│  │  [Profile Pic]   │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  │                  │  │                                            ││
+│  │  John Doe        │  │  📊 Account Overview                      ││
+│  │  john@email.com  │  │                                            ││
+│  │                  │  │  ┌──────────┐ ┌──────────┐ ┌──────────┐  ││
+│  │  ━━━━━━━━━━━━━  │  │  │    12    │ │    5     │ │   $2,345 │  ││
+│  │                  │  │  │  Orders  │ │ Wishlist │ │  Rewards │  ││
+│  │  ● Dashboard     │  │  └──────────┘ └──────────┘ └──────────┘  ││
+│  │  ○ Orders        │  │                                            ││
+│  │  ○ Wishlist      │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  │  ○ Addresses     │  │                                            ││
+│  │  ○ Payment       │  │  📦 Recent Orders                         ││
+│  │    Methods       │  │                                            ││
+│  │  ○ Account       │  │  ┌────────────────────────────────────┐  ││
+│  │    Settings      │  │  │ Order #ORD-2026-0001234            │  ││
+│  │  ○ Reviews       │  │  │ February 28, 2026                  │  ││
+│  │  ○ Notifications │  │  │                                     │  ││
+│  │  ━━━━━━━━━━━━━  │  │  │ [IMG] Dell XPS 15 Laptop + 2 items│  ││
+│  │  [Logout]        │  │  │                                     │  ││
+│  │                  │  │  │ Status: 🚚 Shipped                 │  ││
+│  │                  │  │  │ Total: $2,715.38                   │  ││
+│  │                  │  │  │                                     │  ││
+│  │                  │  │  │ [Track Order] [View Details]       │  ││
+│  │                  │  │  └────────────────────────────────────┘  ││
+│  │                  │  │                                            ││
+│  │                  │  │  ┌────────────────────────────────────┐  ││
+│  │                  │  │  │ Order #ORD-2026-0001198            │  ││
+│  │                  │  │  │ February 20, 2026                  │  ││
+│  │                  │  │  │                                     │  ││
+│  │                  │  │  │ [IMG] Wireless Mouse               │  ││
+│  │                  │  │  │                                     │  ││
+│  │                  │  │  │ Status: ✅ Delivered               │  ││
+│  │                  │  │  │ Total: $49.99                      │  ││
+│  │                  │  │  │                                     │  ││
+│  │                  │  │  │ [Write Review] [Buy Again]         │  ││
+│  │                  │  │  └────────────────────────────────────┘  ││
+│  │                  │  │                                            ││
+│  │                  │  │  [View All Orders →]                      ││
+│  │                  │  │                                            ││
+│  │                  │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  │                  │  │                                            ││
+│  │                  │  │  ⭐ Recommended for You                   ││
+│  │                  │  │                                            ││
+│  │                  │  │  ┌────────┐ ┌────────┐ ┌────────┐       ││
+│  │                  │  │  │ [IMG]  │ │ [IMG]  │ │ [IMG]  │       ││
+│  │                  │  │  │        │ │        │ │        │       ││
+│  │                  │  │  │Product1│ │Product2│ │Product3│       ││
+│  │                  │  │  │$99.99  │ │$149.99 │ │$79.99  │       ││
+│  │                  │  │  └────────┘ └────────┘ └────────┘       ││
+│  │                  │  │                                            ││
+│  └──────────────────┘  └──────────────────────────────────────────┘│
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Account Settings Page:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                   ⚙️ Account Settings                                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  [Dashboard] [Orders] [Wishlist] [Addresses] [Payment] [●Settings]  │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  👤 Personal Information                                             │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │                                                              │    │
+│  │  Profile Picture:                                           │    │
+│  │  ┌─────────┐                                                │    │
+│  │  │ [IMG]   │  [Upload New Photo] [Remove]                  │    │
+│  │  └─────────┘                                                │    │
+│  │                                                              │    │
+│  │  Full Name *                                                │    │
+│  │  [John Doe________________________]                         │    │
+│  │                                                              │    │
+│  │  Email Address *                                            │    │
+│  │  [john@example.com________________] [Verify]               │    │
+│  │  ✅ Email verified                                          │    │
+│  │                                                              │    │
+│  │  Phone Number                                               │    │
+│  │  [(555) 123-4567__________________] [Verify]               │    │
+│  │                                                              │    │
+│  │  Date of Birth                                              │    │
+│  │  [MM / DD / YYYY_________________]                          │    │
+│  │                                                              │    │
+│  │  Gender                                                      │    │
+│  │  ○ Male  ○ Female  ○ Other  ○ Prefer not to say           │    │
+│  │                                                              │    │
+│  │  [Save Changes]                                             │    │
+│  │                                                              │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🔐 Security                                                         │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │                                                              │    │
+│  │  Change Password                                            │    │
+│  │  Current Password                                           │    │
+│  │  [________________________]                                 │    │
+│  │                                                              │    │
+│  │  New Password                                               │    │
+│  │  [________________________]  (🔴 Weak / 🟡 Medium / 🟢 Strong)│
+│  │                                                              │    │
+│  │  Confirm New Password                                       │    │
+│  │  [________________________]                                 │    │
+│  │                                                              │    │
+│  │  [Update Password]                                          │    │
+│  │                                                              │    │
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │    │
+│  │                                                              │    │
+│  │  Two-Factor Authentication (2FA)                            │    │
+│  │  ☑️ Enable 2FA for extra security                          │    │
+│  │  [Configure 2FA]                                            │    │
+│  │                                                              │    │
+│  │  Active Sessions                                            │    │
+│  │  • Chrome on Windows - Current session                      │    │
+│  │  • Safari on iPhone - Last active 2 hours ago [Revoke]     │    │
+│  │                                                              │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🔔 Notification Preferences                                         │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │                                                              │    │
+│  │  Email Notifications                                        │    │
+│  │  ☑️ Order confirmations and updates                        │    │
+│  │  ☑️ Shipping notifications                                 │    │
+│  │  ☑️ Price drop alerts for wishlisted items                 │    │
+│  │  ☐ Promotional emails and special offers                   │    │
+│  │  ☑️ Product recommendations                                │    │
+│  │  ☐ Newsletter (weekly digest)                              │    │
+│  │                                                              │    │
+│  │  SMS Notifications                                          │    │
+│  │  ☑️ Order delivery updates                                 │    │
+│  │  ☐ Flash sales and limited-time offers                     │    │
+│  │                                                              │    │
+│  │  Push Notifications (Mobile App)                            │    │
+│  │  ☑️ Order status changes                                   │    │
+│  │  ☑️ Special deals                                          │    │
+│  │                                                              │    │
+│  │  [Save Preferences]                                         │    │
+│  │                                                              │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  💳 Loyalty & Rewards                                                │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │                                                              │    │
+│  │  Loyalty Points: 2,345 points                               │    │
+│  │  = $23.45 in rewards                                        │    │
+│  │                                                              │    │
+│  │  Member Since: January 2024                                 │    │
+│  │  Tier: Gold Member 🥇                                       │    │
+│  │                                                              │    │
+│  │  Points History:                                            │    │
+│  │  + 500 pts - Purchase on Feb 28, 2026                      │    │
+│  │  - 100 pts - Redeemed for discount                         │    │
+│  │  + 250 pts - Birthday bonus                                │    │
+│  │                                                              │    │
+│  │  [View Rewards Program] [Redeem Points]                    │    │
+│  │                                                              │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  🗑️ Account Actions                                                 │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────┐    │
+│  │                                                              │    │
+│  │  [Download My Data] - Export all your account data         │    │
+│  │                                                              │    │
+│  │  [Delete Account] - Permanently delete your account         │    │
+│  │  ⚠️ Warning: This action cannot be undone                   │    │
+│  │                                                              │    │
+│  └────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Dashboard Overview:**
+- **Welcome Message:** Personalized greeting
+- **Quick Stats Cards:**
+  - Total orders count
+  - Wishlist items count
+  - Loyalty points/rewards balance
+  - Click-through to respective pages
+- **Recent Orders:**
+  - Last 2-3 orders displayed
+  - Order number, date, status
+  - Product thumbnails
+  - Quick actions (track, review, buy again)
+- **Recommendations:**
+  - Based on purchase history
+  - Personalized product suggestions
+
+**Sidebar Navigation:**
+- **Profile Picture & Name:** Visual identification
+- **Menu Items:**
+  - Dashboard (overview)
+  - Orders (complete history)
+  - Wishlist (saved items)
+  - Addresses (shipping/billing)
+  - Payment Methods (saved cards)
+  - Account Settings
+  - Reviews (written reviews)
+  - Notifications
+- **Logout Button:** Clear, accessible
+
+**Account Settings:**
+- **Personal Information:**
+  - Profile picture upload
+  - Name, email, phone
+  - Date of birth
+  - Gender selection
+  - Verification badges
+  
+- **Security:**
+  - Password change form
+  - Password strength indicator
+  - 2FA enable/disable
+  - Active sessions management
+  - Revoke access option
+  
+- **Notification Preferences:**
+  - Granular email settings
+  - SMS opt-in/out
+  - Push notifications (mobile)
+  - Marketing communications
+  - Frequency controls
+  
+- **Loyalty Program:**
+  - Points balance
+  - Member tier display
+  - Points history/transactions
+  - Redemption options
+  - Program details link
+  
+- **Data & Privacy:**
+  - Download account data (GDPR)
+  - Delete account option
+  - Privacy policy link
+
+**Responsive Design:**
+- Sidebar collapses to hamburger menu on mobile
+- Cards stack vertically on small screens
+- Touch-friendly button sizes
+- Optimized forms for mobile input
+
+**Purpose:**
+- Central hub for account management
+- Easy access to order history
+- Manage personal information
+- Control privacy and notifications
+- Track loyalty rewards
+- Quick access to frequently used features
+
+---
+
+## 7. Wishlist
+
+### Wireframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > My Account > Wishlist                                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ♡ My Wishlist (8 items)                            [Share] [Create │
+│                                                       New List]       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  Filter: [All] [In Stock] [On Sale] [Price Drop]    Sort: [Date Added ▼]│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │ [X]                                                             ││
+│  │ ┌───────┐  Dell XPS 15 Laptop                                  ││
+│  │ │ [IMG] │                                                       ││
+│  │ │       │  ⭐⭐⭐⭐⭐ 4.8 (523 reviews)                          ││
+│  │ └───────┘                                                       ││
+│  │            $1,299.99  $1,499.99  🔽 13% Price Drop!            ││
+│  │                                                                  ││
+│  │            📦 In Stock                                          ││
+│  │            🔔 Notify me when price drops below $1,200           ││
+│  │                                                                  ││
+│  │            Added: February 20, 2026                             ││
+│  │                                                                  ││
+│  │            [🛒 Add to Cart]  [👁️ View]  [🗑️ Remove]           ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │ [X]                                                             ││
+│  │ ┌───────┐  Wireless Noise-Cancelling Headphones                ││
+│  │ │ [IMG] │                                                       ││
+│  │ │       │  ⭐⭐⭐⭐☆ 4.5 (891 reviews)                           ││
+│  │ └───────┘                                                       ││
+│  │            $299.99                                              ││
+│  │                                                                  ││
+│  │            📦 In Stock                                          ││
+│  │            🔔 Price drop alert enabled                          ││
+│  │                                                                  ││
+│  │            Added: February 15, 2026                             ││
+│  │                                                                  ││
+│  │            [🛒 Add to Cart]  [👁️ View]  [🗑️ Remove]           ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │ [X]                                                             ││
+│  │ ┌───────┐  Smart Watch Pro                                     ││
+│  │ │ [IMG] │                                                       ││
+│  │ │       │  ⭐⭐⭐⭐⭐ 4.9 (654 reviews)                          ││
+│  │ └───────┘                                                       ││
+│  │            $899.00                                              ││
+│  │                                                                  ││
+│  │            ⚠️ Low Stock - Only 3 left!                         ││
+│  │            🔔 Notify when back in stock                         ││
+│  │                                                                  ││
+│  │            Added: February 10, 2026                             ││
+│  │                                                                  ││
+│  │            [🛒 Add to Cart]  [👁️ View]  [🗑️ Remove]           ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │ [X]                                                             ││
+│  │ ┌───────┐  4K Gaming Monitor                                   ││
+│  │ │ [IMG] │                                                       ││
+│  │ │       │  ⭐⭐⭐⭐⭐ 4.7 (234 reviews)                          ││
+│  │ └───────┘                                                       ││
+│  │            $599.99                                              ││
+│  │                                                                  ││
+│  │            ❌ Out of Stock                                      ││
+│  │            🔔 ✅ You'll be notified when available              ││
+│  │                                                                  ││
+│  │            Added: February 5, 2026                              ││
+│  │                                                                  ││
+│  │            [👁️ View Similar]  [🗑️ Remove]                     ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  [More items...]                                                     │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  Bulk Actions:                                                       │
+│  [☐ Select All]  [🛒 Add Selected to Cart]  [🗑️ Remove Selected]  │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📤 Share Your Wishlist                                             │
+│  Share with friends and family for gift ideas!                       │
+│                                                                       │
+│  [📧 Email] [📱 Copy Link] [🔗 Generate Gift Registry]             │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Wishlist Header:**
+- **Title:** "My Wishlist" with item count
+- **Actions:**
+  - Share wishlist button
+  - Create new list (for multiple wishlists)
+  - Print wishlist option
+
+**Filtering & Sorting:**
+- **Filters:**
+  - All items
+  - In Stock only
+  - On Sale
+  - Price Drop alerts
+  - Out of Stock
+- **Sort Options:**
+  - Date Added (newest/oldest)
+  - Price (low to high, high to low)
+  - Product Name (A-Z)
+  - Priority (if user can set)
+
+**Wishlist Item Card:**
+- **Selection Checkbox:** For bulk actions
+- **Product Image:** Thumbnail, clickable to product page
+- **Product Name:** Linked to detail page
+- **Rating & Reviews:** Social proof
+- **Price Display:**
+  - Current price
+  - Original price if on sale
+  - Price drop indicator
+  - Percentage discount
+- **Stock Status:**
+  - In Stock (green)
+  - Low Stock with count (orange)
+  - Out of Stock (red)
+- **Notifications:**
+  - Price drop alert toggle
+  - Back in stock alert
+  - Set target price for notification
+- **Date Added:** When item was wishlisted
+- **Actions:**
+  - Add to Cart button (primary action)
+  - View Product button
+  - Remove from Wishlist button
+  - Move to another list (if multiple lists)
+
+**Price Drop Alert:**
+- **Toggle Notification:**
+  - Enable/disable price alerts
+  - Set target price
+  - Email or push notification
+- **Price History (Optional):**
+  - Graph showing price changes over time
+  - Lowest price indicator
+
+**Bulk Actions:**
+- **Select All Checkbox:** Select/deselect all items
+- **Add Selected to Cart:** Add multiple items at once
+- **Remove Selected:** Delete multiple items
+- **Move to List:** Transfer to another wishlist
+
+**Share Wishlist:**
+- **Email Sharing:**
+  - Send wishlist via email
+  - Include personal message
+- **Link Generation:**
+  - Create shareable link
+  - Set privacy (public/private)
+- **Gift Registry:**
+  - Convert wishlist to gift registry
+  - Mark items as purchased
+  - Thank you messages
+
+**Empty Wishlist State:**
+```
+┌─────────────────────────────┐
+│          ♡                  │
+│   Your wishlist is empty    │
+│                             │
+│   Start adding items you    │
+│   love and want to buy      │
+│   later!                    │
+│                             │
+│   [Browse Products]         │
+│                             │
+└─────────────────────────────┘
+```
+
+**Mobile Optimizations:**
+- Stack items vertically
+- Swipe to remove
+- Floating "Add All to Cart" button
+- Quick actions menu
+
+**Purpose:**
+- Save products for later consideration
+- Track price changes
+- Share gift ideas with others
+- Quick access to frequently viewed items
+- Get notified when items go on sale
+- Organize shopping by creating multiple lists
+
+---
+
+## 8. Order History
+
+### Wireframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]        Search Box 🔍              [Cart] [Wishlist] [Login] │
+├─────────────────────────────────────────────────────────────────────┤
+│  Home > My Account > Orders                                          │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  📦 My Orders (24 total)                                             │
+│                                                                       │
+│  Filter: [All] [Pending] [Shipped] [Delivered] [Cancelled]          │
+│  Date Range: [Last 30 days ▼]    Search: [Order # or product__]     │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  Order #ORD-2026-0001234                  Status: 🚚 Shipped   ││
+│  │  Placed: February 28, 2026                                      ││
+│  │  Estimated Delivery: March 2-3, 2026                            ││
+│  │                                                                  ││
+│  │  ┌──────┐                                                       ││
+│  │  │[IMG] │  Dell XPS 15 Laptop + 2 more items                   ││
+│  │  │      │  Color: Black, Storage: 512GB                         ││
+│  │  └──────┘  Qty: 1 × $1,299.99                                  ││
+│  │                                                                  ││
+│  │  Total: $2,715.38  (3 items)                                    ││
+│  │                                                                  ││
+│  │  📍 Shipping to: 123 Main St, New York, NY 10001               ││
+│  │  🚚 Carrier: FedEx Express                                      ││
+│  │  📦 Tracking: FDX1234567890  [Track Package]                   ││
+│  │                                                                  ││
+│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌──────────┐││
+│  │  │Track Order  │ │View Invoice │ │View Details │ │Need Help?│││
+│  │  └─────────────┘ └─────────────┘ └─────────────┘ └──────────┘││
+│  │                                                                  ││
+│  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  │                                                                  ││
+│  │  📍 Order Timeline:                                             ││
+│  │  ●━━━━●━━━━●━━━━○━━━━○                                        ││
+│  │  Placed  Confirmed  Shipped  In Transit  Delivered             ││
+│  │  Feb 28  Feb 28     Feb 29   -          -                      ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  Order #ORD-2026-0001198                Status: ✅ Delivered   ││
+│  │  Placed: February 20, 2026                                      ││
+│  │  Delivered: February 23, 2026                                   ││
+│  │                                                                  ││
+│  │  ┌──────┐                                                       ││
+│  │  │[IMG] │  Wireless Mouse                                      ││
+│  │  │      │  Color: Black                                         ││
+│  │  └──────┘  Qty: 1 × $49.99                                     ││
+│  │                                                                  ││
+│  │  Total: $49.99  (1 item)                                        ││
+│  │                                                                  ││
+│  │  📍 Delivered to: 123 Main St, New York, NY 10001              ││
+│  │                                                                  ││
+│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌──────────┐││
+│  │  │Buy Again    │ │Write Review │ │View Invoice │ │Return    │││
+│  │  └─────────────┘ └─────────────┘ └─────────────┘ └──────────┘││
+│  │                                                                  ││
+│  │  ⏰ Return window closes: March 23, 2026 (28 days left)        ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  Order #ORD-2026-0001145                Status: ⏳ Processing  ││
+│  │  Placed: February 15, 2026                                      ││
+│  │  Estimated Shipping: March 1, 2026                              ││
+│  │                                                                  ││
+│  │  ┌──────┐                                                       ││
+│  │  │[IMG] │  Gaming Keyboard + 1 more item                       ││
+│  │  │      │  Switch Type: Blue                                    ││
+│  │  └──────┘  Qty: 1 × $129.99                                    ││
+│  │                                                                  ││
+│  │  Total: $199.98  (2 items)                                      ││
+│  │                                                                  ││
+│  │  📍 Shipping to: 123 Main St, New York, NY 10001               ││
+│  │  💳 Payment: Visa •••• 1234                                     ││
+│  │                                                                  ││
+│  │  ℹ️ Your order is being prepared for shipment                  ││
+│  │                                                                  ││
+│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐              ││
+│  │  │View Details │ │View Invoice │ │Cancel Order │              ││
+│  │  └─────────────┘ └─────────────┘ └─────────────┘              ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  Order #ORD-2026-0001087              Status: ❌ Cancelled     ││
+│  │  Placed: February 10, 2026                                      ││
+│  │  Cancelled: February 11, 2026                                   ││
+│  │                                                                  ││
+│  │  ┌──────┐                                                       ││
+│  │  │[IMG] │  Bluetooth Speaker                                   ││
+│  │  │      │  Color: Red                                           ││
+│  │  └──────┘  Qty: 2 × $79.99                                     ││
+│  │                                                                  ││
+│  │  Refunded: $159.98                                              ││
+│  │  💳 Refund to: Visa •••• 1234 (Processed Feb 12)               ││
+│  │                                                                  ││
+│  │  Cancellation Reason: Changed mind                              ││
+│  │                                                                  ││
+│  │  ┌─────────────┐ ┌─────────────┐                               ││
+│  │  │Buy Again    │ │View Details │                               ││
+│  │  └─────────────┘ └─────────────┘                               ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  [Load More Orders]  or  [← 1 2 3 4 5 →]                           │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Order Detail Page:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO]              Order #ORD-2026-0001234                         │
+├─────────────────────────────────────────────────────────────────────┤
+│  [← Back to Orders]                                                  │
+│                                                                       │
+│  📦 Order Details                          Status: 🚚 Shipped        │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  ┌────────────────────────────┐  ┌───────────────────────────────┐ │
+│  │  Order Information         │  │  Delivery & Payment           │ │
+│  ├────────────────────────────┤  ├───────────────────────────────┤ │
+│  │                            │  │                               │ │
+│  │  Order Number:             │  │  📍 Shipping Address:         │ │
+│  │  #ORD-2026-0001234         │  │  John Doe                     │ │
+│  │                            │  │  123 Main Street, Apt 4B      │ │
+│  │  Order Date:               │  │  New York, NY 10001           │ │
+│  │  February 28, 2026         │  │  Phone: (555) 123-4567        │ │
+│  │  10:34 AM EST              │  │                               │ │
+│  │                            │  │  📍 Billing Address:          │ │
+│  │  Order Status:             │  │  Same as shipping             │ │
+│  │  🚚 Shipped                │  │                               │ │
+│  │                            │  │  💳 Payment Method:           │ │
+│  │  Tracking Number:          │  │  Visa ending in •••• 1234     │ │
+│  │  FDX1234567890             │  │  Transaction ID: TXN12345     │ │
+│  │  [Track Package →]         │  │                               │ │
+│  │                            │  │  🚚 Shipping Method:          │ │
+│  │  Estimated Delivery:       │  │  Express (2-3 business days)  │ │
+│  │  March 2-3, 2026           │  │  Cost: $15.00                 │ │
+│  │                            │  │                               │ │
+│  └────────────────────────────┘  └───────────────────────────────┘ │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📦 Items in This Order                                              │
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  ┌──────────┐                                                   ││
+│  │  │  [IMG]   │  Dell XPS 15 Laptop                               ││
+│  │  │          │                                                    ││
+│  │  │          │  • Color: Black                                    ││
+│  │  │          │  • Storage: 512GB SSD                              ││
+│  │  │          │  • RAM: 16GB                                       ││
+│  │  └──────────┘  • SKU: DXPS15-BLK-512-16                         ││
+│  │                                                                   ││
+│  │                Quantity: 1                                        ││
+│  │                Price: $1,299.99                                   ││
+│  │                Subtotal: $1,299.99                                ││
+│  │                                                                   ││
+│  │                [Buy Again] [Write Review]                        ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  ┌──────────┐                                                   ││
+│  │  │  [IMG]   │  Wireless Noise-Cancelling Headphones             ││
+│  │  │          │                                                    ││
+│  │  │          │  • Color: Silver                                   ││
+│  │  │          │  • Noise Cancelling: Active                        ││
+│  │  │          │  • SKU: WH-NC-SLV                                  ││
+│  │  └──────────┘                                                    ││
+│  │                                                                   ││
+│  │                Quantity: 1                                        ││
+│  │                Price: $299.99                                     ││
+│  │                Subtotal: $299.99                                  ││
+│  │                                                                   ││
+│  │                [Buy Again] [Write Review]                        ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ┌────────────────────────────────────────────────────────────────┐│
+│  │  ┌──────────┐                                                   ││
+│  │  │  [IMG]   │  Smart Watch Pro                                  ││
+│  │  │          │                                                    ││
+│  │  │          │  • Color: Black                                    ││
+│  │  │          │  • Size: 42mm                                      ││
+│  │  │          │  • SKU: SW-PRO-BLK-42                              ││
+│  │  └──────────┘                                                    ││
+│  │                                                                   ││
+│  │                Quantity: 1                                        ││
+│  │                Price: $899.00                                     ││
+│  │                Subtotal: $899.00                                  ││
+│  │                                                                   ││
+│  │                [Buy Again] [Write Review]                        ││
+│  └────────────────────────────────────────────────────────────────┘│
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  💰 Order Summary                                                    │
+│                                                                       │
+│  Subtotal (3 items):                                   $2,498.98     │
+│  Shipping (Express 2-3 days):                            $15.00     │
+│  Tax (10%):                                             $251.40     │
+│  Discount (SAVE10):                                     -$50.00     │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  Total:                                                $2,715.38     │
+│  Payment Method: Visa •••• 1234                                      │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📋 Order Timeline                                                   │
+│                                                                       │
+│  ●━━━━━━━━━●━━━━━━━━━●━━━━━━━━━○━━━━━━━━━○                      │
+│  Order       Payment     Shipped       In Transit   Delivered        │
+│  Placed      Confirmed                                               │
+│                                                                       │
+│  Feb 28, 2026  Feb 28, 2026  Feb 29, 2026  Expected:    Expected:   │
+│  10:34 AM      10:35 AM      8:00 AM       Mar 1-2      Mar 2-3     │
+│                                                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                       │
+│  📄 Actions                                                          │
+│                                                                       │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
+│  │ Download     │  │ Print Invoice│  │ Contact      │              │
+│  │ Invoice (PDF)│  │              │  │ Support      │              │
+│  └──────────────┘  └──────────────┘  └──────────────┘              │
+│                                                                       │
+│  ⚠️ Need to return or exchange? You have 30 days from delivery date │
+│  [Start Return/Exchange Process]                                     │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Order History List:**
+- **Filters:**
+  - Status-based (All, Pending, Shipped, Delivered, Cancelled)
+  - Date range picker
+  - Search by order number or product name
+  
+- **Order Card:**
+  - **Header:**
+    - Order number
+    - Order status with icon
+    - Order date
+    - Expected/actual delivery date
+  - **Product Preview:**
+    - Primary product image
+    - Product name
+    - Key variant info
+    - "+ X more items" if multiple
+  - **Summary:**
+    - Total amount
+    - Item count
+    - Shipping address (abbreviated)
+    - Tracking info if available
+  - **Order Timeline:**
+    - Visual progress indicator
+    - Status milestones
+    - Dates for each status
+  - **Action Buttons:**
+    - Track Order (if shipped)
+    - View Details
+    - View Invoice
+    - Buy Again
+    - Write Review (if delivered)
+    - Cancel Order (if pending/processing)
+    - Return/Exchange (if eligible)
+    - Need Help/Contact Support
+
+**Order Status Indicators:**
+- **Pending (⏳):** Payment confirmed, awaiting processing
+- **Processing (🔄):** Order being prepared
+- **Shipped (🚚):** In transit with tracking
+- **Delivered (✅):** Successfully delivered
+- **Cancelled (❌):** Order cancelled with refund info
+
+**Order Detail Page:**
+- **Comprehensive Info:**
+  - Complete order information
+  - Full product list with details
+  - Shipping and billing addresses
+  - Payment method used
+  - Complete price breakdown
+  - Order timeline visualization
+  
+- **Actions:**
+  - Download/print invoice
+  - Track shipment
+  - Contact support
+  - Initiate return/exchange
+  - Reorder all items
+  - Review products
+
+**Tracking Integration:**
+- Real-time tracking updates
+- Map view of shipment location (optional)
+- Estimated delivery window
+- Delivery photos/proof
+- Sign for delivery option
+
+**Return/Exchange Flow:**
+- Check eligibility (within 30 days)
+- Select items to return
+- Choose reason
+- Print return label
+- Track return shipment
+- Refund processing status
+
+**Purpose:**
+- Complete order transparency
+- Easy reordering
+- Track multiple orders
+- Manage returns/exchanges
+- Download invoices for records
+- Contact support for issues
+- Write reviews post-purchase
+
+---
+
+## 9. Admin Dashboard
+
+### Wireframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [LOGO] ADMIN                [Search...]         [Notifications] [👤]│
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌─────────────┐  ┌────────────────────────────────────────────────┐│
+│  │             │  │                                                 ││
+│  │ SIDEBAR     │  │  📊 Dashboard Overview                         ││
+│  │             │  │                                                 ││
+│  │ ● Dashboard │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│  │             │  │                                                 ││
+│  │ 📦 Orders   │  │  Today: February 28, 2026                      ││
+│  │ 📦 Products │  │                                                 ││
+│  │ 👥 Users    │  │  ┌─────────────┐  ┌─────────────┐  ┌────────┐││
+│  │ 📊 Analytics│  │  │   💰        │  │   📦        │  │  👥    │││
+│  │ 💰 Sales    │  │  │  Revenue    │  │  Orders     │  │ Users  │││
+│  │ 📦 Inventory│  │  │             │  │             │  │        │││
+│  │ ⭐ Reviews  │  │  │  $45,289    │  │    156      │  │  1,234 │││
+│  │ 🏷️ Coupons │  │  │  +12.5% ↑   │  │  +8.3% ↑    │  │ +5.2%↑│││
+│  │ 📧 Messages │  │  │             │  │             │  │        │││
+│  │ ⚙️ Settings │  │  │  vs yesterday│  │ 23 pending  │  │ Active │││
+│  │             │  │  └─────────────┘  └─────────────┘  └────────┘││
+│  │ 🚪 Logout   │  │                                                 ││
+│  │             │  │  ┌─────────────┐  ┌─────────────┐             ││
+│  └─────────────┘  │  │   ⭐        │  │   📈        │             ││
+│                    │  │  Avg Rating │  │ Conversion  │             ││
+│                    │  │             │  │             │             ││
+│                    │  │    4.7      │  │   3.2%      │             ││
+│                    │  │  ⭐⭐⭐⭐⭐  │  │  +0.5% ↑    │             ││
+│                    │  │             │  │             │             ││
+│                    │  │  523 reviews│  │  This month │             ││
+│                    │  └─────────────┘  └─────────────┘             ││
+│                    │                                                 ││
+│                    │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│                    │                                                 ││
+│                    │  📈 Sales Chart                                ││
+│                    │                                                 ││
+│                    │  Period: [Last 30 Days ▼]                     ││
+│                    │                                                 ││
+│                    │  $60k  ┤                                       ││
+│                    │        ┤                              ●        ││
+│                    │  $50k  ┤                         ●──●          ││
+│                    │        ┤                    ●──●               ││
+│                    │  $40k  ┤               ●──●                    ││
+│                    │        ┤          ●──●                         ││
+│                    │  $30k  ┤     ●──●                              ││
+│                    │        ┤ ●──●                                  ││
+│                    │  $20k  └─────────────────────────────────────► ││
+│                    │         Week1 Week2 Week3 Week4 Week5         ││
+│                    │                                                 ││
+│                    │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│                    │                                                 ││
+│                    │  🔥 Top Selling Products (This Month)          ││
+│                    │                                                 ││
+│                    │  ┌──────────────────────────────────────────┐ ││
+│                    │  │ Rank │ Product        │ Sales │ Revenue  │ ││
+│                    │  ├──────┼────────────────┼───────┼──────────┤ ││
+│                    │  │  1   │ Dell XPS 15    │  45   │ $58,500  │ ││
+│                    │  │  2   │ Headphones     │  89   │ $26,699  │ ││
+│                    │  │  3   │ Smart Watch    │  67   │ $60,233  │ ││
+│                    │  │  4   │ Gaming Mouse   │  123  │  $6,150  │ ││
+│                    │  │  5   │ USB-C Hub      │  234  │  $7,020  │ ││
+│                    │  └──────────────────────────────────────────┘ ││
+│                    │                                                 ││
+│                    │  [View Full Report →]                          ││
+│                    │                                                 ││
+│                    │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│                    │                                                 ││
+│                    │  📦 Recent Orders                               ││
+│                    │                                                 ││
+│                    │  ┌────────────────────────────────────────────┐││
+│                    │  │Order ID  │Customer    │Total    │Status    │││
+│                    │  ├──────────┼────────────┼─────────┼──────────┤││
+│                    │  │#ORD-1234 │John Doe    │$2,715.38│🚚Shipped ││
+│  │  │#ORD-1235 │Sarah M.    │$  299.99│⏳Pending ││
+│                    │  │#ORD-1236 │Mike R.     │$  899.00│✅Delivered││
+│                    │  │#ORD-1237 │Lisa K.     │$1,499.00│🔄Processing││
+│                    │  │#ORD-1238 │Tom H.      │$   49.99│✅Delivered││
+│                    │  └────────────────────────────────────────────┘││
+│                    │                                                 ││
+│                    │  [View All Orders →]                           ││
+│                    │                                                 ││
+│                    │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││
+│                    │                                                 ││
+│                    │  ⚠️ Alerts & Notifications                     ││
+│                    │                                                 ││
+│                    │  ⚠️ 12 products are low in stock              ││
+│                    │     [View Inventory →]                         ││
+│                    │                                                 ││
+│                    │  ⏰ 23 orders pending processing               ││
+│                    │     [View Orders →]                            ││
+│                    │                                                 ││
+│                    │  ⭐ 8 reviews awaiting moderation              ││
+│                    │     [Review Now →]                             ││
+│                    │                                                 ││
+│                    └─────────────────────────────────────────────────┘│
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Description:
+
+**Admin Header:**
+- **Logo:** Branding with "ADMIN" indicator
+- **Search:** Global search across products, orders, users
+- **Notifications:**
+  - Bell icon with badge count
+  - Dropdown showing recent alerts
+  - Low stock, new orders, reviews, messages
+- **Profile Menu:**
+  - Admin name and photo
+  - Quick access to settings
+  - Logout option
+
+**Sidebar Navigation:**
+- **Active Page Indicator:** Current section highlighted
+- **Main Sections:**
+  - Dashboard (overview)
+  - Orders management
+  - Products catalog
+  - Users/customers
+  - Analytics & reports
+  - Sales tracking
+  - Inventory management
+  - Reviews moderation
+  - Coupons/promotions
+  - Messages/support
+  - System settings
+- **Logout:** Clear exit option
+
+**Key Metrics Cards:**
+- **Revenue Card:**
+  - Today's/This month's revenue
+  - Percentage change vs previous period
+  - Trend indicator (up/down arrow)
+  - Color-coded (green=up, red=down)
+  
+- **Orders Card:**
+  - Total orders count
+  - Growth percentage
+  - Pending orders badge
+  - Quick link to orders page
+  
+- **Users Card:**
+  - Total registered users
+  - Active users indicator
+  - Growth rate
+  
+- **Average Rating Card:**
+  - Overall store rating
+  - Visual star display
+  - Total review count
+  
+- **Conversion Rate Card:**
+  - Percentage of visitors who purchase
+  - Month-over-month change
+  - Trend analysis
+
+**Sales Chart:**
+- **Interactive Graph:**
+  - Line chart showing revenue over time
+  - Multiple period options (7 days, 30 days, 90 days, year)
+  - Hover tooltips with exact values
+  - Compare periods option
+  - Export data option
+
+**Top Selling Products Table:**
+- **Columns:**
+  - Rank (position in sales)
+  - Product name with thumbnail
+  - Units sold
+  - Total revenue generated
+  - Trend indicator
+- **Sortable:** Click headers to sort
+- **View Details:** Click row for product analytics
+
+**Recent Orders:**
+- **Quick View:**
+  - Order ID (clickable)
+  - Customer name
+  - Order total
+  - Current status with icon
+  - Quick actions (view, update status)
+- **Real-time Updates:** Auto-refresh for new orders
+- **Status Color Coding:**
+  - Pending: Yellow/Orange
+  - Processing: Blue
+  - Shipped: Purple
+  - Delivered: Green
+  - Cancelled: Red
+
+**Alerts & Notifications:**
+- **Priority Alerts:**
+  - Low stock warnings
+  - Pending orders requiring action
+  - Reviews awaiting moderation
+  - Customer messages
+  - System issues
+- **Action Links:** Direct navigation to resolve issues
+- **Badge Counts:** Number of items needing attention
+
+**Additional Features:**
+- **Quick Actions Bar:**
+  - Add new product
+  - Create coupon
+  - Export reports
+  - Bulk operations
+  
+- **Activity Feed:**
+  - Recent admin actions
+  - System logs
+  - User activity
+  
+- **Performance Metrics:**
+  - Page load times
+  - Server status
+  - API health
+
+**Purpose of Admin Dashboard:**
+- Provide at-a-glance business overview
+- Quick access to critical functions
+- Identify issues requiring attention
+- Track key performance indicators
+- Monitor sales and inventory
+- Manage orders efficiently
+- Make data-driven decisions
+
+---

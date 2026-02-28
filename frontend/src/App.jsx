@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import useStore from './store/useStore';
 
 import Login from './pages/Login';
@@ -48,11 +49,11 @@ function App() {
   };
 
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router>
       <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
-      <div className="App">
+      <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
-        <div className="container">
+        <div className="main-content" style={{ flex: 1, width: '100%' }}>
           <Routes>
             {/* Public */}
             <Route path="/" element={<Home />} />
@@ -79,6 +80,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </Router>
   );

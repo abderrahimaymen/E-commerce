@@ -168,8 +168,12 @@ export class Cart {
       subtotal: this.calculateTotal(),
       isEmpty: this.isEmpty(),
       items: this.items.map(item => ({
+        id: item.id,
         productId: item.productId,
         productName: item.product?.getName() || 'Unknown',
+        productImage: item.product?.getImage?.() || item.product?.['image'] || null,
+        productPrice: item.product?.getPrice?.() || item.unitPriceSnapshot,
+        stockQuantity: item.product?.stock?.getQuantity?.() || 0,
         quantity: item.quantity,
         unitPrice: item.unitPriceSnapshot,
         lineTotal: item.getLineTotal(),
